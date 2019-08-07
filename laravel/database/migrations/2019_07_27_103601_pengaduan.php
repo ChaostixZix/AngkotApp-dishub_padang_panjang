@@ -20,6 +20,8 @@ class Pengaduan extends Migration
            $table->longText('aduan');
            $table->string('pengadu');
            $table->string('status')->default('0');
+           $table->dateTime('ket_tanggal');
+           $table->dateTime('tanggal_pengaduan');
         });
     }
 

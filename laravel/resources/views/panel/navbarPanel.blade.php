@@ -81,7 +81,7 @@
                         <ul class="navbar-menu-sub">
                             <li class="nav-sub-item"><a href="{{ route('depanPanel') }}" class="nav-sub-link"><i data-feather="home"></i>Dashboard</a></li>
                             <li class="nav-sub-item"><a href="app-calendar.html" class="nav-sub-link"><i data-feather="alert-circle"></i>List Permohonan</a></li>
-                            <li class="nav-sub-item"><a href="app-chat.html" class="nav-sub-link"><i data-feather="alert-octagon"></i>List Aduan</a></li>
+                            <li class="nav-sub-item"><a href="{{ route('aduanPageAdmin') }}" class="nav-sub-link"><i data-feather="alert-octagon"></i>List Aduan</a></li>
                             <li class="nav-sub-item"><a href="app-contacts.html" class="nav-sub-link"><i data-feather="users"></i>Angkot</a></li>
                             <li class="nav-sub-item"><a href="app-file-manager.html" class="nav-sub-link"><i data-feather="message-circle"></i>Inbox</a></li>
                             <li class="nav-sub-item"><a href="{{ route('postAdmin') }}" class="nav-sub-link"><i data-feather="edit"></i>Posting</a></li>
@@ -90,14 +90,12 @@
                     </li>
                 @endif
                     <li class="nav-item with-sub">
-                        <a href="" class="nav-link"><i data-feather="package"></i> Admin</a>
+                        <a href="" class="nav-link"><i data-feather="package"></i> User</a>
                         <ul class="navbar-menu-sub">
                             <li class="nav-sub-item"><a href="{{ route('depanPanel') }}" class="nav-sub-link"><i data-feather="home"></i>Dashboard</a></li>
-                            <li class="nav-sub-item"><a href="app-calendar.html" class="nav-sub-link"><i data-feather="alert-circle"></i>List Permohonan</a></li>
-                            <li class="nav-sub-item"><a href="app-chat.html" class="nav-sub-link"><i data-feather="alert-octagon"></i>List Aduan</a></li>
-                            <li class="nav-sub-item"><a href="app-contacts.html" class="nav-sub-link"><i data-feather="users"></i>Angkot</a></li>
+                            <li class="nav-sub-item"><a href="app-calendar.html" class="nav-sub-link"><i data-feather="alert-circle"></i>Permohonan</a></li>
+                            <li class="nav-sub-item"><a href="{{ route('aduanPageUser') }}" class="nav-sub-link"><i data-feather="alert-octagon"></i>Pengaduan</a></li>
                             <li class="nav-sub-item"><a href="app-file-manager.html" class="nav-sub-link"><i data-feather="message-circle"></i>Inbox</a></li>
-                            <li class="nav-sub-item"><a href="{{ route('postAdmin') }}" class="nav-sub-link"><i data-feather="edit"></i>Posting</a></li>
                             <li class="nav-sub-item"><a href="app-mail.html" class="nav-sub-link"><i data-feather="credit-card"></i>Kartu</a></li>
                         </ul>
                     </li>

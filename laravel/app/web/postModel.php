@@ -72,9 +72,12 @@ class postModel extends Model
             'judul' => $judul,
             'konten' => $konten,
             'kategori' => $category,
-            'gambar' => $gambar,
             'updated_at' => $updated_at
         ];
+        if($gambar !== null)
+        {
+            $update['gambar'] = $gambar;
+        }
         $this->db()->where('id', $id)->update($update);
         return true;
     }

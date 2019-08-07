@@ -30,12 +30,32 @@ Route::group([
     'middleware' => ['cekSes']
     ], function (){
 
-   Route::get('/', 'panel@depan')->name('depanPanel');
+   Route::get('', 'panel@depan')->name('depanPanel');
+   Route::get('updateprofil', 'panel@updateProfil')->name('updateProfil');
 
-   Route::group(['middleware' => ['fiturAdmin']], function (){
-       Route::get('/post', 'Admin\Admin@postPage')->name('postAdmin');
-       Route::post('/postnew', 'Admin\Post@new')->name('postNew');
-       Route::post('/postedit', 'Admin\Post@update')->name('postEdit');
+
+   Route::group([
+       'prefix' => 'feature'
+   ], function () {
+       Route::post('getAduan', 'Feature\Pengaduan@getAduanById')->name('getAduan');
+       Route::post('newAduan', 'Feature\Pengaduan@new')->name('aduanNew');
+       Route::post('postnew', 'Feature\Post@new')->name('postNew');
+       Route::post('postedit', 'Feature\Post@update')->name('postEdit');
+   });
+
+   Route::group([
+       'prefix' => 'user'
+   ], function () {
+       Route::get('pengaduan', 'User\User@pengaduanPage')->name('aduanPageUser');
+       Route::get('newAduan', 'Feature\Pengaduan@new')->name('newAduan');
+   });
+
+   Route::group([
+       'prefix' => 'admin',
+       'middleware' => ['fiturAdmin']
+   ], function (){
+       Route::get('post', 'Admin\Admin@postPage')->name('postAdmin');
+       Route::get('aduan', 'Admin\Admin@aduanPage')->name('aduanPageAdmin');
    });
 
 });

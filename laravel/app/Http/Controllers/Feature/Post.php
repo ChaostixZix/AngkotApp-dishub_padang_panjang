@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Feature;
 
 
 use App\Http\Controllers\Controller;
@@ -14,7 +14,7 @@ class Post extends Controller
         return new postModel();
     }
 
-    function new(Request $request)
+        function new(Request $request)
     {
         date_default_timezone_set("Asia/Bangkok");
         $judul = $request->input('inputJudul');

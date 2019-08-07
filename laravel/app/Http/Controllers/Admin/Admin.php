@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\web\aduanModel;
 use App\web\postModel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class Admin extends Controller
@@ -14,10 +16,25 @@ class Admin extends Controller
         return new postModel();
     }
 
+    private function aduan_model()
+    {
+        return new aduanModel();
+    }
+
     public function postPage()
     {
         $data['post'] = $this->postModel()->get();
+        $data['postCategory'] = $this->postModel()->getCategories();
         return view('panel.admin.post')->with($data);
     }
 
+    public function aduanPage()
+    {
+        Carbon::setLocale('id');
+        $data = [
+            'body' => 'app-contact contact-content-show',
+            'listAduan' => $this->aduan_model()->getAduanForView()
+        ];
+        return view('panel.admin.aduan')->with($data);
+    }
 }

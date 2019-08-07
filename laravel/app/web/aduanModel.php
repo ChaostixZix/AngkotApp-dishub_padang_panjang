@@ -9,17 +9,18 @@ class aduanModel extends Model
 {
     private function db()
     {
-        return DB::table('aduan');
+        return DB::table('pengaduan');
     }
 
-    public function newAduan($judul, $jenis_aduan, $aduan, $pengadu, $created_at)
+    public function newAduan($judul, $tindakan, $aduan, $pengadu, $gambar, $created_at)
     {
         $insert = [
             'judul' => $judul,
-            'jenis_aduan' => $jenis_aduan,
-            'konten' => $aduan,
+            'tindakan' => $tindakan,
+            'aduan' => $aduan,
             'pengadu' => $pengadu,
-            'created_at' => $created_at
+            'gambar' => $gambar,
+            'tanggal_pengaduan' => $created_at
         ];
         $this->db()->insert($insert);
         return true;
@@ -31,14 +32,17 @@ class aduanModel extends Model
         return true;
     }
 
-    public function updateAduan($id, $jenis_aduan, $judul, $aduan, $updated_at)
+    public function updateAduan($id, $tindakan, $judul, $aduan, $gambar)
     {
         $update = [
             'judul' => $judul,
-            'jenis_aduan' => $jenis_aduan,
-            'konten' => $aduan,
-            'updated_at' => $updated_at
+            'tindakan' => $tindakan,
+            'aduan' => $aduan,
         ];
+        if($gambar !== null)
+        {
+            $update['gambar'] = $gambar;
+        }
         $this->db()->where('id', $id)->update($update);
         return true;
     }
@@ -54,12 +58,57 @@ class aduanModel extends Model
 
     public function getAduan($id = null)
     {
-        if($id !== null)
-        {
+        if ($id !== null) {
             $get = $this->db()->where('id', $id)->get();
             return $get;
         }
-        $get = $this->db()->orderBy('created_at', 'desc')->get();
+        $get = $this->db()->orderBy('tanggal_pengaduan', 'asc')->get();
         return $get;
+    }
+
+    public function getAduanByPengadu($pengadu)
+    {
+        $get = $this->db()->where('pengadu', $pengadu)->orderBy('tanggal_pengaduan', 'asc')->get();
+        return $get;
+    }
+
+    public function getAduanForView()
+    {
+        $get = $this->getAduan();
+        $data = [];
+
+        $i = 0;
+        $a = 0;
+        foreach ($get as $aduan) {
+            $data[$a][] = $aduan;
+            $i++;
+            if($i == 6)
+            {
+                $a++;
+                $i = 0;
+            }
+        }
+
+        return $data;
+    }
+
+    public function getAduanForViewByPengadu($pengadu)
+    {
+        $get = $this->getAduanByPengadu($pengadu);
+        $data = [];
+
+        $i = 0;
+        $a = 0;
+        foreach ($get as $aduan) {
+            $data[$a][] = $aduan;
+            $i++;
+            if($i == 6)
+            {
+                $a++;
+                $i = 0;
+            }
+        }
+
+        return $data;
     }
 }

@@ -6,60 +6,51 @@
 <link href="{{ url('/') }}/dashforge/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css"
       rel="stylesheet">
 <link href="{{ url('/') }}/dashforge/lib/select2/css/select2.min.css" rel="stylesheet">
+<link href="{{ url('/') }}/dashforge/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+<link href="{{ url('/') }}/dashforge/lib/quill/quill.core.css" rel="stylesheet">
+<link href="{{ url('/') }}/dashforge/lib/quill/quill.snow.css" rel="stylesheet">
+
+<!-- DashForge CSS -->
+<link rel="stylesheet" href="{{ url('/') }}/dashforge/assets/css/dashforge.css">
+<link rel="stylesheet" href="{{ url('/') }}/dashforge/assets/css/dashforge.mail.css">
+
+
 <div class="content content-fixed">
     <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-        {{--        <div class="row row-xs">--}}
-        {{--            <div class="col-lg-12">--}}
-        {{--                <div class="panel ht-100p">--}}
-        {{--                    <div class="panel-header">--}}
-        {{--                        <h6 class="mg-b-0">New Post</h6>--}}
-        {{--                    </div>--}}
-        {{--                    <div class="panel-body">--}}
-        {{--                        <form>--}}
-        {{--                            <div class="form-group">--}}
-        {{--                                <label class="d-block">Judul</label>--}}
-        {{--                                <input type="text" id="inputJudul" class="form-control" placeholder="Judul">--}}
-        {{--                            </div>--}}
-        {{--                            <div class="form-group">--}}
-        {{--                                <label for="editor-container" class="d-block">Konten</label>--}}
-        {{--                                <div id="editor-container" class="ht-200">--}}
-        {{--                                </div>--}}
-        {{--                            </div>--}}
-        {{--                        </form>--}}
-        {{--                    </div>--}}
-
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div><!-- row -->--}}
         <div class="row row-xs">
             <div id="newPost" class="modal">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
-                        <div class="modal-header pd-y-15 pd-x-20 bd-b-0">
-                            <h6 class="modal-title">New Post</h6>
+                        <div class="mail-compose-header">
+                            <h6 class="mail-compose-title tx-white">New Post</h6>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div><!-- modal-header -->
                         <div class="modal-body">
-                            <div class="d-flex flex-column wt">
-                                    <label class="d-block">Judul</label>
+                            <div class="form-row align-items-center">
+                                <div class="col-sm">Judul:</div>
+                                <div class="col-sm-10">
                                     <input type="text" id="inputJudul" class="form-control" placeholder="Judul">
+                                </div>
                             </div>
-                            <br>
-                            <div class="d-flex flex-column wt">
-                                    <label class="d-block">Gambar</label>
-                                    <input type="file" id="inputGambar">
+                            <hr class="mg-y-10">
+                            <div class="form-row align-items-center">
+                                <div class="col-sm">Gambar:</div>
+                                <input class="col-sm-10" type="file" id="inputGambar">
                             </div>
-                            <br>
-                            <div class="d-flex flex-column">
-                                    <label class="d-block">Kategori</label>
-                                    <select name="selectKategori" id="kategori">
-                                        <option value="-">-</option>
-                                        <option value="Anjay">Anjay</option>
-                                        <option value="AA">AA</option>
-                                    </select>
-                                    <input type="text" id="inputKategori" class="form-control" placeholder="Tambah Kategori">
+                            <hr class="mg-y-10">
+                            <div class="form-row align-items-center">
+                                <label class="col-sm">Kategori</label>
+                                <select class="col-sm-10" id="selectKategori">
+                                    <option value="-">-</option>
+                                    @foreach($postCategory as $p)
+                                        <option value="{{ $p->nama }}">{{ $p->nama }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="col-sm-2"></div>
+                                <input class="col-sm-10" type="text" id="inputKategori" class="form-control"
+                                       placeholder="Tambah Kategori">
                             </div>
                             <hr>
                             <div class="d-flex flex-column ht-250">
@@ -67,6 +58,20 @@
                                 <div id="editor-container" class="flex-1 overflow-y-auto">
                                     ...
                                 </div>
+                                <div class="d-sm-flex align-items-center justify-content-between mg-t-25">
+                                    <div id="toolbar-newpost" class="bd-0-f pd-0-f">
+              <span class="ql-formats">
+                <button class="ql-bold"></button>
+                <button class="ql-italic"></button>
+                <button class="ql-underline"></button>
+              </span>
+                                        <span class="ql-formats">
+                <button class="ql-link"></button>
+{{--                <button class="ql-image"></button>--}}
+              </span>
+                                    </div>
+                                </div>
+
                             </div>
                         </div><!-- modal-body -->
                         <div class="modal-footer pd-y-15 pd-x-20 bd-t-0 tx-13">
@@ -79,30 +84,63 @@
             <div id="editPost" class="modal">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
-                        <div class="modal-header pd-y-15 pd-x-20 bd-b-0">
-                            <h6 class="modal-title">Edit Post</h6>
+                        <div class="mail-compose-header">
+                            <h6 class="mail-compose-title tx-white">Edit Post</h6>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div><!-- modal-header -->
                         <div class="modal-body pd-10">
-                            <div class="d-flex flex-column wt">
-                                <div class="form-group">
-                                    <label class="d-block">Id</label>
+                            <div class="form-row align-items-center">
+                                <div class="col-sm">id:</div>
+                                <div class="col-sm-10">
                                     <input readonly type="text" id="inputEditId" class="form-control"
                                            placeholder="Judul">
                                 </div>
                             </div>
-                            <div class="d-flex flex-column wt-50">
-                                <div class="form-group">
-                                    <label class="d-block">Judul</label>
+                            <hr class="mg-y-10">
+                            <div class="form-row align-items-center">
+                                <div class="col-sm">Judul:</div>
+                                <div class="col-sm-10">
                                     <input type="text" id="inputEditJudul" class="form-control" placeholder="Judul">
                                 </div>
                             </div>
+                            <hr class="mg-y-10">
+                            <div class="form-row align-items-center">
+                                <div class="col-sm">Gambar:</div>
+                                <input class="col-sm-10" type="file" id="inputEditGambar">
+                            </div>
+                            <hr class="mg-y-10">
+                            <div class="form-row align-items-center">
+                                <label class="col-sm" class="d-block">Kategori</label>
+                                <select class="col-sm-10" id="selectEditKategori">
+                                    <option value="-">-</option>
+                                    @foreach($postCategory as $p)
+                                        <option value="{{ $p->nama }}">{{ $p->nama }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="col-sm-2"></div>
+                                <input class="col-sm-10" type="text" id="inputEditKategori" class="form-control"
+                                       placeholder="Tambah Kategori">
+                            </div>
+                            <hr>
                             <div class="d-flex flex-column ht-250">
                                 <label class="d-block">Konten</label>
                                 <div id="edit-editor-container" class="flex-1 overflow-y-auto">
                                     ...
+                                </div>
+                                <div class="d-sm-flex align-items-center justify-content-between mg-t-25">
+                                    <div id="toolbar-editpost" class="bd-0-f pd-0-f">
+              <span class="ql-formats">
+                <button class="ql-bold"></button>
+                <button class="ql-italic"></button>
+                <button class="ql-underline"></button>
+              </span>
+                                        <span class="ql-formats">
+                <button class="ql-link"></button>
+{{--                <button class="ql-image"></button>--}}
+              </span>
+                                    </div>
                                 </div>
                             </div>
                         </div><!-- modal-body -->
@@ -130,7 +168,8 @@
                                 <th scope="col">Updated</th>
                                 <th scope="col">Aksi</th>
                             </tr>
-                            </thead>-
+                            </thead>
+                            -
                             <tbody>
                             @foreach($post as $p)
                                 <tr>
@@ -143,7 +182,7 @@
                                     <td>
                                         <a href="post.blade.php"><i class="fa fa-eye"></i></a>
                                         <a href="" data-toggle="modal" data-target="#editPost"
-                                           onclick="editPost('{{ $p->id }}', '{{ $p->judul }}', '{{$p->konten}}')"><i
+                                           onclick="editPost('{{ $p->id }}', '{{ $p->judul }}', '{{ $p->kategori }}', '{{$p->konten}}')"><i
                                                     class="fa fa-edit"></i></a>
                                     </td>
                                 </tr>
@@ -172,11 +211,17 @@
 <script src="{{ url('/') }}/dashforge/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script>
     var quill = new Quill('#editor-container', {
-        placeholder: 'Masukkan konten',
+        modules: {
+            toolbar: '#toolbar-newpost'
+        },
+        placeholder: 'Write your message here',
         theme: 'snow'
     });
     var editKonten = new Quill('#edit-editor-container', {
-        placeholder: 'Masukkan konten',
+        modules: {
+            toolbar: '#toolbar-editpost'
+        },
+        placeholder: 'Write your message here',
         theme: 'snow'
     });
 
@@ -189,20 +234,30 @@
         }
     });
 
-    var kategoriNewPost = $('#kategori');
+    var kategoriNewPost = $('#selectKategori');
     var inputKategori = $('#inputKategori');
 
     kategoriNewPost.on('change', function () {
         inputKategori.val(kategoriNewPost.val());
     });
-
     inputKategori.on('keyup', function () {
         kategoriNewPost.val('');
     });
 
-    function editPost(id, judul, konten) {
+    var kategoriEditPost = $('#selectEditKategori');
+    var inputEditKategori = $('#inputEditKategori');
+    kategoriEditPost.on('change', function () {
+        inputEditKategori.val(kategoriEditPost.val());
+    });
+    inputEditKategori.on('keyup', function () {
+        kategoriEditPost.val('');
+    });
+
+    function editPost(id, judul, kategori, konten) {
         $('#inputEditId').val(id);
         $('#inputEditJudul').val(judul);
+        inputEditKategori.val(kategori);
+        kategoriEditPost.val(kategori);
         editKonten.container.innerHTML = konten;
     }
 
@@ -210,10 +265,11 @@
         var formdata = new FormData();
 
         var judul = $('#inputJudul').val();
-        var kategori = $('#inputKategori').val();
+        var kategori = $('#inputEditKategori').val();
         var gambar = $('#inputGambar').val();
         var konten = quill.container.innerHTML;
         var author = '{{ Session::get('username') }}';
+
 
         formdata.append('inputJudul', judul);
         formdata.append('inputKonten', konten);
@@ -245,18 +301,31 @@
     });
 
     $('#savePost').on('click', function () {
-        console.log('babi');
+        var formdata = new FormData();
         var id = $('#inputEditId').val();
         var judul = $('#inputEditJudul').val();
+        var kategori = $('#inputEditKategori').val();
+        var gambar = $('#inputEditGambarGambar').val();
         var konten = editKonten.container.innerHTML;
         var author = '{{ Session::get('username') }}';
+
+        formdata.append('id', id);
+        formdata.append('inputJudul', judul);
+        formdata.append('inputKonten', konten);
+        formdata.append('inputCategory', kategori);
+        formdata.append('inputGambar', gambar);
+        formdata.append('author', author);
+        formdata.append('_token', '{{ csrf_token() }}');
+
         if (judul === '' || judul === null || konten === null || konten === '') {
             alert('Judul & Konten tidak boleh kosong!');
         } else {
             $.ajax({
                 url: '{{ route('postEdit') }}',
                 type: 'post',
-                data: {id: id, inputJudul: judul, inputKonten: konten, author: author, _token: '{{ csrf_token()  }}'},
+                processData: false,
+                contentType: false,
+                data: formdata,
 
                 success: function (data) {
                     if (data === 'true') {
