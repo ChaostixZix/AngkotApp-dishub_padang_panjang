@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\web\aduanModel;
+use App\web\derekModel;
 use App\web\postModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -14,6 +15,11 @@ class Admin extends Controller
     private function postModel()
     {
         return new postModel();
+    }
+
+    private function derekModel()
+    {
+        return new derekModel();
     }
 
     private function aduan_model()
@@ -36,5 +42,16 @@ class Admin extends Controller
             'listAduan' => $this->aduan_model()->getAduanForView()
         ];
         return view('panel.admin.aduan')->with($data);
+    }
+
+    public function derekPesananPage()
+    {
+        Carbon::setLocale('id');
+        $data = [
+            'body' => 'app-contact contact-content-show',
+            'listAduan' => $this->aduan_model()->getAduanForView(),
+            'pesanan' => $this->derekModel()->getPesananForView()
+        ];
+        return view('panel.admin.derekPesanan')->with($data);
     }
 }

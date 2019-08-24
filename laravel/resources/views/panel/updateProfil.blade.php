@@ -246,18 +246,18 @@
                                 <div class="form-group">
                                     <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama
                                         Lengkap</label>
-                                    <input readonly id="inputNamaLengkap" type="text" class="form-control"
+                                    <input  id="inputNamaLengkap" type="text" class="form-control"
                                            placeholder="Nama Lengkap">
                                 </div><!-- col -->
                                 <div class="form-group">
                                     <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">NIK</label>
-                                    <input readonly id="inputNik" type="text" class="form-control"
+                                    <input  id="inputNik" type="text" class="form-control"
                                            placeholder="Nomor Induk Keluarga">
                                 </div><!-- col -->
                                 <div class="form-group">
                                     <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Jenis
                                         Kelamin</label>
-                                    <select readonly id="inputJenisKelamin" type="text" class="form-control">
+                                    <select  id="inputJenisKelamin" type="text" class="form-control">
                                         <option value=""></option>
                                         <option value="L">Laki Laki</option>
                                         <option value="P">Perempuan</option>
@@ -266,23 +266,23 @@
                                 <div class="form-group">
                                     <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Tempat
                                         Lahir</label>
-                                    <input readonly id="inputTempatLahir" type="text" class="form-control"
+                                    <input  id="inputTempatLahir" type="text" class="form-control"
                                            placeholder="Tempat Lahir">
                                 </div>
                                 <div class="form-group">
                                     <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Agama</label>
-                                    <input readonly id="inputAgama" type="text" class="form-control"
+                                    <input  id="inputAgama" type="text" class="form-control"
                                            placeholder="Tempat Lahir">
                                 </div>
                                 <div class="form-group">
                                     <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Pendidikan</label>
-                                    <input readonly id="inputPendidikan" type="text" class="form-control"
+                                    <input  id="inputPendidikan" type="text" class="form-control"
                                            placeholder="Tempat Lahir">
                                 </div>
                                 <div class="form-group">
                                     <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Jenis
                                         Pekerjaan</label>
-                                    <input readonly id="inputJenisPekerjaan" type="text" class="form-control"
+                                    <input  id="inputJenisPekerjaan" type="text" class="form-control"
                                            placeholder="Tempat Lahir">
                                 </div>
                                 <div class="form-group ">
@@ -299,13 +299,13 @@
                                     <div class="col-sm-6">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Status
                                             Perkawinan</label>
-                                        <input readonly id="inputStatusPerkawinan" type="text" class="form-control"
+                                        <input  id="inputStatusPerkawinan" type="text" class="form-control"
                                                placeholder="Status Perkawinan">
                                     </div><!-- col -->
                                     <div class="col-sm-6">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Status
                                             Hubungan Dalam Keluarga</label>
-                                        <input readonly id="inputStatusHubunganDalamKeluarga" type="text"
+                                        <input  id="inputStatusHubunganDalamKeluarga" type="text"
                                                class="form-control"
                                                placeholder="Status Hubungan Dalam Keluarga">
                                     </div><!-- col -->
@@ -317,13 +317,13 @@
                                     <div class="col-sm-6">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">No
                                             Passport</label>
-                                        <input readonly id="inputNoPassport" type="text" class="form-control"
+                                        <input  id="inputNoPassport" type="text" class="form-control"
                                                placeholder="No Passport">
                                     </div><!-- col -->
                                     <div class="col-sm-6">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">No
                                             KTA</label>
-                                        <input readonly id="inputNoKta" type="text"
+                                        <input  id="inputNoKta" type="text"
                                                class="form-control"
                                                placeholder="No KTA">
                                     </div><!-- col -->
@@ -335,13 +335,13 @@
                                     <div class="col-sm-6">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama
                                             Ayah</label>
-                                        <input readonly id="inputNamaAyah" type="text" class="form-control"
+                                        <input  id="inputNamaAyah" type="text" class="form-control"
                                                placeholder="Nama Ayah">
                                     </div><!-- col -->
                                     <div class="col-sm-6">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama
                                             Ibu</label>
-                                        <input readonly id="inputNamaIbu" type="text"
+                                        <input  id="inputNamaIbu" type="text"
                                                class="form-control"
                                                placeholder="Nama Ibu">
                                     </div><!-- col -->
@@ -353,19 +353,19 @@
                                     <div class="col-sm-8">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Alamat
                                             Lengkap</label>
-                                        <input readonly id="inputAlamatLengkap" type="text" class="form-control"
+                                        <input  id="inputAlamatLengkap" type="text" class="form-control"
                                                placeholder="Alamat Lengkap">
                                     </div><!-- col -->
                                     <div class="col-sm-2">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Kode
                                             Pos</label>
-                                        <input readonly id="inputKodePos" type="text"
+                                        <input  id="inputKodePos" type="text"
                                                class="form-control"
                                                placeholder="Kode Pos">
                                     </div><!-- col -->
                                     <div class="col-sm-2">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">RT/RW</label>
-                                        <input readonly id="inputRtRw" type="text"
+                                        <input  id="inputRtRw" type="text"
                                                class="form-control"
                                                placeholder="RT/RW">
                                     </div><!-- col -->
@@ -373,19 +373,19 @@
                                 <div class="row row-sm mg-b-20">
                                     <div class="col-sm-4">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Desa/Kelurahan</label>
-                                        <input readonly id="inputDesaKelurahan" type="text"
+                                        <input  id="inputDesaKelurahan" type="text"
                                                class="form-control"
                                                placeholder="Desa/Kelurahan">
                                     </div><!-- col -->
                                     <div class="col-sm-4">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Kecamatan</label>
-                                        <input readonly id="inputKecamatan" type="text"
+                                        <input  id="inputKecamatan" type="text"
                                                class="form-control"
                                                placeholder="Kecamatan">
                                     </div><!-- col -->
                                     <div class="col-sm-4">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Kabupaten/Kota</label>
-                                        <input readonly id="inputKabupatenKota" type="text"
+                                        <input  id="inputKabupatenKota" type="text"
                                                class="form-control"
                                                placeholder="Kabupaten/Kota">
                                     </div><!-- col -->
@@ -393,7 +393,7 @@
                                 <div class="row row-sm mg-b-20">
                                     <div class="col-sm-12">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Provinsi</label>
-                                        <input readonly id="inputProvinsi" type="text"
+                                        <input  id="inputProvinsi" type="text"
                                                class="form-control"
                                                placeholder="Provinsi">
                                     </div><!-- col -->
@@ -405,13 +405,13 @@
                                     <div class="col-sm-6">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">No
                                             HP</label>
-                                        <input readonly id="inputNoHp" type="text"
+                                        <input  id="inputNoHp" type="text"
                                                class="form-control"
                                                placeholder="No Hp">
                                     </div><!-- col -->
                                     <div class="col-sm-6">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Email</label>
-                                        <input readonly id="inputEmail" type="email"
+                                        <input  id="inputEmail" type="email"
                                                class="form-control"
                                                placeholder="No Hp">
                                     </div><!-- col -->
@@ -419,13 +419,13 @@
                                 <div class="row row-sm mg-b-20">
                                     <div class="col-sm-12 mg-b-20">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Facebook</label>
-                                        <input readonly id="inputFacebook" type="text"
+                                        <input  id="inputFacebook" type="text"
                                                class="form-control"
                                                placeholder="Facebook">
                                     </div><!-- col -->
                                     <div class="col-sm-12">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Twitter</label>
-                                        <input readonly id="inputTwitter" type="email"
+                                        <input  id="inputTwitter" type="email"
                                                class="form-control"
                                                placeholder="Twitter">
                                     </div><!-- col -->
@@ -434,7 +434,7 @@
                         </div>
                         <div class="card-footer bg-transparent pd-y-10 pd-sm-y-15 pd-x-10 pd-sm-x-20">
                             <nav class="nav nav-with-icon tx-13">
-                                <a href="" class="nav-link">
+                                <a onclick="updateProfile()" href="#" class="nav-link">
                                     <i class="fa fa-folder mg-r-5"></i>
                                     Save</a>
                             </nav>
@@ -774,6 +774,56 @@
     </div><!-- container -->
 </div>
 
-
-@include('panel.footerPanel')
 @include('panel.scriptPanel')
+<script>
+
+
+    function updateProfile() {
+        var data = {
+            'inputNik': 'inputNik',
+            'inputNamaLengkap': 'inputNamaLengkap',
+            'inputJenisKelamin': 'inputJenisKelamin',
+            'inputTempatLahir': 'inputTempatLahir',
+            'inputAgama': 'inputAgama',
+            'inputPendidikan': 'inputPendidikan',
+            'inputJenisPekerjaan': 'inputJenisPekerjaan',
+            'inputStatusPerkawinan': 'inputStatusPerkawinan',
+            'inputStatusHubunganDalamKeluarga': 'inputStatusHubunganDalamKeluarga',
+            'inputKewarganegaraan': 'inputKewarganegaraan',
+
+            'inputNoPassport': 'inputNoPassport',
+            'inputNoKta': 'inputNoKta',
+
+            'inputNamaAyah': 'inputNamaAyah',
+            'inputNamaIbu': 'inputNamaIbu',
+
+            'inputAlamatLengkap': 'inputAlamatLengkap',
+            'inputRtRw': 'inputRtRw',
+            'inputDesaKelurahan': 'inputDesaKelurahan',
+            'inputKecamatan': 'inputKecamatan',
+            'inputKabupatenKota': 'inputKabupatenKota',
+            'inputProvinsi': 'inputProvinsi',
+
+            'inputNoHp': 'inputNoHp',
+            'inputEmail': 'inputEmail',
+
+            'inputFacebook': 'inputFacebook',
+            'inputTwitter': 'inputTwitter'
+        };
+        var formData = new FormData();
+        Object.keys(data).forEach(function (value, index) {
+            formData.append(value, $('#' + value).val());
+        });
+        $.ajax({
+            url: '{{ route('depanPanel') }}',
+            type: 'post',
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
+</script>
+@include('panel.footerPanel')

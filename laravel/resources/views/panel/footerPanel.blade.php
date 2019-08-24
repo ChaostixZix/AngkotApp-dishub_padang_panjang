@@ -1,13 +1,17 @@
-{{--<footer class="footer">--}}
-{{--    <div>--}}
-{{--        <span>&copy; 2019 DashForge v1.0.0. </span>--}}
-{{--        <span>Created by <a href="http://themepixels.me">ThemePixels</a></span>--}}
-{{--    </div>--}}
-{{--    <div>--}}
-{{--        <nav class="nav">--}}
-{{--            <a href="https://themeforest.net/licenses/standard" class="nav-link">Licenses</a>--}}
-{{--            <a href="../../change-log.html" class="nav-link">Change Log</a>--}}
-{{--            <a href="https://discordapp.com/invite/RYqkVuw" class="nav-link">Get Help</a>--}}
-{{--        </nav>--}}
-{{--    </div>--}}
-{{--</footer>--}}
+<nav class="fixed-bottom navbar navbar-expand-lg bg-gray-100 bd justify-content-center">
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa tx-12 fa-home"></i><br> Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa tx-12 fa-book"></i><br> News</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('publikAduan') }}"><i class="fa tx-12 fa-mail-bulk"></i><br> Aduan</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="modal" data-target="#modalMenu"><i class="fa tx-12 fa-ellipsis-h"></i><br> More</a>
+        </li>
+    </ul>
+
+</nav>

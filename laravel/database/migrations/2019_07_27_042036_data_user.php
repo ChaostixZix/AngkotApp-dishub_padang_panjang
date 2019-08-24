@@ -19,6 +19,7 @@ class DataUser extends Migration
            $table->string('username');
            $table->string('password');
            $table->string('level');
+           $table->bigInteger('saldo')->default('0');
         });
     }
 

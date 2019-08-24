@@ -183,7 +183,7 @@
                                         <a href="post.blade.php"><i class="fa fa-eye"></i></a>
                                         <a href="" data-toggle="modal" data-target="#editPost"
                                            onclick="editPost('{{ $p->id }}', '{{ $p->judul }}', '{{ $p->kategori }}', '{{$p->konten}}')"><i
-                                                    class="fa fa-edit"></i></a>
+                                                    class="fa fa-edit"></i>Edit</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -203,7 +203,6 @@
     </div><!-- container -->
 </div><!-- content -->
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 @include('panel.scriptPanel')
 <script src="{{ url('/') }}/dashforge/lib/select2/js/select2.min.js"></script>
 <script src="{{ url('/') }}/dashforge/lib/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -265,8 +264,8 @@
         var formdata = new FormData();
 
         var judul = $('#inputJudul').val();
-        var kategori = $('#inputEditKategori').val();
-        var gambar = $('#inputGambar').val();
+        var kategori = $('#inputKategori').val();
+        var gambar = $('#inputGambar')[0].files[0];
         var konten = quill.container.innerHTML;
         var author = '{{ Session::get('username') }}';
 
@@ -289,11 +288,11 @@
 
                 success: function (data) {
                     if (data === 'true') {
-                        swal({title: 'Berhasil', text: 'Berhasil menambah post', type: 'success'}, function () {
+                        swal.fire({title: 'Berhasil', text: 'Berhasil menambah post', type: 'success'}).then( function () {
                             location.reload();
                         })
                     } else {
-                        swal('Gagal', 'Gagal menambah post', 'error');
+                        swal.fire('Gagal', 'Gagal menambah post', 'error');
                     }
                 }
             });
@@ -329,11 +328,11 @@
 
                 success: function (data) {
                     if (data === 'true') {
-                        swal({title: 'Berhasil', text: 'Berhasil mengedit post', type: 'success'}, function () {
+                        swal.fire({title: 'Berhasil', text: 'Berhasil mengedit post', type: 'success'}, function () {
                             location.reload();
                         })
                     } else {
-                        swal('Gagal', 'Gagal mengedit post', 'error');
+                        swal.fire('Gagal', 'Gagal mengedit post', 'error');
                     }
                 }
             });

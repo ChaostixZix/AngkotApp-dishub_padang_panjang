@@ -38,8 +38,8 @@ class Pengaduan extends Controller
             $file = $request->file('inputGambar');
             $nama_folder = substr_replace(' ', '_',  $judul);
             $nama_file = $file->getClientOriginalName();
-            $tujuan_upload = 'postGambar/' . $nama_folder;
-            $file->move($tujuan_upload, $nama_file());
+            $tujuan_upload = 'aduanGambar/' . $nama_folder;
+            $file->move($tujuan_upload, $nama_file);
             $gambar = $nama_folder . "/" . $nama_file;
         }
 
@@ -65,8 +65,8 @@ class Pengaduan extends Controller
             $file = $request->file('inputGambar');
             $nama_folder = substr_replace(' ', '_',  $judul);
             $nama_file = $file->getClientOriginalName();
-            $tujuan_upload = 'postGambar/' . $nama_folder;
-            $file->move($tujuan_upload, $nama_file());
+            $tujuan_upload = 'aduanGambar/' . $nama_folder;
+            $file->move($tujuan_upload, $nama_file);
             $gambar = $nama_folder . "/" . $nama_file;
         }
         $do = $this->aduan_model()->updateAduan($id, $judul, $jenis_aduan, $aduan, $gambar);

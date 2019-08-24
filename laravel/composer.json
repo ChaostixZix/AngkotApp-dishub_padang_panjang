@@ -12,7 +12,10 @@
         "barryvdh/laravel-ide-helper": "v2.6.2",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "aws/aws-sdk-php-laravel": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

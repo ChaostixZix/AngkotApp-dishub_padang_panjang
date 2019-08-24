@@ -1,7 +1,7 @@
 <header class="navbar navbar-header navbar-header-fixed">
     <a href="" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
     <div class="navbar-brand">
-        <a href="../../index.html" class="df-logo">Dinas<span>Perhubungan</span></a>
+        <a href="#" class="df-logo">Dinas<span>Perhubungan</span></a>
     </div><!-- navbar-brand -->
     @if(Session::has('username'))
         <div class="navbar-right">
@@ -54,8 +54,8 @@
                     <h6 class="tx-semibold mg-b-5">{{ strtoupper(\Illuminate\Support\Facades\Session::get('username')) }}</h6>
                     <p class="mg-b-25 tx-12 tx-color-03">{{ strtoupper(\Illuminate\Support\Facades\Session::get('level')) }}</p>
 
-                    <a href="" class="dropdown-item"><i data-feather="edit-3"></i> Edit Profile</a>
-                    <a href="page-profile-view.html" class="dropdown-item"><i data-feather="user"></i> View Profile</a>
+                    <a href="{{ route('updateProfil') }}" class="dropdown-item"><i data-feather="edit-3"></i> Edit Profile</a>
+{{--                    <a href="page-profile-view.html" class="dropdown-item"><i data-feather="user"></i> View Profile</a>--}}
 {{--                    <div class="dropdown-divider"></div>--}}
 {{--                    <a href="page-help-center.html" class="dropdown-item"><i data-feather="help-circle"></i> Help Center</a>--}}
 {{--                    <a href="" class="dropdown-item"><i data-feather="life-buoy"></i> Forum</a>--}}
@@ -68,7 +68,7 @@
     @endif
     <div id="navbarMenu" class="navbar-menu-wrapper">
         <div class="navbar-menu-header">
-            <a href="../../index.html" class="df-logo">Dinas<span>Perhubungan</span></a>
+            <a href="#" class="df-logo">Dinas<span>Perhubungan</span></a>
             <a id="mainMenuClose" href=""><i data-feather="x"></i></a>
         </div><!-- navbar-menu-header -->
         <ul class="nav navbar-menu">

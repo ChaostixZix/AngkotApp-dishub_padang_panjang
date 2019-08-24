@@ -14,7 +14,7 @@ class Post extends Controller
         return new postModel();
     }
 
-        function new(Request $request)
+    function new(Request $request)
     {
         date_default_timezone_set("Asia/Bangkok");
         $judul = $request->input('inputJudul');
@@ -24,19 +24,17 @@ class Post extends Controller
         $created_at = date('Y-m-d H:i:s');
         $gambar = null;
 
-        if($request->hasFile('inputGambar'))
-        {
+        if ($request->hasFile('inputGambar')) {
             $file = $request->file('inputGambar');
-            $nama_folder = substr_replace(' ', '_',  $judul);
+            $nama_folder = substr_replace(' ', '_', $judul);
             $nama_file = $file->getClientOriginalName();
             $tujuan_upload = 'postGambar/' . $nama_folder;
-            $file->move($tujuan_upload, $nama_file());
+            $file->move($tujuan_upload, $nama_file);
             $gambar = $nama_folder . "/" . $nama_file;
         }
 
         $do = $this->post_model()->newPost($judul, $konten, $category, $gambar, $author, $created_at);
-        if($do)
-        {
+        if ($do) {
             return 'true';
         }
         return 'false';
@@ -52,19 +50,17 @@ class Post extends Controller
         $updated_at = date('Y-m-d H:i:s');
         $gambar = null;
 
-        if($request->hasFile('inputGambar'))
-        {
+        if ($request->hasFile('inputGambar')) {
             $file = $request->file('inputGambar');
-            $nama_folder = substr_replace(' ', '_',  $judul);
+            $nama_folder = substr_replace(' ', '_', $judul);
             $nama_file = $file->getClientOriginalName();
             $tujuan_upload = 'postGambar/' . $nama_folder;
-            $file->move($tujuan_upload, $nama_file());
+            $file->move($tujuan_upload, $nama_file);
             $gambar = $nama_folder . "/" . $nama_file;
         }
 
         $do = $this->post_model()->updatePost($id, $judul, $konten, $category, $gambar, $updated_at);
-        if($do)
-        {
+        if ($do) {
             return 'true';
         }
         return 'false';
@@ -75,8 +71,7 @@ class Post extends Controller
         $id = $request->input('id');
 
         $do = $this->post_model()->deletePost($id);
-        if($do)
-        {
+        if ($do) {
             return 'true';
         }
         return 'false';

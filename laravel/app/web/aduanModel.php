@@ -62,13 +62,13 @@ class aduanModel extends Model
             $get = $this->db()->where('id', $id)->get();
             return $get;
         }
-        $get = $this->db()->orderBy('tanggal_pengaduan', 'asc')->get();
+        $get = $this->db()->orderBy('tanggal_pengaduan', 'ASC')->get();
         return $get;
     }
 
     public function getAduanByPengadu($pengadu)
     {
-        $get = $this->db()->where('pengadu', $pengadu)->orderBy('tanggal_pengaduan', 'asc')->get();
+        $get = $this->db()->where('pengadu', $pengadu)->orderBy('tanggal_pengaduan', 'ASC')->get();
         return $get;
     }
 

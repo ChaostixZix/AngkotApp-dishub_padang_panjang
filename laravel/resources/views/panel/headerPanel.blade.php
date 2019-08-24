@@ -18,16 +18,20 @@
     <title>Dishub</title>
 
     <!-- vendor css -->
-    <link href="{{ url('/') }}/dashforge/assets/fontawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="{{ url('/') }}/dashforge/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="{{ url('/') }}/dashforge/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="{{ url('/') }}/dashforge/lib/jqvmap/jqvmap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url('/') }}/dashforge/assets/css/dashforge.demo.css">
+
+
 
     <!-- DashForge CSS -->
     <link rel="stylesheet" href="{{ url('/') }}/dashforge/assets/css/dashforge.css">
     <link rel="stylesheet" href="{{ url('/') }}/dashforge/assets/css/dashforge.dashboard.css">
 </head>
+@include('panel.modalMenu')
 @if(isset($body))
-    <body class="{{ $body }}">
+    <body class="{{ $body }}" style="margin-bottom: 150px">
     @else
-        <body class="page-profile">
+        <body class="page-profile" style="margin-bottom: 150px">
 @endif

@@ -82,33 +82,33 @@
 {{--                    </div><!-- card-footer -->--}}
 {{--                </div><!-- card -->--}}
 {{--            </div>--}}
-            <div class="col-md-6 col-xl-4 mg-t-10">
-                <div class="card ht-100p">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <h6 class="mg-b-0">Pengaduan</h6>
-                    </div>
-                    <ul class="list-group list-group-flush tx-13">
-                        <li class="list-group-item d-flex pd-sm-x-20">
-                            <div class="avatar"><span class="avatar-initial rounded-circle bg-gray-600">s</span></div>
-                            <div class="pd-l-10">
-                                <p class="tx-medium mg-b-0">Socrates Itumay</p>
-                                <small class="tx-12 tx-color-03 mg-b-0">Tiket ID#00222</small>
-                            </div>
-                            <div class="mg-l-auto d-flex align-self-center">
-                                <nav class="nav nav-icon-only">
+{{--            <div class="col-md-6 col-xl-4 mg-t-10">--}}
+{{--                <div class="card ht-100p">--}}
+{{--                    <div class="card-header d-flex align-items-center justify-content-between">--}}
+{{--                        <h6 class="mg-b-0">Pengaduan</h6>--}}
+{{--                    </div>--}}
+{{--                    <ul class="list-group list-group-flush tx-13">--}}
+{{--                        <li class="list-group-item d-flex pd-sm-x-20">--}}
+{{--                            <div class="avatar"><span class="avatar-initial rounded-circle bg-gray-600">s</span></div>--}}
+{{--                            <div class="pd-l-10">--}}
+{{--                                <p class="tx-medium mg-b-0">Socrates Itumay</p>--}}
+{{--                                <small class="tx-12 tx-color-03 mg-b-0">Tiket ID#00222</small>--}}
+{{--                            </div>--}}
+{{--                            <div class="mg-l-auto d-flex align-self-center">--}}
+{{--                                <nav class="nav nav-icon-only">--}}
 {{--                                    <a href="" class="nav-link d-none d-sm-block"><i data-feather="mail"></i></a>--}}
 {{--                                    <a href="" class="nav-link d-none d-sm-block"><i data-feather="slash"></i></a>--}}
 
-                                    <a href="" class="nav-link d-sm-none"><i data-feather="more-vertical"></i></a>
-                                </nav>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="card-footer text-center tx-13">
-                        <a href="" class="link-03">View More Tikets <i class="icon ion-md-arrow-down mg-l-5"></i></a>
-                    </div><!-- card-footer -->
-                </div><!-- card -->
-            </div>
+{{--                                    <a href="" class="nav-link d-sm-none"><i data-feather="more-vertical"></i></a>--}}
+{{--                                </nav>--}}
+{{--                            </div>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                    <div class="card-footer text-center tx-13">--}}
+{{--                        <a href="" class="link-03">View More Tikets <i class="icon ion-md-arrow-down mg-l-5"></i></a>--}}
+{{--                    </div><!-- card-footer -->--}}
+{{--                </div><!-- card -->--}}
+{{--            </div>--}}
         </div><!-- row -->
     </div><!-- container -->
 </div><!-- content -->

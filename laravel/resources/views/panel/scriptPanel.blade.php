@@ -15,6 +15,7 @@
 <!-- append theme customizer -->
 <script src="{{ url('/') }}/dashforge/lib/js-cookie/js.cookie.js"></script>
 <script src="{{ url('/') }}/dashforge/assets/js/dashforge.settings.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.15.2/dist/sweetalert2.all.min.js" integrity="sha256-KJid9plnddPh1ETYci7xAPQyhe+NhGGKm9eFkPIPmWE=" crossorigin="anonymous"></script>
 
 </body>
 </html>

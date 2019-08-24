@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class auth extends Model
 {
-    private function db()
+    public function db()
     {
         return DB::table('data_user');
     }

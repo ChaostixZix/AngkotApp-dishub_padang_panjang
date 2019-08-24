@@ -73,9 +73,9 @@
                               placeholder="Konten Aduan"></textarea>
                 </div>
             </div><!-- modal-body -->
-            <div class="modal-footer tx-center2 pd-x-20 pd-y-15">
-                {{--                    <button type="button" class="btn btn-white" data-dismiss="modal">Cancel</button>--}}
-                {{--                    <button type="button" class="btn btn-primary">Save Info</button>--}}
+            <div class="modal-footer text-center">
+{{--                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>--}}
+                                    <a type="button" id="gambarAduan" href="http://google.com" target="_blank" class="btn btn-primary">Lihat Gambar</a>
             </div>
         </div><!-- modal-content -->
     </div><!-- modal-dialog -->
@@ -236,7 +236,11 @@
                                         <div class="mg-l-auto text-right">
                                             <button href="#" onclick="seeAduan('{{ $l->id }}')"
                                                     class="btn btn-sm pd-x-15 btn-white btn-uppercase">
-                                                Show <i class="fa fa-eye"> </i>
+                                                Show
+                                            </button>
+                                            <button href="#" onclick="deleteAduan('{{ $l->id }}')"
+                                                    class="btn btn-sm pd-x-15 btn-danger btn-uppercase">
+                                                Delete
                                             </button>
                                         </div>
                                 @endforeach
@@ -265,7 +269,6 @@
 
 
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 @include('panel.scriptPanel')
 <script src="{{ url('/') }}/dashforge/lib/jqueryui/jquery-ui.min.js"></script>
@@ -313,11 +316,42 @@
     var logoAduan = $('#logoAduan');
     var faAduan = $('#faAduan');
 
+    function deleteAduan(id) {
+        Swal.fire({
+            title: 'Apa anda yakin?',
+            text: "Aduan akan dihapus secara permanen",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya!'
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: "{{route('deleteAduan')}}",
+                    type: 'post',
+                    data: {id: id, _token: "{{ csrf_token() }}"},
+                    success: function (data) {
+                        if(data === "true")
+                        {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            ).then(function () {
+                                location.reload();
+                            });
+                        }
+                    }
+                });
+            }
+        })
+    }
     function submitAduan() {
         var judul = $('#judulTambahAduan').val();
         var tindakan = $('#tindakanTambahAduan').val();
         var pengadu = $('#pengaduTambahAduan').val();
-        var gambar = $('#gambarTambahAduan').val();
+        var gambar = $('#gambarTambahAduan')[0].files[0];
         var konten = $('#kontenTambahAduan').val();
         var _token = '{{ csrf_token() }}';
 
@@ -343,11 +377,11 @@
                 if(data === 'true')
                 {
                     if (data === 'true') {
-                        swal({title: 'Berhasil', text: 'Berhasil membuat aduan', type: 'success'}, function () {
+                        Swal.fire({title: 'Berhasil', text: 'Berhasil membuat aduan', type: 'success'}).then(function () {
                             location.reload();
-                        })
+                        });
                     } else {
-                        swal('Gagal', 'Gagal membuat aduan', 'error');
+                        Swal.fire('Gagal', 'Gagal membuat aduan', 'error');
                     }
                 }
             }
@@ -370,6 +404,13 @@
                 $('#judulAduan').val(json[0].judul);
                 $('#judulAtasAduan').text(json[0].judul);
                 $('#kontenAduan').text(json[0].aduan);
+                if(json[0].gambar !== null)
+                {
+                    $('#gambarAduan').show();
+                    $('#gambarAduan').attr("href", "{{ url('/') }}/aduanGambar/" + json[0].gambar);
+                }else {
+                    $('#gambarAduan').hide();
+                }
                 $('#aduanModal').modal();
 
                 console.log(json[0].status);

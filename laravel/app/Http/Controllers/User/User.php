@@ -24,4 +24,11 @@ class User extends Controller
         ];
         return view('panel.user.aduan')->with($data);
     }
+
+    public function derekPage()
+    {
+        Carbon::setLocale('id');
+
+        return view('panel.user.derek');
+    }
 }
