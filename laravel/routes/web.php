@@ -55,7 +55,8 @@ Route::group([
 
        //DEREK
        Route::post('derekNew', 'Feature\Derek@pesanDerek')->name('derekNew');
-       Route::post('derekChangeStatus/{id?}/{status?}/{supir?}', 'Feature\Derek@changeStatusDerek')->name('derekChangeStatus');
+       Route::get('derekChangeStatus/{id?}/{status?}/{supir?}', 'Feature\Derek@changeStatusDerek')->name('derekChangeStatus');
+
        Route::get('getharga', 'Feature\Derek@getHarga')->name('getHargaDerek');
        Route::get('getjarak', 'Feature\Derek@getJarak')->name('getJarakDerek');
        Route::get('getinfooforigins', 'Feature\Derek@getInfoOfOrigins')->name('getInfoOfOrigins');

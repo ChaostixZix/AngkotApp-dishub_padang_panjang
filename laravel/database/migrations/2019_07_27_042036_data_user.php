@@ -16,6 +16,7 @@ class DataUser extends Migration
         Schema::create('data_user', function (Blueprint $table)
         {
             $table->bigIncrements('id')->autoIncrement();
+           $table->string('nama_lengkap');
            $table->string('username');
            $table->string('password');
            $table->string('level');

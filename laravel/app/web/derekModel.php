@@ -40,7 +40,7 @@ class derekModel extends Model
 
     public function getSupirList()
     {
-        $get = $this->auth_model()->db()->where('level','supir')->get();
+        $get = $this->auth_model()->db()->where('level','supir')->get()->toArray();
         if($get)
         {
             return $get;
@@ -116,18 +116,33 @@ class derekModel extends Model
         return $data;
     }
 
-    public function terimaPesanan($id, $supir)
+    public function terimaPesanan($id)
+    {
+        $do = $this->updateStatusPesanan($id, '1');
+        if($do)
+        {
+            return true;
+        }
+        return false;
+    }
+    public function prosesPesanan($id, $supir)
     {
         $this->db()->where('id', $id)->update(['supir' => $supir]);
-        $this->updateStatusPesanan($id, '1');
-    }
-    public function prosesPesanan($id)
-    {
-        $this->updateStatusPesanan($id, '2');
+        $do = $this->updateStatusPesanan($id, '2');
+        if($do)
+        {
+            return true;
+        }
+        return false;
     }
     public function finishPesanan($id)
     {
-        $this->updateStatusPesanan($id, '3');
+        $do = $this->updateStatusPesanan($id, '3');
+        if($do)
+        {
+            return true;
+        }
+        return false;
     }
     public function updateStatusPesanan($id, $status)
     {

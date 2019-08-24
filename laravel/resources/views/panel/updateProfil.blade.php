@@ -441,95 +441,95 @@
                         </div><!-- card-footer -->
                     </div><!-- card -->
                 @endif
-                <div class="card card-profile-interest">
-                    <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
-                        <h6 class="tx-uppercase tx-semibold mg-b-0">Interests</h6>
-                        <nav class="nav nav-with-icon tx-13">
-                            <a href="" class="nav-link">Browse Interests
-                                <i class="fa fa-arrow-right"></i>
-                            </a>
-                        </nav>
-                    </div><!-- card-header -->
-                    <div class="card-body pd-25">
-                        <div class="row">
-                            <div class="col-sm col-lg-12 col-xl">
-                                <div class="media">
-                                    <div class="wd-45 ht-45 bg-gray-900 rounded d-flex align-items-center justify-content-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                             stroke-linecap="round" stroke-linejoin="round"
-                                             class="feather feather-github tx-white-7 wd-20 ht-20">
-                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="media-body pd-l-25">
-                                        <h6 class="tx-color-01 mg-b-5">Github, Inc.</h6>
-                                        <p class="tx-12 mg-b-10">Web-based hosting service for version control using
-                                            Git... <a href="">Learn more</a></p>
-                                        <span class="tx-12 tx-color-03">6,182,220 Followers</span>
-                                    </div>
-                                </div><!-- media -->
+{{--                <div class="card card-profile-interest">--}}
+{{--                    <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">--}}
+{{--                        <h6 class="tx-uppercase tx-semibold mg-b-0">Interests</h6>--}}
+{{--                        <nav class="nav nav-with-icon tx-13">--}}
+{{--                            <a href="" class="nav-link">Browse Interests--}}
+{{--                                <i class="fa fa-arrow-right"></i>--}}
+{{--                            </a>--}}
+{{--                        </nav>--}}
+{{--                    </div><!-- card-header -->--}}
+{{--                    <div class="card-body pd-25">--}}
+{{--                        <div class="row">--}}
+{{--                            <div class="col-sm col-lg-12 col-xl">--}}
+{{--                                <div class="media">--}}
+{{--                                    <div class="wd-45 ht-45 bg-gray-900 rounded d-flex align-items-center justify-content-center">--}}
+{{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
+{{--                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"--}}
+{{--                                             stroke-linecap="round" stroke-linejoin="round"--}}
+{{--                                             class="feather feather-github tx-white-7 wd-20 ht-20">--}}
+{{--                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="media-body pd-l-25">--}}
+{{--                                        <h6 class="tx-color-01 mg-b-5">Github, Inc.</h6>--}}
+{{--                                        <p class="tx-12 mg-b-10">Web-based hosting service for version control using--}}
+{{--                                            Git... <a href="">Learn more</a></p>--}}
+{{--                                        <span class="tx-12 tx-color-03">6,182,220 Followers</span>--}}
+{{--                                    </div>--}}
+{{--                                </div><!-- media -->--}}
 
-                                <div class="media">
-                                    <div class="wd-45 ht-45 bg-warning rounded d-flex align-items-center justify-content-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                             stroke-linecap="round" stroke-linejoin="round"
-                                             class="feather feather-truck tx-white-7 wd-20 ht-20">
-                                            <rect x="1" y="3" width="15" height="13"></rect>
-                                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                                            <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                                            <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                                        </svg>
-                                    </div>
-                                    <div class="media-body pd-l-25">
-                                        <h6 class="tx-color-01 mg-b-5">DHL Express</h6>
-                                        <p class="tx-12 mg-b-10">Logistics company providing international courier
-                                            service... <a href="">Learn more</a></p>
-                                        <span class="tx-12 tx-color-03">3,005,192 Followers</span>
-                                    </div>
-                                </div><!-- media -->
-                            </div><!-- col -->
-                            <div class="col-sm col-lg-12 col-xl mg-t-25 mg-sm-t-0 mg-lg-t-25 mg-xl-t-0">
-                                <div class="media">
-                                    <div class="wd-45 ht-45 bg-primary rounded d-flex align-items-center justify-content-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                             stroke-linecap="round" stroke-linejoin="round"
-                                             class="feather feather-facebook tx-white-7 wd-20 ht-20">
-                                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="media-body pd-l-25">
-                                        <h6 class="tx-color-01 mg-b-5">Facebook, Inc.</h6>
-                                        <p class="tx-12 mg-b-10">Online social media and social networking service
-                                            company... <a href="">Learn more</a></p>
-                                        <span class="tx-12 tx-color-03">12,182,220 Followers</span>
-                                    </div>
-                                </div><!-- media -->
+{{--                                <div class="media">--}}
+{{--                                    <div class="wd-45 ht-45 bg-warning rounded d-flex align-items-center justify-content-center">--}}
+{{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
+{{--                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"--}}
+{{--                                             stroke-linecap="round" stroke-linejoin="round"--}}
+{{--                                             class="feather feather-truck tx-white-7 wd-20 ht-20">--}}
+{{--                                            <rect x="1" y="3" width="15" height="13"></rect>--}}
+{{--                                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>--}}
+{{--                                            <circle cx="5.5" cy="18.5" r="2.5"></circle>--}}
+{{--                                            <circle cx="18.5" cy="18.5" r="2.5"></circle>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="media-body pd-l-25">--}}
+{{--                                        <h6 class="tx-color-01 mg-b-5">DHL Express</h6>--}}
+{{--                                        <p class="tx-12 mg-b-10">Logistics company providing international courier--}}
+{{--                                            service... <a href="">Learn more</a></p>--}}
+{{--                                        <span class="tx-12 tx-color-03">3,005,192 Followers</span>--}}
+{{--                                    </div>--}}
+{{--                                </div><!-- media -->--}}
+{{--                            </div><!-- col -->--}}
+{{--                            <div class="col-sm col-lg-12 col-xl mg-t-25 mg-sm-t-0 mg-lg-t-25 mg-xl-t-0">--}}
+{{--                                <div class="media">--}}
+{{--                                    <div class="wd-45 ht-45 bg-primary rounded d-flex align-items-center justify-content-center">--}}
+{{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
+{{--                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"--}}
+{{--                                             stroke-linecap="round" stroke-linejoin="round"--}}
+{{--                                             class="feather feather-facebook tx-white-7 wd-20 ht-20">--}}
+{{--                                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="media-body pd-l-25">--}}
+{{--                                        <h6 class="tx-color-01 mg-b-5">Facebook, Inc.</h6>--}}
+{{--                                        <p class="tx-12 mg-b-10">Online social media and social networking service--}}
+{{--                                            company... <a href="">Learn more</a></p>--}}
+{{--                                        <span class="tx-12 tx-color-03">12,182,220 Followers</span>--}}
+{{--                                    </div>--}}
+{{--                                </div><!-- media -->--}}
 
-                                <div class="media">
-                                    <div class="wd-45 ht-45 bg-pink rounded d-flex align-items-center justify-content-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                             stroke-linecap="round" stroke-linejoin="round"
-                                             class="feather feather-instagram tx-white-7 wd-20 ht-20">
-                                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                            <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
-                                        </svg>
-                                    </div>
-                                    <div class="media-body pd-l-25">
-                                        <h6 class="tx-color-01 mg-b-5">Instagram</h6>
-                                        <p class="tx-12 mg-b-10">Photo and video-sharing social networking service by
-                                            Facebook... <a href="">Learn more</a></p>
-                                        <span class="tx-12 tx-color-03">3,005,192 Followers</span>
-                                    </div>
-                                </div><!-- media -->
-                            </div><!-- col -->
-                        </div><!-- row -->
-                    </div><!-- card-body -->
-                </div><!-- card -->
+{{--                                <div class="media">--}}
+{{--                                    <div class="wd-45 ht-45 bg-pink rounded d-flex align-items-center justify-content-center">--}}
+{{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
+{{--                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"--}}
+{{--                                             stroke-linecap="round" stroke-linejoin="round"--}}
+{{--                                             class="feather feather-instagram tx-white-7 wd-20 ht-20">--}}
+{{--                                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>--}}
+{{--                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>--}}
+{{--                                            <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="media-body pd-l-25">--}}
+{{--                                        <h6 class="tx-color-01 mg-b-5">Instagram</h6>--}}
+{{--                                        <p class="tx-12 mg-b-10">Photo and video-sharing social networking service by--}}
+{{--                                            Facebook... <a href="">Learn more</a></p>--}}
+{{--                                        <span class="tx-12 tx-color-03">3,005,192 Followers</span>--}}
+{{--                                    </div>--}}
+{{--                                </div><!-- media -->--}}
+{{--                            </div><!-- col -->--}}
+{{--                        </div><!-- row -->--}}
+{{--                    </div><!-- card-body -->--}}
+{{--                </div><!-- card -->--}}
 
             </div><!-- media-body -->
             {{--            <div class="profile-sidebar mg-t-40 mg-lg-t-0 pd-lg-l-25">--}}

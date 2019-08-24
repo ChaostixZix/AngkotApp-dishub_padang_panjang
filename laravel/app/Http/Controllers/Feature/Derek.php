@@ -86,15 +86,15 @@ class Derek extends Controller
         return false;
     }
 
-    public function changeStatusDerek($id, $status, $supir)
+    public function changeStatusDerek($id, $status, $supir = "")
     {
         $do = false;
         switch ($status) {
             case '1':
-                $do = $this->derekModel()->terimaPesanan($id, $supir);
+                $do = $this->derekModel()->terimaPesanan($id);
                 break;
             case '2':
-                $do = $this->derekModel()->prosesPesanan($id);
+                $do = $this->derekModel()->prosesPesanan($id, $supir);
                 break;
             case '3':
                 $do = $this->derekModel()->finishPesanan($id);

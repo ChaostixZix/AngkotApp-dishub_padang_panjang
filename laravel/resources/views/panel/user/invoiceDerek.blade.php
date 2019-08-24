@@ -1,6 +1,43 @@
 @include('panel.headerPanel')
 @include('panel.navbarPanel')
+<link href="{{ url('/') }}/dashforge/lib/select2/css/select2.min.css" rel="stylesheet">
+
+
 @foreach($data as $d)
+    @if(Session::get('level') == 'admin')
+        <div class="modal fade" id="prosesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+             style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content tx-14">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="exampleModalLabel2">Pilih Supir</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body col-12">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input id="idPesanan" type="text" class="form-control" value="{{ $d->id }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Supir</label>
+                            <select class="custom-select" id="selectSupir">
+                                <option value=""></option>
+                                @foreach($supirList as $s)
+                                    <option value="{{ $s->nama_lengkap }}">{{ $s->nama_lengkap }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary tx-13" data-dismiss="modal">Batal</button>
+                        <button onclick="proses('{{ $d->id }}', $('#selectSupir').val())" type="button" class="btn btn-primary tx-13">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="content content-fixed bd-b">
         <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
             <div class="row">
@@ -52,7 +89,7 @@
                                 <button class="tx-12 tx-bolder btn btn-outline-secondary tx-primary mg-b-0">Proses
                                 </button>
                             @elseif($d->status == 3)
-                                <button class="tx-12 tx-bolder btn btn-outline-secondary tx-gray mg-b-0">Done</button>
+                                <button class="tx-12 tx-bolder btn btn-outline-secondary tx-teal mg-b-0">Done</button>
                             @endif
                         </li>
                     </ul>
@@ -106,12 +143,20 @@
                     <button class="btn btn-block btn-primary"><i data-feather="printer" class="mg-r-5"></i>Print
                     </button>
                     @if(Session::get('level') == "admin")
-                        @if($d->status == 0)
-                            <button class="btn btn-block btn-outline-success"><i class="fa fa-check"></i><br>Terima Pesanan
+                        @if($d->status == '0')
+                            <button onclick="terima('{{ $d->id }}')" class="btn btn-block btn-outline-success"><i
+                                    class="fa fa-check"></i><br>Terima
+                                Pesanan
                             </button>
-                        @else
-                            <button class="btn btn-block btn-outline-primary"><i class="fa fa-pencil-alt"></i><br>Ganti
-                                Status
+                        @elseif($d->status == '1')
+                            <button data-toggle="modal" data-target="#prosesModal"
+                                    class="btn btn-block btn-outline-primary"><i class="fa fa-pencil-alt"></i><br>Proses
+                                Pesanan
+                            </button>
+                        @elseif($d->status == '2')
+                            <button onclick="selesai('{{ $d->id }}')" class="btn btn-block btn-outline-warning"><i
+                                    class="fa fa-pencil-alt"></i><br>Pesanan
+                                Selesai
                             </button>
                         @endif
                     @endif
@@ -123,3 +168,50 @@
 
 @include('panel.footerPanel')
 @include('panel.scriptPanel')
+<script src="{{ url('/') }}/dashforge/lib/select2/js/select2.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.selectSearch').select2({
+            placeholder: 'Pilih 1',
+            searchInputPlaceholder: 'Search options'
+        });
+    });
+    function terima(id) {
+        $.ajax({
+            url: "{{ route('derekChangeStatus') }}/" + id + "/1",
+            success: function (data) {
+                if (data === 'true') {
+                    location.reload();
+                }else {
+                    alert('error');
+                }
+            }
+        })
+    }
+
+    function proses(id, supir) {
+        $.ajax({
+            url: "{{ route('derekChangeStatus') }}/" + id + "/2/" + supir,
+            success: function (data) {
+                if (data === 'true') {
+                    location.reload();
+                }else {
+                    alert('error');
+                }
+            }
+        })
+    }
+
+    function selesai(id) {
+        $.ajax({
+            url: "{{ route('derekChangeStatus') }}/" + id + "/3",
+            success: function (data) {
+                if (data === 'true') {
+                    location.reload();
+                }else {
+                    alert('error');
+                }
+            }
+        })
+    }
+</script>
