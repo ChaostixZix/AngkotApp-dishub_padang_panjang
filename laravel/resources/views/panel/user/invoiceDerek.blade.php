@@ -82,14 +82,14 @@
                             @if($d->status == 0)
                                 <button class="tx-12 tx-bolder btn btn-outline-secondary tx-success mg-b-0">New</button>
                             @elseif($d->status == 1)
-                                <button class="tx-12 tx-bolder btn btn-outline-secondary tx-purple mg-b-0">Terima
+                                <button class="tx-12 tx-bolder btn btn-outline-secondary tx-teal mg-b-0">Terima
                                     Admin
                                 </button>
                             @elseif($d->status == 2)
                                 <button class="tx-12 tx-bolder btn btn-outline-secondary tx-primary mg-b-0">Proses
                                 </button>
                             @elseif($d->status == 3)
-                                <button class="tx-12 tx-bolder btn btn-outline-secondary tx-teal mg-b-0">Done</button>
+                                <button class="tx-12 tx-bolder btn btn-outline-secondary tx-purple mg-b-0">Done</button>
                             @endif
                         </li>
                     </ul>
@@ -149,12 +149,12 @@
                                 Pesanan
                             </button>
                         @elseif($d->status == '1')
-                            <button data-toggle="modal" data-target="#prosesModal"
+                            <button onclick="promptProses()"
                                     class="btn btn-block btn-outline-primary"><i class="fa fa-pencil-alt"></i><br>Proses
                                 Pesanan
                             </button>
                         @elseif($d->status == '2')
-                            <button onclick="selesai('{{ $d->id }}')" class="btn btn-block btn-outline-warning"><i
+                            <button onclick="selesai('{{ $d->id }}')" class="btn btn-block btn-outline-secondary tx-bolder tx-purple"><i
                                     class="fa fa-pencil-alt"></i><br>Pesanan
                                 Selesai
                             </button>
@@ -187,6 +187,10 @@
                 }
             }
         })
+    }
+
+    function promptProses() {
+        $('#prosesModal').modal('show');
     }
 
     function proses(id, supir) {

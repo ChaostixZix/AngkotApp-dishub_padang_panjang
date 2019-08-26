@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\web\aduanModel;
+use App\web\parkirModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -15,6 +16,10 @@ class User extends Controller
         return new aduanModel();
     }
 
+    private function parkirModel()
+    {
+        return new parkirModel();
+    }
     public function pengaduanPage()
     {
         Carbon::setLocale('id');
@@ -27,8 +32,20 @@ class User extends Controller
 
     public function derekPage()
     {
-        Carbon::setLocale('id');
-
         return view('panel.user.derek');
+    }
+
+    public function parkirPage()
+    {
+        date_default_timezone_set("Asia/Bangkok");
+        $data = [
+            'tempat_parkir_list' => $this->parkirModel()->getTempatParkirAvailableToday(date('Y-m-d')),
+        ];
+        return view('panel.user.parkir')->with($data);
+    }
+
+    public function test()
+    {
+        return json_encode($this->parkirModel()->getTempatParkirAvailableToday(date('Y-m-d')));
     }
 }

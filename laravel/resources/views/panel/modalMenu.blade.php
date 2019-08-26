@@ -22,7 +22,7 @@
                                 <a class="nav-link" href="{{ route('derekPage') }}"><i class="fa  fa-car-crash"></i><br> Derek</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('derekPage') }}"><i class="fa  fa-parking"></i><br> Parkir</a>
+                                <a class="nav-link" href="{{ route('parkirPage') }}"><i class="fa  fa-parking"></i><br> Parkir</a>
                             </li>
                         </ul>
 

@@ -26,6 +26,7 @@ class Derek extends Controller
         return view('panel.user.invoiceDerek')->with($data);
     }
 
+
     public function getInfoOfOrigins(Request $request)
     {
         $address = $request->input('origins');

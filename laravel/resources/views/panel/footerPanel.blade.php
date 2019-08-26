@@ -10,7 +10,7 @@
             <a class="nav-link" href="{{ route('publikAduan') }}"><i class="fa tx-12 fa-mail-bulk"></i><br> Aduan</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="modal" data-target="#modalMenu"><i class="fa tx-12 fa-ellipsis-h"></i><br> More</a>
+            <a class="nav-link" onclick="modalMenu()"><i class="fa tx-12 fa-ellipsis-h"></i><br> More</a>
         </li>
     </ul>
 

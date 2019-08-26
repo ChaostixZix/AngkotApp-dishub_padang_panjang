@@ -28,6 +28,7 @@
     <!-- DashForge CSS -->
     <link rel="stylesheet" href="{{ url('/') }}/dashforge/assets/css/dashforge.css">
     <link rel="stylesheet" href="{{ url('/') }}/dashforge/assets/css/dashforge.dashboard.css">
+    <link id="dfMode" rel="stylesheet" href="{{ url('/') }}/dashforge/assets/css/skin.light.css">
 </head>
 @include('panel.modalMenu')
 @if(isset($body))

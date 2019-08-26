@@ -38,7 +38,7 @@ Route::group([
    Route::get('', 'panel@depan')->name('depanPanel');
    Route::get('updateprofil', 'panel@updateProfil')->name('updateProfil');
 
-   Route::get('test', 'Feature\Derek@test');
+   Route::get('test', 'User\User@test');
 
 
    Route::group([
@@ -56,10 +56,14 @@ Route::group([
        //DEREK
        Route::post('derekNew', 'Feature\Derek@pesanDerek')->name('derekNew');
        Route::get('derekChangeStatus/{id?}/{status?}/{supir?}', 'Feature\Derek@changeStatusDerek')->name('derekChangeStatus');
-
        Route::get('getharga', 'Feature\Derek@getHarga')->name('getHargaDerek');
        Route::get('getjarak', 'Feature\Derek@getJarak')->name('getJarakDerek');
        Route::get('getinfooforigins', 'Feature\Derek@getInfoOfOrigins')->name('getInfoOfOrigins');
+
+       //Parkir
+       Route::post('parkirNew', 'Feature\Parkir@pesan')->name('parkirNew');
+       Route::get('parkirFinish/{id?}', 'Feature\Parkir@finishParkir')->name('parkirSelesai');
+
    });
 
    Route::group([
@@ -71,6 +75,11 @@ Route::group([
        //Derek
        Route::get('pesanderek', 'User\User@derekPage')->name('derekPage');
        Route::get('invoicederek/{id?}', 'Feature\Derek@invoicePage')->name('derekInvoicePage');
+
+       //Parkir
+       Route::get('pesanparkir', 'User\User@parkirPage')->name('parkirPage');
+       Route::get('invoiceparkir/{id?}', 'Feature\Parkir@invoicePage')->name('parkirInvoicePage');
+
    });
 
    Route::group([
