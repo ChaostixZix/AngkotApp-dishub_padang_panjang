@@ -18,7 +18,7 @@
                     <div class="modal-body col-12">
                         <div class="form-group">
                             <label>ID</label>
-                            <input id="idPesanan" type="text" class="form-control" value="{{ $d->id }}">
+                            <input readonly id="idPesanan" type="text" class="form-control" value="{{ $d->id }}">
                         </div>
                         <div class="form-group">
                             <label>Supir</label>
@@ -140,7 +140,7 @@
                         </li>
                     </ul>
 
-                    <button class="btn btn-block btn-primary"><i data-feather="printer" class="mg-r-5"></i>Print
+                    <button onclick="printInvoice()" class="btn btn-block btn-primary"><i data-feather="printer" class="mg-r-5"></i>Print
                     </button>
                     @if(Session::get('level') == "admin")
                         @if($d->status == '0')
@@ -170,6 +170,11 @@
 @include('panel.scriptPanel')
 <script src="{{ url('/') }}/dashforge/lib/select2/js/select2.min.js"></script>
 <script>
+    function printInvoice()
+    {
+        window.print();
+        // $('#invoice').print();
+    }
     $(document).ready(function(){
         $('.selectSearch').select2({
             placeholder: 'Pilih 1',

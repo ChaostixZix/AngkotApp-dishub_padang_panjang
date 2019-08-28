@@ -12,9 +12,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fa  fa-home"></i><br> Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa  fa-book"></i><br> News</a>
-                            </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="#"><i class="fa  fa-book"></i><br> News</a>--}}
+{{--                            </li>--}}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('publikAduan') }}"><i class="fa  fa-mail-bulk"></i><br> Aduan</a>
                             </li>

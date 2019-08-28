@@ -44,6 +44,10 @@ Route::group([
    Route::group([
        'prefix' => 'feature'
    ], function () {
+       //Profil
+       Route::post('profilUpdate', 'Feature\Profil@update')->name('profilUpdate');
+       Route::get('profilBuat', 'Feature\Profil@buat')->name('profilBuat');
+
        //Aduan
        Route::post('getAduan', 'Feature\Pengaduan@getAduanById')->name('getAduan');
        Route::post('deleteAduan', 'Feature\Pengaduan@delete')->name('deleteAduan');
@@ -63,6 +67,7 @@ Route::group([
        //Parkir
        Route::post('parkirNew', 'Feature\Parkir@pesan')->name('parkirNew');
        Route::get('parkirFinish/{id?}', 'Feature\Parkir@finishParkir')->name('parkirSelesai');
+       Route::get('parkirAjaxSearch/{plat_nomor?}', 'Feature\Parkir@ajaxSearchPage')->name('parkirAjaxSearch');
 
    });
 
@@ -90,6 +95,9 @@ Route::group([
        Route::get('aduan', 'Admin\Admin@aduanPage')->name('aduanPageAdmin');
 
        Route::get('pesananderek', 'Admin\Admin@derekPesananPage')->name('derekPesananPageAdmin');
+
+       Route::get('pesananparkir', 'Admin\Admin@parkirPesananPage')->name('parkirPesananPageAdmin');
+       Route::get('pesananparkirsearch', 'Admin\Admin@parkirPesananSearchPage')->name('parkirPesananSearchPageAdmin');
 
    });
 

@@ -38,17 +38,17 @@
                     <div class="card-body tx-center">
                         <div class="row justify-content-center">
                             <div class="col-12 tx-100 lh-1"><i class="fa fa-car-crash"></i></div>
-                            <div class="col-12 dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Kategori
-                                </button>
-                                <div class="dropdown-menu tx-center" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#"><font class=" tx-bolder tx-success">New</font></a>
-                                    <a class="dropdown-item" href="#"><font class="tx-bolder tx-purple">Terima Admin</font></a>
-                                    <a class="dropdown-item" href="#"><font class="tx-bolder tx-primary">Proses</font></a>
-                                    <a class="dropdown-item" href="#"><font class="tx-bolder tx-gray">Done</font></a>
-                                </div>
-                            </div>
+{{--                            <div class="col-12 dropdown">--}}
+{{--                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                    Kategori--}}
+{{--                                </button>--}}
+{{--                                <div class="dropdown-menu tx-center" aria-labelledby="dropdownMenuButton">--}}
+{{--                                    <a class="dropdown-item" href="#"><font class=" tx-bolder tx-success">New</font></a>--}}
+{{--                                    <a class="dropdown-item" href="#"><font class="tx-bolder tx-purple">Terima Admin</font></a>--}}
+{{--                                    <a class="dropdown-item" href="#"><font class="tx-bolder tx-primary">Proses</font></a>--}}
+{{--                                    <a class="dropdown-item" href="#"><font class="tx-bolder tx-gray">Done</font></a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
                     </div><!-- card-body -->
                 </div><!-- card -->

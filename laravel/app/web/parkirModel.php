@@ -33,7 +33,7 @@ class parkirModel extends Model
         $data = [];
         $jumlah_kapasitas_all = 0;
         foreach ($cek as $c) {
-            $pemesan = $this->getPesananByDate($c->id, $date);
+            $pemesan = $this->getJumlahPesananByDate($c->id, $date);
             $c->kapasitas_left = $c->kapasitas - $pemesan;
             $jumlah_kapasitas_all = $jumlah_kapasitas_all + $c->kapasitas_left;
             $data[0][] = $c;
@@ -42,7 +42,7 @@ class parkirModel extends Model
         return $data;
     }
 
-    public function getPesananByDate($id_tempat_parkir, $date)
+    public function getJumlahPesananByDate($id_tempat_parkir, $date)
     {
         $where = [
             'tempat_parkir' => $id_tempat_parkir,
@@ -84,7 +84,37 @@ class parkirModel extends Model
             }
             return false;
         }
-        $get = $this->db()->get();
+        $get = $this->db()->orderBy('id', 'DESC')->get();
+        if (count($get) > 0) {
+            return $get;
+        }
+        return false;
+    }
+
+    public function getPesananByPlatAndDate($plat_nomor, $date)
+    {
+        $where = [
+            'plat_nomor' => $plat_nomor,
+            'tanggal' => $date
+        ];
+        $get = $this->db()->where($where)->get();
+        if(count($get) > 0)
+        {
+            return $get;
+        }
+        return false;
+    }
+
+    public function getPesananByDate($date, $id = null)
+    {
+        if ($id !== null) {
+            $get = $this->db()->where('id', $id)->where('tanggal', $date)->get();
+            if (count($get) > 0) {
+                return $get;
+            }
+            return false;
+        }
+        $get = $this->db()->orderBy('id', 'DESC')->where('tanggal', $date)->get();
         if (count($get) > 0) {
             return $get;
         }

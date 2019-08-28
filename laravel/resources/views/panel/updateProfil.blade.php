@@ -229,7 +229,7 @@
                 {{--                    </div>--}}
                 {{--                </div>--}}
 
-                @if($statusProfil == false)
+                @if($statusProfil == true)
                     <div class="card mg-b-20 mg-lg-b-25">
                         <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
                             <h6 class="tx-uppercase tx-semibold mg-b-0">Update Profil</h6>
@@ -440,6 +440,16 @@
                             </nav>
                         </div><!-- card-footer -->
                     </div><!-- card -->
+                    @else
+                    <div class="card mg-b-20 mg-lg-b-25">
+                        <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
+                            <h6 class="tx-uppercase tx-semibold mg-b-0">Buat Profil</h6>
+                        </div>
+                        <div class="card-body pd-20 pd-lg-25 tx-center">
+                            <button class="btn btn-outline-primary" onclick="buatProfil()">Buat</button>
+                        </div>
+                        <div class="card-footer bg-transparent pd-y-10 pd-sm-y-15 pd-x-10 pd-sm-x-20"></div>
+                    </div>
                 @endif
 {{--                <div class="card card-profile-interest">--}}
 {{--                    <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">--}}
@@ -776,7 +786,18 @@
 
 @include('panel.scriptPanel')
 <script>
-
+    function buatProfil()
+    {
+        $.ajax({
+            url: '{{ route('profilBuat') }}',
+            type: 'get',
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
 
     function updateProfile() {
         var data = {
@@ -811,11 +832,12 @@
             'inputTwitter': 'inputTwitter'
         };
         var formData = new FormData();
+        formData.append('_token', '{{ csrf_token() }}');
         Object.keys(data).forEach(function (value, index) {
             formData.append(value, $('#' + value).val());
         });
         $.ajax({
-            url: '{{ route('depanPanel') }}',
+            url: '{{ route('profilUpdate') }}',
             type: 'post',
             processData: false,
             contentType: false,

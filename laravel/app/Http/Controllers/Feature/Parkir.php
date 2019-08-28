@@ -19,6 +19,21 @@ class Parkir extends Controller
         return new saldoModel();
     }
 
+    public function ajaxSearchPage($plat_nomor)
+    {
+        date_default_timezone_set("Asia/Bangkok");
+        $date = date('Y-m-d');
+        $get = $this->parkirModel()->getPesananByPlatAndDate($plat_nomor, $date);
+        if($get !== false)
+        {
+            $data = [
+                'detail' => $get
+            ];
+            return view('panel.admin.fitur.ajaxParkirSearch')->with($data);
+        }
+        return 'false';
+    }
+
     public function invoicePage($id)
     {
         $data = [

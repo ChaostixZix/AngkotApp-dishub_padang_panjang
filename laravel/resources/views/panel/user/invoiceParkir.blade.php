@@ -6,7 +6,7 @@
 @foreach($data as $d)
     <div class="content content-fixed bd-b">
         <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-            <div class="row">
+            <div id="invoice" class="row">
                 <div class="col-sm-6">
                     <label class="tx-sans tx-uppercase tx-10 tx-medium tx-spacing-1 tx-color-03">Billed From</label>
                     <h6 class="tx-15 mg-b-10">DinasPerhubungan.</h6>
@@ -95,7 +95,7 @@
                         </li>
                     </ul>
 
-                    <button class="btn btn-block btn-primary"><i data-feather="printer" class="mg-r-5"></i>Print
+                    <button onclick="printInvoice()" class="btn btn-block btn-primary"><i data-feather="printer" class="mg-r-5"></i>Print
                     </button>
                     @if($d->status == 0)
                         <button onclick="selesai('{{ $d->id }}')" class="btn btn-block btn-outline-secondary tx-purple tx-bolder"><i class="mg-r-5 fa fa-check"></i>Selesai
@@ -110,6 +110,11 @@
 @include('panel.footerPanel')
 @include('panel.scriptPanel')
 <script>
+    function printInvoice()
+    {
+        window.print();
+        // $('#invoice').print();
+    }
     function selesai(id)
     {
         $.ajax({

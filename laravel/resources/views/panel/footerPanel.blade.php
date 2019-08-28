@@ -3,9 +3,9 @@
         <li class="nav-item">
             <a class="nav-link" href="#"><i class="fa tx-12 fa-home"></i><br> Home</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa tx-12 fa-book"></i><br> News</a>
-        </li>
+{{--        <li class="nav-item">--}}
+{{--            <a class="nav-link" href="#"><i class="fa tx-12 fa-book"></i><br> News</a>--}}
+{{--        </li>--}}
         <li class="nav-item">
             <a class="nav-link" href="{{ route('publikAduan') }}"><i class="fa tx-12 fa-mail-bulk"></i><br> Aduan</a>
         </li>
