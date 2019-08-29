@@ -2,7 +2,7 @@
 
 namespace App\web;
 
-use App\auth;
+use App\authModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +14,7 @@ class derekModel extends Model
     }
     private function auth_model()
     {
-        return new auth();
+        return new authModel();
     }
     public function getJarak($origins, $destinations)
     {

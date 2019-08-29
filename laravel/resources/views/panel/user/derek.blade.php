@@ -245,12 +245,18 @@
             type: "post",
             url: "{{ route('derekNew') }}",
             data: formData,
+            dataType: 'json',
             processData: false,
             contentType: false,
 
             success: function (data) {
-                if (data !== "false") {
-                    window.location.replace("{{ route('derekInvoicePage') }}/" + data)
+                var json = $.parseJSON(JSON.stringify(data));
+
+                if (json['status'] !== "false") {
+                    window.location.replace("{{ route('derekInvoicePage') }}/" + json.invoiceId)
+                }
+                else {
+                    Swal.fire({title: 'Gagal', text: 'Reason : ' + json['reason'], type: 'error'})
                 }
             }
         }).done(function () {

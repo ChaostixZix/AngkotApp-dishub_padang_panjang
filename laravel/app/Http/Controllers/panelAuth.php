@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\auth;
+use App\authModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -11,12 +11,20 @@ class panelAuth extends Controller
 
     private function auth_model()
     {
-        return new auth();
+        return new authModel();
     }
     public function loginPage()
     {
 
         return view('panel.auth.login');
+    }
+
+    public function registerPage()
+    {
+        $data = [
+            'level' => ['user', 'supir', 'tukang_parkir']
+        ];
+        return view('panel.auth.register')->with($data);
     }
 
     public function logout()

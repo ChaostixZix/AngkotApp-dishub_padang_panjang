@@ -1,6 +1,5 @@
 @include('panel.headerPanel')
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-@include('panel.navbarPanel')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 <link href="{{ url('/') }}/dashforge/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="{{ url('/') }}/dashforge/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css"
@@ -11,11 +10,10 @@
 <link href="{{ url('/') }}/dashforge/lib/quill/quill.snow.css" rel="stylesheet">
 <link href="{{ url('/') }}/dashforge/lib/select2/css/select2.min.css" rel="stylesheet">
 <link href="{{ url('/') }}/dashforge/lib/ion-rangeslider/css/ion.rangeSlider.min.css" rel="stylesheet">
-
-
 <!-- DashForge CSS -->
 <link rel="stylesheet" href="{{ url('/') }}/dashforge/assets/css/dashforge.css">
 <link rel="stylesheet" href="{{ url('/') }}/dashforge/assets/css/dashforge.calendar.css">
+@include('panel.navbarPanel')
 
 <div class="modal modal fade" id="aduanModal" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered wd-sm-650" role="document">

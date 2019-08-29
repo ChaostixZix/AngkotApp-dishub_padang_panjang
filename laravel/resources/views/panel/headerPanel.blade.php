@@ -13,9 +13,9 @@
     <meta name="author" content="Bintang">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ url('/') }}/dashforge/assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('/') }}/logo-dishub.jpg">
 
-    <title>Dishub</title>
+    <title>Dinas Perhubungan Padang Panjang</title>
 
     <!-- vendor css -->
     <link href="{{ url('/') }}/dashforge/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">

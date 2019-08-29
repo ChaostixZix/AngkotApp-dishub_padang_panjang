@@ -230,316 +230,324 @@
                 {{--                </div>--}}
 
                 @if($statusProfil == true)
-                    <div class="card mg-b-20 mg-lg-b-25">
-                        <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
-                            <h6 class="tx-uppercase tx-semibold mg-b-0">Update Profil</h6>
-                            {{--                        <nav class="nav nav-icon-only">--}}
-                            {{--                            <a href="" class="nav-link">--}}
-                            {{--                                <i class="fa fa-dot-circle"></i>--}}
-                            {{--                            </a>--}}
-                            {{--                        </nav>--}}
-                        </div><!-- card-header -->
-                        <div class="card-body pd-20 pd-lg-25">
-                            <fieldset class="form-fieldset mg-b-20">
-                                <legend class="tx-center">Informasi Dasar</legend>
+                    @foreach($dataUser as $d)
+                        <div class="card mg-b-20 mg-lg-b-25">
+                            <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
+                                <h6 class="tx-uppercase tx-semibold mg-b-0">Update Profil</h6>
+                                {{--                        <nav class="nav nav-icon-only">--}}
+                                {{--                            <a href="" class="nav-link">--}}
+                                {{--                                <i class="fa fa-dot-circle"></i>--}}
+                                {{--                            </a>--}}
+                                {{--                        </nav>--}}
+                            </div><!-- card-header -->
+                            <div class="card-body pd-20 pd-lg-25">
+                                <fieldset class="form-fieldset mg-b-20">
+                                    <legend class="tx-center">Informasi Dasar</legend>
 
-                                <div class="form-group">
-                                    <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama
-                                        Lengkap</label>
-                                    <input  id="inputNamaLengkap" type="text" class="form-control"
-                                           placeholder="Nama Lengkap">
-                                </div><!-- col -->
-                                <div class="form-group">
-                                    <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">NIK</label>
-                                    <input  id="inputNik" type="text" class="form-control"
-                                           placeholder="Nomor Induk Keluarga">
-                                </div><!-- col -->
-                                <div class="form-group">
-                                    <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Jenis
-                                        Kelamin</label>
-                                    <select  id="inputJenisKelamin" type="text" class="form-control">
-                                        <option value=""></option>
-                                        <option value="L">Laki Laki</option>
-                                        <option value="P">Perempuan</option>
-                                    </select>
-                                </div><!-- col -->
-                                <div class="form-group">
-                                    <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Tempat
-                                        Lahir</label>
-                                    <input  id="inputTempatLahir" type="text" class="form-control"
-                                           placeholder="Tempat Lahir">
-                                </div>
-                                <div class="form-group">
-                                    <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Agama</label>
-                                    <input  id="inputAgama" type="text" class="form-control"
-                                           placeholder="Tempat Lahir">
-                                </div>
-                                <div class="form-group">
-                                    <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Pendidikan</label>
-                                    <input  id="inputPendidikan" type="text" class="form-control"
-                                           placeholder="Tempat Lahir">
-                                </div>
-                                <div class="form-group">
-                                    <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Jenis
-                                        Pekerjaan</label>
-                                    <input  id="inputJenisPekerjaan" type="text" class="form-control"
-                                           placeholder="Tempat Lahir">
-                                </div>
-                                <div class="form-group ">
-                                    <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Kewarganegaraan</label>
-                                    <select id="inputKewarganegaraan" type="text" class="form-control">
-                                        <option value="WNI">WNI</option>
-                                        <option value="WNA">WNA</option>
-                                    </select>
-                                </div>
-                            </fieldset>
-                            <fieldset class="form-fieldset">
-                                <legend class="tx-center">Informasi Keluarga</legend>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Status
-                                            Perkawinan</label>
-                                        <input  id="inputStatusPerkawinan" type="text" class="form-control"
-                                               placeholder="Status Perkawinan">
-                                    </div><!-- col -->
-                                    <div class="col-sm-6">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Status
-                                            Hubungan Dalam Keluarga</label>
-                                        <input  id="inputStatusHubunganDalamKeluarga" type="text"
-                                               class="form-control"
-                                               placeholder="Status Hubungan Dalam Keluarga">
-                                    </div><!-- col -->
-                                </div>
-                            </fieldset>
-                            <fieldset class="form-fieldset mg-b-20">
-                                <legend>Informasi Imigrasi</legend>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">No
-                                            Passport</label>
-                                        <input  id="inputNoPassport" type="text" class="form-control"
-                                               placeholder="No Passport">
-                                    </div><!-- col -->
-                                    <div class="col-sm-6">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">No
-                                            KTA</label>
-                                        <input  id="inputNoKta" type="text"
-                                               class="form-control"
-                                               placeholder="No KTA">
-                                    </div><!-- col -->
-                                </div>
-                            </fieldset>
-                            <fieldset class="form-fieldset mg-b-20">
-                                <legend class="tx-center">Orang Tua</legend>
-                                <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="form-group">
                                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama
-                                            Ayah</label>
-                                        <input  id="inputNamaAyah" type="text" class="form-control"
-                                               placeholder="Nama Ayah">
-                                    </div><!-- col -->
-                                    <div class="col-sm-6">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama
-                                            Ibu</label>
-                                        <input  id="inputNamaIbu" type="text"
-                                               class="form-control"
-                                               placeholder="Nama Ibu">
-                                    </div><!-- col -->
-                                </div>
-                            </fieldset>
-                            <fieldset class="form-fieldset mg-b-20">
-                                <legend class="tx-center">Data Alamat</legend>
-                                <div class="row row-sm mg-b-20">
-                                    <div class="col-sm-8">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Alamat
                                             Lengkap</label>
-                                        <input  id="inputAlamatLengkap" type="text" class="form-control"
-                                               placeholder="Alamat Lengkap">
+                                        <input  id="inputNamaLengkap" type="text" class="form-control"
+                                               placeholder="Nama Lengkap">
                                     </div><!-- col -->
-                                    <div class="col-sm-2">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Kode
-                                            Pos</label>
-                                        <input  id="inputKodePos" type="text"
-                                               class="form-control"
-                                               placeholder="Kode Pos">
+                                    <div class="form-group">
+                                        <label
+                                            class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">NIK</label>
+                                        <input id="inputNik" type="text" class="form-control"
+                                               placeholder="Nomor Induk Keluarga">
                                     </div><!-- col -->
-                                    <div class="col-sm-2">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">RT/RW</label>
-                                        <input  id="inputRtRw" type="text"
-                                               class="form-control"
-                                               placeholder="RT/RW">
+                                    <div class="form-group">
+                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Jenis
+                                            Kelamin</label>
+                                        <select id="inputJenisKelamin" type="text" class="form-control">
+                                            <option value=""></option>
+                                            <option value="L">Laki Laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
                                     </div><!-- col -->
-                                </div>
-                                <div class="row row-sm mg-b-20">
-                                    <div class="col-sm-4">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Desa/Kelurahan</label>
-                                        <input  id="inputDesaKelurahan" type="text"
-                                               class="form-control"
-                                               placeholder="Desa/Kelurahan">
-                                    </div><!-- col -->
-                                    <div class="col-sm-4">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Kecamatan</label>
-                                        <input  id="inputKecamatan" type="text"
-                                               class="form-control"
-                                               placeholder="Kecamatan">
-                                    </div><!-- col -->
-                                    <div class="col-sm-4">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Kabupaten/Kota</label>
-                                        <input  id="inputKabupatenKota" type="text"
-                                               class="form-control"
-                                               placeholder="Kabupaten/Kota">
-                                    </div><!-- col -->
-                                </div>
-                                <div class="row row-sm mg-b-20">
-                                    <div class="col-sm-12">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Provinsi</label>
-                                        <input  id="inputProvinsi" type="text"
-                                               class="form-control"
-                                               placeholder="Provinsi">
-                                    </div><!-- col -->
-                                </div>
-                            </fieldset>
-                            <fieldset class="form-fieldset">
-                                <legend>Kontak & Sosial Media</legend>
-                                <div class="row row-sm mg-b-20">
-                                    <div class="col-sm-6">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">No
-                                            HP</label>
-                                        <input  id="inputNoHp" type="text"
-                                               class="form-control"
-                                               placeholder="No Hp">
-                                    </div><!-- col -->
-                                    <div class="col-sm-6">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Email</label>
-                                        <input  id="inputEmail" type="email"
-                                               class="form-control"
-                                               placeholder="No Hp">
-                                    </div><!-- col -->
-                                </div>
-                                <div class="row row-sm mg-b-20">
-                                    <div class="col-sm-12 mg-b-20">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Facebook</label>
-                                        <input  id="inputFacebook" type="text"
-                                               class="form-control"
-                                               placeholder="Facebook">
-                                    </div><!-- col -->
-                                    <div class="col-sm-12">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Twitter</label>
-                                        <input  id="inputTwitter" type="email"
-                                               class="form-control"
-                                               placeholder="Twitter">
-                                    </div><!-- col -->
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="card-footer bg-transparent pd-y-10 pd-sm-y-15 pd-x-10 pd-sm-x-20">
-                            <nav class="nav nav-with-icon tx-13">
-                                <a onclick="updateProfile()" href="#" class="nav-link">
-                                    <i class="fa fa-folder mg-r-5"></i>
-                                    Save</a>
-                            </nav>
-                        </div><!-- card-footer -->
-                    </div><!-- card -->
-                    @else
+                                    <div class="form-group">
+                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Tempat
+                                            Lahir</label>
+                                        <input id="inputTempatLahir" type="text" class="form-control"
+                                               placeholder="Tempat Lahir">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Agama</label>
+                                        <input id="inputAgama" type="text" class="form-control"
+                                               placeholder="Tempat Lahir">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Pendidikan</label>
+                                        <input id="inputPendidikan" type="text" class="form-control"
+                                               placeholder="Tempat Lahir">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Jenis
+                                            Pekerjaan</label>
+                                        <input id="inputJenisPekerjaan" type="text" class="form-control"
+                                               placeholder="Tempat Lahir">
+                                    </div>
+                                    <div class="form-group ">
+                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Kewarganegaraan</label>
+                                        <select id="inputKewarganegaraan" type="text" class="form-control">
+                                            <option value="WNI">WNI</option>
+                                            <option value="WNA">WNA</option>
+                                        </select>
+                                    </div>
+                                </fieldset>
+                                <fieldset class="form-fieldset">
+                                    <legend class="tx-center">Informasi Keluarga</legend>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Status
+                                                Perkawinan</label>
+                                            <input id="inputStatusPerkawinan" type="text" class="form-control"
+                                                   placeholder="Status Perkawinan">
+                                        </div><!-- col -->
+                                        <div class="col-sm-6">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Status
+                                                Hubungan Dalam Keluarga</label>
+                                            <input id="inputStatusHubunganDalamKeluarga" type="text"
+                                                   class="form-control"
+                                                   placeholder="Status Hubungan Dalam Keluarga">
+                                        </div><!-- col -->
+                                    </div>
+                                </fieldset>
+                                <fieldset class="form-fieldset mg-b-20">
+                                    <legend>Informasi Imigrasi</legend>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">No
+                                                Passport</label>
+                                            <input id="inputNoPassport" type="text" class="form-control"
+                                                   placeholder="No Passport">
+                                        </div><!-- col -->
+                                        <div class="col-sm-6">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">No
+                                                KTA</label>
+                                            <input id="inputNoKta" type="text"
+                                                   class="form-control"
+                                                   placeholder="No KTA">
+                                        </div><!-- col -->
+                                    </div>
+                                </fieldset>
+                                <fieldset class="form-fieldset mg-b-20">
+                                    <legend class="tx-center">Orang Tua</legend>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama
+                                                Ayah</label>
+                                            <input id="inputNamaAyah" type="text" class="form-control"
+                                                   placeholder="Nama Ayah">
+                                        </div><!-- col -->
+                                        <div class="col-sm-6">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama
+                                                Ibu</label>
+                                            <input id="inputNamaIbu" type="text"
+                                                   class="form-control"
+                                                   placeholder="Nama Ibu">
+                                        </div><!-- col -->
+                                    </div>
+                                </fieldset>
+                                <fieldset class="form-fieldset mg-b-20">
+                                    <legend class="tx-center">Data Alamat</legend>
+                                    <div class="row row-sm mg-b-20">
+                                        <div class="col-sm-8">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Alamat
+                                                Lengkap</label>
+                                            <input id="inputAlamatLengkap" type="text" class="form-control"
+                                                   placeholder="Alamat Lengkap">
+                                        </div><!-- col -->
+                                        <div class="col-sm-2">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Kode
+                                                Pos</label>
+                                            <input id="inputKodePos" type="text"
+                                                   class="form-control"
+                                                   placeholder="Kode Pos">
+                                        </div><!-- col -->
+                                        <div class="col-sm-2">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">RT/RW</label>
+                                            <input id="inputRtRw" type="text"
+                                                   class="form-control"
+                                                   placeholder="RT/RW">
+                                        </div><!-- col -->
+                                    </div>
+                                    <div class="row row-sm mg-b-20">
+                                        <div class="col-sm-4">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Desa/Kelurahan</label>
+                                            <input id="inputDesaKelurahan" type="text"
+                                                   class="form-control"
+                                                   placeholder="Desa/Kelurahan">
+                                        </div><!-- col -->
+                                        <div class="col-sm-4">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Kecamatan</label>
+                                            <input id="inputKecamatan" type="text"
+                                                   class="form-control"
+                                                   placeholder="Kecamatan">
+                                        </div><!-- col -->
+                                        <div class="col-sm-4">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Kabupaten/Kota</label>
+                                            <input id="inputKabupatenKota" type="text"
+                                                   class="form-control"
+                                                   placeholder="Kabupaten/Kota">
+                                        </div><!-- col -->
+                                    </div>
+                                    <div class="row row-sm mg-b-20">
+                                        <div class="col-sm-12">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Provinsi</label>
+                                            <input id="inputProvinsi" type="text"
+                                                   class="form-control"
+                                                   placeholder="Provinsi">
+                                        </div><!-- col -->
+                                    </div>
+                                </fieldset>
+                                <fieldset class="form-fieldset">
+                                    <legend>Kontak & Sosial Media</legend>
+                                    <div class="row row-sm mg-b-20">
+                                        <div class="col-sm-6">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">No
+                                                HP</label>
+                                            <input id="inputNoHp" type="text"
+                                                   class="form-control"
+                                                   placeholder="No Hp">
+                                        </div><!-- col -->
+                                        <div class="col-sm-6">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Email</label>
+                                            <input id="inputEmail" type="email"
+                                                   class="form-control"
+                                                   placeholder="No Hp">
+                                        </div><!-- col -->
+                                    </div>
+                                    <div class="row row-sm mg-b-20">
+                                        <div class="col-sm-12 mg-b-20">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Facebook</label>
+                                            <input id="inputFacebook" type="text"
+                                                   class="form-control"
+                                                   placeholder="Facebook">
+                                        </div><!-- col -->
+                                        <div class="col-sm-12">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Twitter</label>
+                                            <input id="inputTwitter" type="email"
+                                                   class="form-control"
+                                                   placeholder="Twitter">
+                                        </div><!-- col -->
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="card-footer bg-transparent pd-y-10 pd-sm-y-15 pd-x-10 pd-sm-x-20">
+                                <nav class="nav nav-with-icon tx-13">
+                                    <a onclick="updateProfile()" href="#" class="nav-link">
+                                        <i class="fa fa-folder mg-r-5"></i>
+                                        Save</a>
+                                </nav>
+                            </div><!-- card-footer -->
+                        </div><!-- card -->
+                    @endforeach
+                @else
                     <div class="card mg-b-20 mg-lg-b-25">
                         <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
                             <h6 class="tx-uppercase tx-semibold mg-b-0">Buat Profil</h6>
                         </div>
                         <div class="card-body pd-20 pd-lg-25 tx-center">
-                            <button class="btn btn-outline-primary" onclick="buatProfil()">Buat</button>
+                            <button id="btnBuat" class="btn btn-outline-primary" onclick="buatProfil()">Buat</button>
+                            <div id="loadingLogo" class="text-center" style="display:none;">
+                                <div class="spinner-border text-info" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-footer bg-transparent pd-y-10 pd-sm-y-15 pd-x-10 pd-sm-x-20"></div>
                     </div>
                 @endif
-{{--                <div class="card card-profile-interest">--}}
-{{--                    <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">--}}
-{{--                        <h6 class="tx-uppercase tx-semibold mg-b-0">Interests</h6>--}}
-{{--                        <nav class="nav nav-with-icon tx-13">--}}
-{{--                            <a href="" class="nav-link">Browse Interests--}}
-{{--                                <i class="fa fa-arrow-right"></i>--}}
-{{--                            </a>--}}
-{{--                        </nav>--}}
-{{--                    </div><!-- card-header -->--}}
-{{--                    <div class="card-body pd-25">--}}
-{{--                        <div class="row">--}}
-{{--                            <div class="col-sm col-lg-12 col-xl">--}}
-{{--                                <div class="media">--}}
-{{--                                    <div class="wd-45 ht-45 bg-gray-900 rounded d-flex align-items-center justify-content-center">--}}
-{{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
-{{--                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"--}}
-{{--                                             stroke-linecap="round" stroke-linejoin="round"--}}
-{{--                                             class="feather feather-github tx-white-7 wd-20 ht-20">--}}
-{{--                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>--}}
-{{--                                        </svg>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="media-body pd-l-25">--}}
-{{--                                        <h6 class="tx-color-01 mg-b-5">Github, Inc.</h6>--}}
-{{--                                        <p class="tx-12 mg-b-10">Web-based hosting service for version control using--}}
-{{--                                            Git... <a href="">Learn more</a></p>--}}
-{{--                                        <span class="tx-12 tx-color-03">6,182,220 Followers</span>--}}
-{{--                                    </div>--}}
-{{--                                </div><!-- media -->--}}
+                {{--                <div class="card card-profile-interest">--}}
+                {{--                    <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">--}}
+                {{--                        <h6 class="tx-uppercase tx-semibold mg-b-0">Interests</h6>--}}
+                {{--                        <nav class="nav nav-with-icon tx-13">--}}
+                {{--                            <a href="" class="nav-link">Browse Interests--}}
+                {{--                                <i class="fa fa-arrow-right"></i>--}}
+                {{--                            </a>--}}
+                {{--                        </nav>--}}
+                {{--                    </div><!-- card-header -->--}}
+                {{--                    <div class="card-body pd-25">--}}
+                {{--                        <div class="row">--}}
+                {{--                            <div class="col-sm col-lg-12 col-xl">--}}
+                {{--                                <div class="media">--}}
+                {{--                                    <div class="wd-45 ht-45 bg-gray-900 rounded d-flex align-items-center justify-content-center">--}}
+                {{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
+                {{--                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"--}}
+                {{--                                             stroke-linecap="round" stroke-linejoin="round"--}}
+                {{--                                             class="feather feather-github tx-white-7 wd-20 ht-20">--}}
+                {{--                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>--}}
+                {{--                                        </svg>--}}
+                {{--                                    </div>--}}
+                {{--                                    <div class="media-body pd-l-25">--}}
+                {{--                                        <h6 class="tx-color-01 mg-b-5">Github, Inc.</h6>--}}
+                {{--                                        <p class="tx-12 mg-b-10">Web-based hosting service for version control using--}}
+                {{--                                            Git... <a href="">Learn more</a></p>--}}
+                {{--                                        <span class="tx-12 tx-color-03">6,182,220 Followers</span>--}}
+                {{--                                    </div>--}}
+                {{--                                </div><!-- media -->--}}
 
-{{--                                <div class="media">--}}
-{{--                                    <div class="wd-45 ht-45 bg-warning rounded d-flex align-items-center justify-content-center">--}}
-{{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
-{{--                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"--}}
-{{--                                             stroke-linecap="round" stroke-linejoin="round"--}}
-{{--                                             class="feather feather-truck tx-white-7 wd-20 ht-20">--}}
-{{--                                            <rect x="1" y="3" width="15" height="13"></rect>--}}
-{{--                                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>--}}
-{{--                                            <circle cx="5.5" cy="18.5" r="2.5"></circle>--}}
-{{--                                            <circle cx="18.5" cy="18.5" r="2.5"></circle>--}}
-{{--                                        </svg>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="media-body pd-l-25">--}}
-{{--                                        <h6 class="tx-color-01 mg-b-5">DHL Express</h6>--}}
-{{--                                        <p class="tx-12 mg-b-10">Logistics company providing international courier--}}
-{{--                                            service... <a href="">Learn more</a></p>--}}
-{{--                                        <span class="tx-12 tx-color-03">3,005,192 Followers</span>--}}
-{{--                                    </div>--}}
-{{--                                </div><!-- media -->--}}
-{{--                            </div><!-- col -->--}}
-{{--                            <div class="col-sm col-lg-12 col-xl mg-t-25 mg-sm-t-0 mg-lg-t-25 mg-xl-t-0">--}}
-{{--                                <div class="media">--}}
-{{--                                    <div class="wd-45 ht-45 bg-primary rounded d-flex align-items-center justify-content-center">--}}
-{{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
-{{--                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"--}}
-{{--                                             stroke-linecap="round" stroke-linejoin="round"--}}
-{{--                                             class="feather feather-facebook tx-white-7 wd-20 ht-20">--}}
-{{--                                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>--}}
-{{--                                        </svg>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="media-body pd-l-25">--}}
-{{--                                        <h6 class="tx-color-01 mg-b-5">Facebook, Inc.</h6>--}}
-{{--                                        <p class="tx-12 mg-b-10">Online social media and social networking service--}}
-{{--                                            company... <a href="">Learn more</a></p>--}}
-{{--                                        <span class="tx-12 tx-color-03">12,182,220 Followers</span>--}}
-{{--                                    </div>--}}
-{{--                                </div><!-- media -->--}}
+                {{--                                <div class="media">--}}
+                {{--                                    <div class="wd-45 ht-45 bg-warning rounded d-flex align-items-center justify-content-center">--}}
+                {{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
+                {{--                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"--}}
+                {{--                                             stroke-linecap="round" stroke-linejoin="round"--}}
+                {{--                                             class="feather feather-truck tx-white-7 wd-20 ht-20">--}}
+                {{--                                            <rect x="1" y="3" width="15" height="13"></rect>--}}
+                {{--                                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>--}}
+                {{--                                            <circle cx="5.5" cy="18.5" r="2.5"></circle>--}}
+                {{--                                            <circle cx="18.5" cy="18.5" r="2.5"></circle>--}}
+                {{--                                        </svg>--}}
+                {{--                                    </div>--}}
+                {{--                                    <div class="media-body pd-l-25">--}}
+                {{--                                        <h6 class="tx-color-01 mg-b-5">DHL Express</h6>--}}
+                {{--                                        <p class="tx-12 mg-b-10">Logistics company providing international courier--}}
+                {{--                                            service... <a href="">Learn more</a></p>--}}
+                {{--                                        <span class="tx-12 tx-color-03">3,005,192 Followers</span>--}}
+                {{--                                    </div>--}}
+                {{--                                </div><!-- media -->--}}
+                {{--                            </div><!-- col -->--}}
+                {{--                            <div class="col-sm col-lg-12 col-xl mg-t-25 mg-sm-t-0 mg-lg-t-25 mg-xl-t-0">--}}
+                {{--                                <div class="media">--}}
+                {{--                                    <div class="wd-45 ht-45 bg-primary rounded d-flex align-items-center justify-content-center">--}}
+                {{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
+                {{--                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"--}}
+                {{--                                             stroke-linecap="round" stroke-linejoin="round"--}}
+                {{--                                             class="feather feather-facebook tx-white-7 wd-20 ht-20">--}}
+                {{--                                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>--}}
+                {{--                                        </svg>--}}
+                {{--                                    </div>--}}
+                {{--                                    <div class="media-body pd-l-25">--}}
+                {{--                                        <h6 class="tx-color-01 mg-b-5">Facebook, Inc.</h6>--}}
+                {{--                                        <p class="tx-12 mg-b-10">Online social media and social networking service--}}
+                {{--                                            company... <a href="">Learn more</a></p>--}}
+                {{--                                        <span class="tx-12 tx-color-03">12,182,220 Followers</span>--}}
+                {{--                                    </div>--}}
+                {{--                                </div><!-- media -->--}}
 
-{{--                                <div class="media">--}}
-{{--                                    <div class="wd-45 ht-45 bg-pink rounded d-flex align-items-center justify-content-center">--}}
-{{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
-{{--                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"--}}
-{{--                                             stroke-linecap="round" stroke-linejoin="round"--}}
-{{--                                             class="feather feather-instagram tx-white-7 wd-20 ht-20">--}}
-{{--                                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>--}}
-{{--                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>--}}
-{{--                                            <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>--}}
-{{--                                        </svg>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="media-body pd-l-25">--}}
-{{--                                        <h6 class="tx-color-01 mg-b-5">Instagram</h6>--}}
-{{--                                        <p class="tx-12 mg-b-10">Photo and video-sharing social networking service by--}}
-{{--                                            Facebook... <a href="">Learn more</a></p>--}}
-{{--                                        <span class="tx-12 tx-color-03">3,005,192 Followers</span>--}}
-{{--                                    </div>--}}
-{{--                                </div><!-- media -->--}}
-{{--                            </div><!-- col -->--}}
-{{--                        </div><!-- row -->--}}
-{{--                    </div><!-- card-body -->--}}
-{{--                </div><!-- card -->--}}
+                {{--                                <div class="media">--}}
+                {{--                                    <div class="wd-45 ht-45 bg-pink rounded d-flex align-items-center justify-content-center">--}}
+                {{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
+                {{--                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"--}}
+                {{--                                             stroke-linecap="round" stroke-linejoin="round"--}}
+                {{--                                             class="feather feather-instagram tx-white-7 wd-20 ht-20">--}}
+                {{--                                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>--}}
+                {{--                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>--}}
+                {{--                                            <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>--}}
+                {{--                                        </svg>--}}
+                {{--                                    </div>--}}
+                {{--                                    <div class="media-body pd-l-25">--}}
+                {{--                                        <h6 class="tx-color-01 mg-b-5">Instagram</h6>--}}
+                {{--                                        <p class="tx-12 mg-b-10">Photo and video-sharing social networking service by--}}
+                {{--                                            Facebook... <a href="">Learn more</a></p>--}}
+                {{--                                        <span class="tx-12 tx-color-03">3,005,192 Followers</span>--}}
+                {{--                                    </div>--}}
+                {{--                                </div><!-- media -->--}}
+                {{--                            </div><!-- col -->--}}
+                {{--                        </div><!-- row -->--}}
+                {{--                    </div><!-- card-body -->--}}
+                {{--                </div><!-- card -->--}}
 
             </div><!-- media-body -->
             {{--            <div class="profile-sidebar mg-t-40 mg-lg-t-0 pd-lg-l-25">--}}
@@ -786,15 +794,23 @@
 
 @include('panel.scriptPanel')
 <script>
-    function buatProfil()
-    {
+    function buatProfil() {
+        $('#btnBuat').hide();
+        $('#loadingLogo').show();
         $.ajax({
             url: '{{ route('profilBuat') }}',
             type: 'get',
             processData: false,
             contentType: false,
             success: function (data) {
-                console.log(data);
+                if (data === 'true') {
+                    setTimeout(function () {
+                        window.location.reload(1);
+                    }, 5000);
+                } else {
+                    $('#btnBuat').show();
+                    $('#loadingLogo').hide();
+                }
             }
         });
     }

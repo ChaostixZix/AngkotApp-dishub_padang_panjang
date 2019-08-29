@@ -20,7 +20,9 @@ Route::group(['prefix' => '/'], function ()
 Route::group(['middleware' => ['isNotLogin']], function ()
 {
     Route::get('login', 'panelAuth@loginPage')->name('loginPage');
+    Route::get('register', 'panelAuth@registerPage')->name('registerPage');
     Route::post('loginpost', 'panelAuth@login')->name('login');
+    Route::post('registerajax', 'Feature\Auth@registerAjax')->name('registerAjax');
 });
 
 Route::get('logout', 'panelAuth@logout')->name('logout');

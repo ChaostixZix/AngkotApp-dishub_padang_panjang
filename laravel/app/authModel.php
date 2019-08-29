@@ -6,11 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
-class auth extends Model
+class authModel extends Model
 {
     public function db()
     {
         return DB::table('data_user');
+    }
+
+    public function updateRaw($username, array $update)
+    {
+        if($this->cekUser($username))
+        {
+            $do = $this->db()->where('username', $username)->update($update);
+            if($do)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public function cekUser($username)
@@ -33,6 +46,19 @@ class auth extends Model
         if(count($get) > 0)
         {
             return $get->pluck('level')[0];
+        }
+        return false;
+    }
+
+    public function registerRaw(array $data_insert)
+    {
+        if(!$this->cekUser($data_insert['username']))
+        {
+            $do = $this->db()->insert($data_insert);
+            if($do)
+            {
+                return true;
+            }
         }
         return false;
     }

@@ -19,8 +19,7 @@ class Derek extends Controller
         $data = [
             'data' => $this->derekModel()->getPesanan($id),
         ];
-        if(Session::get('level') == "admin")
-        {
+        if (Session::get('level') == "admin") {
             $data['supirList'] = $this->derekModel()->getSupirList();
         }
         return view('panel.user.invoiceDerek')->with($data);
@@ -78,13 +77,31 @@ class Derek extends Controller
         $data_pesanan['jarak'] = $this->derekModel()->getJarak($data_pesanan['koordinat_jemput'], '-0.454986, 100.399860');
         $data_pesanan['jarak'] = (int)$data_pesanan + (int)$this->derekModel()->getJarak($data_pesanan['koordinat_jemput'], $data_pesanan['koordinat_antar']);
 
-        $data_pesanan['date'] = date('Y-m-d');
-        $data_pesanan['time'] = date('h:i:s');
-        $createPesan = $this->derekModel()->createPesananRaw($data_pesanan);
-        if ($createPesan) {
-            return $createPesan;
+        $cek_saldo_user = $this->saldoModel()->cekAvailibility($data_pesanan['pemesan'], $data_pesanan['harga']);
+
+        if ($cek_saldo_user == true) {
+            $data_pesanan['date'] = date('Y-m-d');
+            $data_pesanan['time'] = date('h:i:s');
+            $createPesan = $this->derekModel()->createPesananRaw($data_pesanan);
+            if ($createPesan !== false) {
+                $return = [
+                    'status' => 'true',
+                    'invoiceId' => $createPesan,
+                    'reason' => ''
+                ];
+            } else {
+                $return = [
+                    'status' => 'false',
+                    'reason' => 'error'
+                ];
+            }
+        } else {
+            $return = [
+                'status' => 'false',
+                'reason' => 'saldo_kurang'
+            ];
         }
-        return false;
+        return json_encode($return);
     }
 
     public function changeStatusDerek($id, $status, $supir = "")
@@ -101,8 +118,7 @@ class Derek extends Controller
                 $do = $this->derekModel()->finishPesanan($id);
                 break;
         }
-        if($do)
-        {
+        if ($do) {
             return 'true';
         }
         return 'false';

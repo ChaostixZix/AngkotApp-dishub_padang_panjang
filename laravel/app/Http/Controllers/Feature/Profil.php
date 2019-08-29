@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Feature;
 
+use App\authModel;
 use App\web\profilModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,6 +14,12 @@ class Profil extends Controller
     {
         return new profilModel();
     }
+
+    private function authModel()
+    {
+        return new authModel();
+    }
+
 
     public function update(Request $request)
     {
@@ -64,7 +71,10 @@ class Profil extends Controller
         }
 
         $do = $this->model()->updateProfil($username, $dataInsert);
-        if($do)
+        $do2 = $this->authModel()->updateRaw($username, [
+            'nama_lengkap' => $dataInsert['nama_lengkap']
+        ]);
+        if($do && $do2)
         {
             return 'true';
         }
