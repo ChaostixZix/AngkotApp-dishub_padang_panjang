@@ -13,7 +13,11 @@
 
 Route::group(['prefix' => '/'], function ()
 {
-    Route::get('', 'publik@depan')->name('depanPublik');
+//    Route::get('', 'publik@depan')->name('depanPublik');
+    Route::get('', function ()
+    {
+        return redirect(route('loginPage'));
+    })->name('depanPublik');
 });
 
 
