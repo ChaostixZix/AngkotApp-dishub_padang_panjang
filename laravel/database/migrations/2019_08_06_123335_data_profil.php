@@ -47,6 +47,9 @@ class DataProfil extends Migration
             //SOSIAL MEDIA
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
+
+            $table->string('jenis_kendaraan')->nullable();
+            $table->string('plat_nomor')->nullable();
         });
     }
 

@@ -24,8 +24,7 @@ class Parkir extends Controller
         date_default_timezone_set("Asia/Bangkok");
         $date = date('Y-m-d');
         $get = $this->parkirModel()->getPesananByPlatAndDate($plat_nomor, $date);
-        if($get !== false)
-        {
+        if ($get !== false) {
             $data = [
                 'detail' => $get
             ];
@@ -45,12 +44,11 @@ class Parkir extends Controller
     public function finishParkir($id)
     {
         $do = $this->parkirModel()->changeStatus($id, 1);
-        if($do)
-        {
+        if ($do) {
             $return = [
                 'status' => 'true',
             ];
-        }else{
+        } else {
             $return = [
                 'status' => 'false',
                 'reason' => 'error, call developer'
@@ -64,45 +62,49 @@ class Parkir extends Controller
         date_default_timezone_set("Asia/Bangkok");
         $data = ['pemesan', 'tempat_parkir', 'jenis_kendaraan', 'plat_nomor', 'nama_pemesan', 'nohp_pemesan'];
         $data_insert = [];
-        foreach ($data as $d)
-        {
+        foreach ($data as $d) {
             $data_insert[$d] = $request->input($d);
         }
         $data_insert['tanggal'] = date('Y-m-d');
         $data_insert['harga'] = $this->parkirModel()->getHarga($data_insert['tempat_parkir'], $data_insert['jenis_kendaraan']);
 
-        $cek_saldo_user = $this->saldoModel()->cekAvailibility($data_insert['pemesan'], $data_insert['harga']);
-        if($cek_saldo_user == true)
-        {
+//        $cek_saldo_user = $this->saldoModel()->cekAvailibility($data_insert['pemesan'], $data_insert['harga']);
+//        if($cek_saldo_user == true)
+//        {
+        if (!$this->parkirModel()->getPesananByPlatAndDateAndPlace($data_insert['plat_nomor'], $data_insert['tanggal'], $data_insert['tempat_parkir'])) {
             $do = $this->parkirModel()->pesanParkirRaw($data_insert);
-            if($do !== false)
-            {
-                $this->saldoModel()->kurangi($data_insert['pemesan'], $data_insert['harga']);
+            if ($do !== false) {
+//                $this->saldoModel()->kurangi($data_insert['pemesan'], $data_insert['harga']);
                 $return = [
                     'status' => 'true',
                     'invoiceId' => $do,
                     'reason' => ''
                 ];
-            }else{
+            } else {
                 $return = [
                     'status' => 'false',
                     'reason' => 'error'
                 ];
             }
-        }else{
+        } else {
             $return = [
                 'status' => 'false',
-                'reason' => 'saldo_kurang'
+                'reason' => 'Sudah memiliki spot'
             ];
         }
+//        }else{
+//            $return = [
+//                'status' => 'false',
+//                'reason' => 'saldo_kurang'
+//            ];
+//        }
         return json_encode($return);
     }
 
     public function getPesanan($id)
     {
         $get = $this->parkirModel()->getPesanan($id);
-        if($get !== false)
-        {
+        if ($get !== false) {
             return json_encode($get);
         }
         return 'false';

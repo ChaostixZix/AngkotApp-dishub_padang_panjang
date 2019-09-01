@@ -68,6 +68,8 @@ class parkirModel extends Model
 
     public function pesanParkirRaw(array $insert)
     {
+        $get = $this->getPesananByDate($insert['tanggal']);
+        $insert['nomor'] = count($get) + 1;
         $do = $this->db()->insert($insert);
         if ($do) {
             return $this->db()->where($insert)->get()->pluck('id')[0];
@@ -96,6 +98,21 @@ class parkirModel extends Model
         $where = [
             'plat_nomor' => $plat_nomor,
             'tanggal' => $date
+        ];
+        $get = $this->db()->where($where)->get();
+        if(count($get) > 0)
+        {
+            return $get;
+        }
+        return false;
+    }
+
+    public function getPesananByPlatAndDateAndPlace($plat_nomor, $date, $tempat_parkir)
+    {
+        $where = [
+            'plat_nomor' => $plat_nomor,
+            'tanggal' => $date,
+            'tempat_parkir' => $tempat_parkir,
         ];
         $get = $this->db()->where($where)->get();
         if(count($get) > 0)

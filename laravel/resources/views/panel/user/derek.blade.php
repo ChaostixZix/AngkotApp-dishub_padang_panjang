@@ -79,17 +79,19 @@
                     </div>
                     <div class="form-group mg-b-5">
                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nomor HP</label>
-                        <input id="nohp_pemesan" type="text" class="form-control" placeholder="Masukkan nomor HP">
+                        <input value="{{ $dataProfil->no_hp }}" id="nohp_pemesan" type="text" class="form-control"
+                               placeholder="Masukkan nomor HP">
                     </div>
                     <div class="form-group mg-b-5">
                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama</label>
-                        <input id="nama_pemesan" type="text" class="form-control" placeholder="Masukkan nama">
+                        <input value="{{ $dataProfil->nama_lengkap }}" id="nama_pemesan" type="text"
+                               class="form-control" placeholder="Masukkan nama">
                     </div>
                     <div class="form-group tx-12">
                         Setelah mengklik <strong>Pesan Sekarang</strong> saldo akan otomatis dikurangi
                     </div><!-- form-group -->
 
-                    <button onclick="promptPesan()" class="btn btn-brand-02 btn-block">Pesan Sekarang</button>
+                    <button value="btn" onclick="promptPesan()" class="btn btn-brand-02 btn-block">Pesan Sekarang</button>
                 </div>
             </div><!-- col -->
         </div><!-- row -->
@@ -186,48 +188,61 @@
         $('#koordinat_pemesan').val(latitude + ', ' + longitude);
     }
 
+    function cekInput() {
+        $("#formPesanDerek :input").each(function () {
+            if ($(this).val() === '') {
+                $(this).focus();
+                return false;
+            }
+            return true;
+        });
+    }
+
     function promptPesan() {
 
 
+        if (cekInput() === false) {
+            alert('Harap isi semua input');
+        } else {
+            $('#placeholderPesan').show();
+            $('#detailPesan').hide();
+            $('#alamatJemput').text($('#alamat_jemput').val());
+            $('#alamatAntar').text($('#alamat_antar').val());
+            $.ajax({
+                type: "get",
+                url: "{{ route('getJarakDerek') }}",
+                data: {koordinat_jemput: $('#koordinat_jemput').val(), koordinat_antar: $('#koordinat_antar').val()},
 
-        $('#placeholderPesan').show();
-        $('#detailPesan').hide();
-        $('#alamatJemput').text($('#alamat_jemput').val());
-        $('#alamatAntar').text($('#alamat_antar').val());
-        $.ajax({
-            type: "get",
-            url: "{{ route('getJarakDerek') }}",
-            data: {koordinat_jemput: $('#koordinat_jemput').val(), koordinat_antar: $('#koordinat_antar').val()},
-
-            success: function (data) {
-                $('#jarak').text(data + " KM");
-            }
-        }).done(function () {
-            console.log("Done Maps");
-        });
-        $.ajax({
-            type: "get",
-            url: "{{ route('getHargaDerek') }}",
-            data: {koordinat_jemput: $('#koordinat_jemput').val(), koordinat_antar: $('#koordinat_antar').val()},
-
-            success: function (data) {
-                var	number_string = data.toString(),
-                    sisa 	= number_string.length % 3,
-                    rupiah 	= number_string.substr(0, sisa),
-                    ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
-
-                if (ribuan) {
-                    separator = sisa ? '.' : '';
-                    rupiah += separator + ribuan.join('.');
+                success: function (data) {
+                    $('#jarak').text(data + " KM");
                 }
-                $('#harga').text("Rp. " + rupiah);
-            }
-        }).done(function () {
-            $('#placeholderPesan').hide();
-            $('#detailPesan').show();
-        });
+            }).done(function () {
+                console.log("Done Maps");
+            });
+            $.ajax({
+                type: "get",
+                url: "{{ route('getHargaDerek') }}",
+                data: {koordinat_jemput: $('#koordinat_jemput').val(), koordinat_antar: $('#koordinat_antar').val()},
 
-        $('#pesanModal').modal('show');
+                success: function (data) {
+                    var number_string = data.toString(),
+                        sisa = number_string.length % 3,
+                        rupiah = number_string.substr(0, sisa),
+                        ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                    if (ribuan) {
+                        separator = sisa ? '.' : '';
+                        rupiah += separator + ribuan.join('.');
+                    }
+                    $('#harga').text("Rp. " + rupiah);
+                }
+            }).done(function () {
+                $('#placeholderPesan').hide();
+                $('#detailPesan').show();
+            });
+
+            $('#pesanModal').modal('show');
+        }
     }
 
     function pesan() {
@@ -254,8 +269,7 @@
 
                 if (json['status'] !== "false") {
                     window.location.replace("{{ route('derekInvoicePage') }}/" + json.invoiceId)
-                }
-                else {
+                } else {
                     Swal.fire({title: 'Gagal', text: 'Reason : ' + json['reason'], type: 'error'})
                 }
             }

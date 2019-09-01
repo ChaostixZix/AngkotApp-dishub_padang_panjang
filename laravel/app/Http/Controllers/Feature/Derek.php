@@ -71,15 +71,15 @@ class Derek extends Controller
         foreach ($array_data as $index) {
             $data_pesanan[$index] = $request->input($index);
         }
-        $koordinatGarasi = '';
-        $data_pesanan['harga'] = $this->derekModel()->countHarga($data_pesanan['koordinat_jemput'], '-0.454986, 100.399860');
+        $koordinatGarasi = '-0.454986, 100.399860';
+        $data_pesanan['harga'] = $this->derekModel()->countHarga($data_pesanan['koordinat_jemput'], $koordinatGarasi);
         $data_pesanan['harga'] = $data_pesanan['harga'] + $this->derekModel()->countHarga($data_pesanan['koordinat_jemput'], $data_pesanan['koordinat_antar']);
         $data_pesanan['jarak'] = $this->derekModel()->getJarak($data_pesanan['koordinat_jemput'], '-0.454986, 100.399860');
         $data_pesanan['jarak'] = (int)$data_pesanan + (int)$this->derekModel()->getJarak($data_pesanan['koordinat_jemput'], $data_pesanan['koordinat_antar']);
 
-        $cek_saldo_user = $this->saldoModel()->cekAvailibility($data_pesanan['pemesan'], $data_pesanan['harga']);
+//        $cek_saldo_user = $this->saldoModel()->cekAvailibility($data_pesanan['pemesan'], $data_pesanan['harga']);
 
-        if ($cek_saldo_user == true) {
+//        if ($cek_saldo_user == true) {
             $data_pesanan['date'] = date('Y-m-d');
             $data_pesanan['time'] = date('h:i:s');
             $createPesan = $this->derekModel()->createPesananRaw($data_pesanan);
@@ -95,12 +95,12 @@ class Derek extends Controller
                     'reason' => 'error'
                 ];
             }
-        } else {
-            $return = [
-                'status' => 'false',
-                'reason' => 'saldo_kurang'
-            ];
-        }
+//        } else {
+//            $return = [
+//                'status' => 'false',
+//                'reason' => 'saldo_kurang'
+//            ];
+//        }
         return json_encode($return);
     }
 

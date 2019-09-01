@@ -24,7 +24,8 @@ class panel extends Controller
     public function updateProfil(){
         $username = Session::get('username');
         $data = [
-            'statusProfil' => $this->profilModel()->cek($username)
+            'statusProfil' => $this->profilModel()->cek($username),
+            'dataProfil' => $this->profilModel()->get($username),
         ];
         return view('panel.updateProfil')->with($data);
     }

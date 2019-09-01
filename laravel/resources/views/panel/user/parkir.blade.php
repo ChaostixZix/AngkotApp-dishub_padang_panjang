@@ -66,29 +66,45 @@
                                 Kendaraan</label>
                             <select id="jenis_kendaraan" class="custom-select">
                                 <option value="">Pilih</option>
-                                <option value="Mobil">Mobil</option>
-                                <option value="Motor">Motor</option>
+                                <option value=""></option>
+                                @if($dataProfil->jenis_kendaraan == "Mobil")
+                                    <option selected value="Mobil">Mobil</option>
+                                    <option value="Motor">Motor</option>
+                                @elseif($dataProfil->jenis_kendaraan == "Motor")
+                                    <option value="Mobil">Mobil</option>
+                                    <option selected value="Motor">Motor</option>
+                                @else
+                                    <option value="Mobil">Mobil</option>
+                                    <option value="Motor">Motor</option>
+
+
+                                @endif
                             </select>
                         </div><!-- col -->
                         <div class="col-sm-5">
                             <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Plat Nomor
                             </label>
-                            <input id="plat_nomor" type="text" class="form-control">
+                            <input value="{{ $dataProfil->plat_nomor }}" id="plat_nomor" type="text" class="form-control">
                         </div><!-- col -->
                     </div>
                     <div class="form-group mg-b-5">
+                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Koordinat
+                            Anda</label>
+                        <input readonly="" id="koordinat_pemesan" type="text" class="form-control">
+                    </div><!-- col -->
+                    <div class="form-group mg-b-5">
                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nomor HP</label>
-                        <input id="nohp_pemesan" type="text" class="form-control" placeholder="Masukkan nomor HP">
+                        <input value="{{ $dataProfil->no_hp }}" id="nohp_pemesan" type="text" class="form-control" placeholder="Masukkan nomor HP">
                     </div>
                     <div class="form-group mg-b-5">
                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama</label>
-                        <input id="nama_pemesan" type="text" class="form-control" placeholder="Masukkan nama">
+                        <input value="{{ $dataProfil->nama_lengkap }}" id="nama_pemesan" type="text" class="form-control" placeholder="Masukkan nama">
                     </div>
                     <div class="form-group tx-12">
-                        Setelah mengklik <strong>Pesan Sekarang</strong> saldo akan otomatis dikurangi
+                        silahkan cek sms pesan masuk untuk proses selesai
+{{--                        Setelah mengklik <strong>Pesan Sekarang</strong> silahkan cek sms pesan masuk untuk proses selesai--}}
                     </div><!-- form-group -->
-
-                    <button onclick="promptPesan()" class="btn btn-brand-02 btn-block">Pesan Sekarang</button>
+                    <button value="btn" onclick="promptPesan()" class="btn btn-brand-02 btn-block">Pesan Sekarang</button>
                 </div>
             </div><!-- col -->
         </div><!-- row -->
@@ -134,7 +150,8 @@
             processData: false,
             contentType: false,
 
-            success: function (data) {
+            success: function (data, textStatus, xhr) {
+                console.log(xhr.status);
                 var json = $.parseJSON(JSON.stringify(data));
 
                 if (json['status'] !== "false") {
@@ -150,24 +167,40 @@
         });
     }
 
+    function cekInput() {
+        $("#formPesanParkir :input").each(function(){
+            console.log($(this).val());
+            if($(this).val() === '')
+            {
+                $(this).focus();
+                return false;
+            }
+            return true;
+        });
+    }
+
 
     function promptPesan() {
-
         $('#placeholderPesan').show();
         $('#detailPesan').hide();
         var id_tempat_parkir = $('#tempat_parkir').val();
         var jenis_kendaraan = $('#jenis_kendaraan').val();
-        var harga = hargaPakir[id_tempat_parkir][jenis_kendaraan];
         var plat_nomor = $('#plat_nomor').val();
 
-        $('#tempatParkir').text(hargaPakir[id_tempat_parkir]['Nama']);
-        $('#jenisKendaraan').text(jenis_kendaraan);
-        $('#harga').text(harga);
-        $('#platNomor').text($('#plat_nomor').val());
-        $('#pesanModal').modal('show');
+        if(cekInput() === false)
+        {
+            alert('Harap isi semua input');
+        }else {
+            var harga = hargaPakir[id_tempat_parkir][jenis_kendaraan];
+            $('#tempatParkir').text(hargaPakir[id_tempat_parkir]['Nama']);
+            $('#jenisKendaraan').text(jenis_kendaraan);
+            $('#harga').text(harga);
+            $('#platNomor').text(plat_nomor);
+            $('#pesanModal').modal('show');
 
-        $('#placeholderPesan').hide();
-        $('#detailPesan').show();
+            $('#placeholderPesan').hide();
+            $('#detailPesan').show();
+        }
     }
 
     @if($tempat_parkir_list['jumlah_kapasitas_all'] > 0)
@@ -176,6 +209,35 @@
         $('html, body').animate({
             scrollTop: $("#formPesanParkir").offset().top
         }, 2000);
+        getLocation()
+    }
+    function getLocation() {
+        if (navigator.geolocation) {
+            Swal.fire(
+                'Info!',
+                'Klik "Izinkan" saat diminta perizinan untuk menentukan lokasi anda.',
+                'info'
+            ).then(function () {
+                navigator.geolocation.getCurrentPosition(showPosition);
+                $('html, body').animate({
+                    scrollTop: $("#formPesanDerek").offset().top
+                }, 2000);
+            });
+        } else {
+            Swal.fire(
+                'Gagal!',
+                'Klik "Izinkan" saat diminta perizinan untuk menentukan lokasi anda.',
+                'error'
+            ).then(function () {
+                getLocation();
+            });
+        }
+    }
+
+    function showPosition(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        $('#koordinat_pemesan').val(latitude + ', ' + longitude);
     }
 
     @else

@@ -53,7 +53,10 @@ class Profil extends Controller
             'email' => 'inputEmail',
 
             'facebook' => 'inputFacebook',
-            'twitter' => 'inputTwitter'
+            'twitter' => 'inputTwitter',
+
+            'jenis_kendaraan' => 'jenis_kendaraan',
+            'plat_nomor' => 'plat_nomor'
         ];
         $dataInsert = [];
         foreach ($data as $i  => $val)

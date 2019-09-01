@@ -2,8 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\cekProfil;
 use App\Http\Middleware\cekSes;
 use App\Http\Middleware\fiturAdmin;
+use App\Http\Middleware\fiturRestricted;
 use App\Http\Middleware\isNotLogin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -58,6 +60,8 @@ class Kernel extends HttpKernel
         'authModel.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cekSes' => cekSes::class,
+        'cekProfil' => cekProfil::class,
+        'fiturRestricted' => fiturRestricted::class,
         'isNotLogin' => isNotLogin::class,
         'fiturAdmin' => fiturAdmin::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
