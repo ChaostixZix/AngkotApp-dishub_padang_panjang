@@ -104,7 +104,7 @@
                         silahkan cek sms pesan masuk untuk proses selesai
 {{--                        Setelah mengklik <strong>Pesan Sekarang</strong> silahkan cek sms pesan masuk untuk proses selesai--}}
                     </div><!-- form-group -->
-                    <button value="btn" onclick="promptPesan()" class="btn btn-brand-02 btn-block">Pesan Sekarang</button>
+                    <button id="btnPesan" value="btn" onclick="promptPesan()" class="btn btn-brand-02 btn-block">Pesan Sekarang</button>
                 </div>
             </div><!-- col -->
         </div><!-- row -->
@@ -169,20 +169,24 @@
 
 
     function cekInput() {
-        var lenght = $("#formPesanParkir :input").length === 8;
-        var a = 0;
+        var lenght = $("#formPesanParkir :input").length;
+        var a = 1;
         $("#formPesanParkir :input").each(function () {
+            console.log($('#btnPesan').attr('func') !== true && a === 1);
+            console.log(a)
+            console.log($('#btnPesan').attr('func'));
+            console.log($(this).val());
             a++;
+            if ($('#btnPesan').attr('func') !== true && a === lenght) {
+                promptPesanS();
+                $('#btnPesan').attr('func', false);
+                return false;
+            }
             if ($(this).val() === '') {
                 $(this).focus();
                 alert('Harap isi semua input');
                 $('#btnPesan').attr('func', true);
                 return false;
-            }
-            if ($('#btnPesan').attr('func') !== true && a === lenght) {
-                promptPesanS();
-                $('#btnPesan').attr('func', false);
-                return true;
             }
         });
     }
@@ -200,10 +204,6 @@
         var jenis_kendaraan = $('#jenis_kendaraan').val();
         var plat_nomor = $('#plat_nomor').val();
 
-        if(cekInput() === false)
-        {
-            alert('Harap isi semua input');
-        }else {
             var harga = hargaPakir[id_tempat_parkir][jenis_kendaraan];
             $('#tempatParkir').text(hargaPakir[id_tempat_parkir]['Nama']);
             $('#jenisKendaraan').text(jenis_kendaraan);
@@ -213,7 +213,7 @@
 
             $('#placeholderPesan').hide();
             $('#detailPesan').show();
-        }
+
     }
 
     @if($tempat_parkir_list['jumlah_kapasitas_all'] > 0)

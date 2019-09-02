@@ -19,10 +19,9 @@ class parkirModel extends Model
 
     public function getHarga($id_tempat_parkir, $jenis_kendaraan)
     {
-        if($jenis_kendaraan == 'Mobil')
-        {
+        if ($jenis_kendaraan == 'Mobil') {
             return $this->db_tempat_parkir()->where('id', $id_tempat_parkir)->get()->pluck('harga_mobil')[0];
-        }else{
+        } else {
             return $this->db_tempat_parkir()->where('id', $id_tempat_parkir)->get()->pluck('harga_motor')[0];
         }
     }
@@ -69,11 +68,17 @@ class parkirModel extends Model
     public function pesanParkirRaw(array $insert)
     {
         $get = $this->getPesananByDate($insert['tanggal']);
-        $insert['nomor'] = count($get) + 1;
+        if ($get == false) {
+            $nomor = 1;
+        }else{
+            $nomor = count($get) + 1;
+        }
+        $insert['nomor'] = $nomor;
         $do = $this->db()->insert($insert);
         if ($do) {
             return $this->db()->where($insert)->get()->pluck('id')[0];
         }
+
         return false;
     }
 
@@ -100,8 +105,7 @@ class parkirModel extends Model
             'tanggal' => $date
         ];
         $get = $this->db()->where($where)->get();
-        if(count($get) > 0)
-        {
+        if (count($get) > 0) {
             return $get;
         }
         return false;
@@ -115,8 +119,7 @@ class parkirModel extends Model
             'tempat_parkir' => $tempat_parkir,
         ];
         $get = $this->db()->where($where)->get();
-        if(count($get) > 0)
-        {
+        if (count($get) > 0) {
             return $get;
         }
         return false;
@@ -141,8 +144,7 @@ class parkirModel extends Model
     public function changeStatus($id, $status)
     {
         $do = $this->db()->where('id', $id)->update(['status' => $status]);
-        if($do)
-        {
+        if ($do) {
             return true;
         }
         return false;

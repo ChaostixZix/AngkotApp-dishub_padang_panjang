@@ -48,7 +48,7 @@ class panelAuth extends Controller
             return redirect(route('loginPage'));
         }
         $lastRoute = Session::get('lastRoute');
-        if ($lastRoute !== false) {
+        if ($lastRoute[0] !== null && $lastRoute !== null) {
             Session::put(
                 [
                     'username' => $username,

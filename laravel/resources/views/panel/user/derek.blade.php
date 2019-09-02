@@ -192,10 +192,11 @@
     }
 
     function cekInput() {
-        var lenght = $("#formPesanDerek :input").length === 8;
+        var lenght = $("#formPesanDerek :input").length;
         var a = 0;
         $("#formPesanDerek :input").each(function () {
             a++;
+            console.log($('#btnPesan').attr('func') !== true && a === lenght);
             if ($(this).val() === '') {
                 $(this).focus();
                 alert('Harap isi semua input');
