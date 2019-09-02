@@ -15,6 +15,16 @@ class profilModel extends Model
     public function cek($username)
     {
         $get = $this->db()->where('username', $username)->get();
+        if(count($get) > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public function cekUntukAll($username)
+    {
+        $get = $this->db()->where('username', $username)->get();
         if(count($get) > 0 && $get[0]->no_hp !== null && $get[0]->nama_lengkap !== null && $get[0]->plat_nomor !== null && $get[0]->jenis_kendaraan !== null)
         {
             return true;

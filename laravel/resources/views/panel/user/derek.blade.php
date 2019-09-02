@@ -91,7 +91,7 @@
                         Setelah mengklik <strong>Pesan Sekarang</strong> saldo akan otomatis dikurangi
                     </div><!-- form-group -->
 
-                    <button value="btn" onclick="promptPesan()" class="btn btn-brand-02 btn-block">Pesan Sekarang</button>
+                    <button id="btnPesan" value="btn" onclick="promptPesan()" class="btn btn-brand-02 btn-block">Pesan Sekarang</button>
                 </div>
             </div><!-- col -->
         </div><!-- row -->
@@ -106,6 +106,7 @@
         $('#formPesanDerek').hide();
 
         $('#alamat_antar').on('change', function () {
+            $('#koordinat_antar').val('');
             var alamat = $(this).val();
             $.ajax({
                 type: "get",
@@ -130,6 +131,7 @@
         });
 
         $('#alamat_jemput').on('change', function () {
+            $('#koordinat_jemput').val('');
             var alamat = $(this).val();
             $.ajax({
                 type: "get",
@@ -151,7 +153,8 @@
             }).done(function () {
                 console.log("Done Maps");
             });
-        })
+        });
+
     });
 
     function formPesan() {
@@ -189,21 +192,29 @@
     }
 
     function cekInput() {
+        var lenght = $("#formPesanDerek :input").length === 8;
+        var a = 0;
         $("#formPesanDerek :input").each(function () {
+            a++;
             if ($(this).val() === '') {
                 $(this).focus();
+                alert('Harap isi semua input');
+                $('#btnPesan').attr('func', true);
                 return false;
             }
-            return true;
+            if ($('#btnPesan').attr('func') !== true && a === lenght) {
+                promptPesanS();
+                $('#btnPesan').attr('func', false);
+                return true;
+            }
         });
     }
 
     function promptPesan() {
+        cekInput();
+    }
 
-
-        if (cekInput() === false) {
-            alert('Harap isi semua input');
-        } else {
+    function promptPesanS() {
             $('#placeholderPesan').show();
             $('#detailPesan').hide();
             $('#alamatJemput').text($('#alamat_jemput').val());
@@ -242,7 +253,6 @@
             });
 
             $('#pesanModal').modal('show');
-        }
     }
 
     function pesan() {

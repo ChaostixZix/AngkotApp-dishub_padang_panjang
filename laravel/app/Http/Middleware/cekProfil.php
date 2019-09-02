@@ -22,7 +22,7 @@ class cekProfil
     }
     public function handle($request, Closure $next)
     {
-        if(!$this->profilModel()->cek(Session::get('username')))
+        if(!$this->profilModel()->cekUntukAll(Session::get('username')))
         {
             return redirect(route('updateProfil'));
         }

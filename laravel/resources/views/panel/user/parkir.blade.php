@@ -167,20 +167,33 @@
         });
     }
 
+
     function cekInput() {
-        $("#formPesanParkir :input").each(function(){
-            console.log($(this).val());
-            if($(this).val() === '')
-            {
+        var lenght = $("#formPesanParkir :input").length === 8;
+        var a = 0;
+        $("#formPesanParkir :input").each(function () {
+            a++;
+            if ($(this).val() === '') {
                 $(this).focus();
+                alert('Harap isi semua input');
+                $('#btnPesan').attr('func', true);
                 return false;
             }
-            return true;
+            if ($('#btnPesan').attr('func') !== true && a === lenght) {
+                promptPesanS();
+                $('#btnPesan').attr('func', false);
+                return true;
+            }
         });
     }
 
-
     function promptPesan() {
+        cekInput();
+    }
+
+
+
+    function promptPesanS() {
         $('#placeholderPesan').show();
         $('#detailPesan').hide();
         var id_tempat_parkir = $('#tempat_parkir').val();
@@ -220,7 +233,7 @@
             ).then(function () {
                 navigator.geolocation.getCurrentPosition(showPosition);
                 $('html, body').animate({
-                    scrollTop: $("#formPesanDerek").offset().top
+                    scrollTop: $("#formPesanParkir").offset().top
                 }, 2000);
             });
         } else {

@@ -76,4 +76,21 @@ class Admin extends Controller
         ];
         return view('panel.admin.parkirPesananSearch')->with($data);
     }
+
+    public function angkotPage()
+    {
+        Carbon::setLocale('id');
+        $data = [
+            'body' => 'app-contact contact-content-show',
+        ];
+        return view('panel.admin.angkot.angkot')->with($data);
+    }
+    public function angkotUpdatePage()
+    {
+        Carbon::setLocale('id');
+        $data = [
+            'body' => 'app-contact contact-content-show',
+        ];
+        return view('panel.admin.angkot.angkotUpdate')->with($data);
+    }
 }

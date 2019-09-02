@@ -13,6 +13,7 @@ class panelAuth extends Controller
     {
         return new authModel();
     }
+
     public function loginPage()
     {
 
@@ -43,11 +44,19 @@ class panelAuth extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
         $do = $this->auth_model()->login($username, $password);
-        if(!$do)
-        {
+        if (!$do) {
             return redirect(route('loginPage'));
         }
-
+        $lastRoute = Session::get('lastRoute');
+        if ($lastRoute !== false) {
+            Session::put(
+                [
+                    'username' => $username,
+                    'level' => $do //do Return level
+                ]
+            );
+            return redirect(route($lastRoute[0]));
+        }
         Session::put(
             [
                 'username' => $username,
@@ -55,5 +64,6 @@ class panelAuth extends Controller
             ]
         );
         return redirect(route('depanPanel'));
+
     }
 }

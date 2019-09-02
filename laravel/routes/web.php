@@ -30,6 +30,7 @@ Route::get('logout', 'panelAuth@logout')->name('logout');
 
 Route::group(['prefix' => 'publik'], function () {
     Route::get('aduan', 'publik@aduan')->name('publikAduan');
+    Route::get('a', function (){ return view('panel.public.angkot');})->name('publikAduan');
 });
 
 Route::group([
@@ -103,6 +104,8 @@ Route::group([
 
             Route::get('pesananderek', 'Admin\Admin@derekPesananPage')->name('derekPesananPageAdmin');
 
+            Route::get('angkot', 'Admin\Admin@angkotPage')->name('angkotPageAdmin');
+            Route::get('angkotupdate', 'Admin\Admin@angkotUpdatePage')->name('angkotUpdatePageAdmin');
         });
 
         Route::get('pesananparkir', 'Admin\Admin@parkirPesananPage')->name('parkirPesananPageAdmin');

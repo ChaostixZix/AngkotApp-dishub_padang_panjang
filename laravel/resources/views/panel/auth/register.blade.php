@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ url('/') }}/dashforge//assets/css/dashforge.auth.css">
 </head>
 <body>
+@include('panel.modalMenu')
 @include('panel.navbarPanel')
 
 <div class="content content-fixed content-auth">
@@ -81,18 +82,8 @@
     </div><!-- container -->
 </div><!-- content -->
 
-<footer class="footer">
-    <div>
-        <span>&copy; 2019 Dinas Perhubungan Padang Panjang v1.0.0. </span>
-    </div>
-{{--    <div>--}}
-{{--        <nav class="nav">--}}
-{{--            <a href="https://themeforest.net/licenses/standard" class="nav-link">Licenses</a>--}}
-{{--            <a href="{{ url('/') }}/dashforge//change-log.html" class="nav-link">Change Log</a>--}}
-{{--            <a href="https://discordapp.com/invite/RYqkVuw" class="nav-link">Get Help</a>--}}
-{{--        </nav>--}}
-{{--    </div>--}}
-</footer>
+@include('panel.scriptPanel')
+@include('panel.footerPanel')
 
 
 <script src="{{ url('/') }}/dashforge//lib/jquery/jquery.min.js"></script>
