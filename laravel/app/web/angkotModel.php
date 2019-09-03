@@ -15,7 +15,7 @@ class angkotModel extends Model
     public function createAngkot($nama)
     {
         $insert = [
-            'nama' => $nama
+            'nama_angkot' => $nama
         ];
         $do = $this->db()->insert($insert);
         if($do)
@@ -27,7 +27,7 @@ class angkotModel extends Model
 
     public function updateAngkotRaw($id, array $update)
     {
-        $do = $this->db()->where($id)->insert($update);
+        $do = $this->db()->where($id)->update($update);
         if($do)
         {
             return true;
@@ -35,8 +35,12 @@ class angkotModel extends Model
         return false;
     }
 
-    public function getAngkot()
+    public function getAngkot($id = null)
     {
+        if($id !== null)
+        {
+            return $this->db()->where('id', $id)->get();
+        }
         return $this->db()->get();
     }
 }

@@ -30,6 +30,31 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+     style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content tx-14">
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalLabel2">Map</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <div class="search-form mg-b-5">
+                        <input id="inputAlamat" type="search" class="form-control" placeholder="Cari alamat">
+                        <button class="btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+                    </div>
+                    <div id="map_canvas" style="height: 500px;"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button"  data-dismiss="modal" class="btn btn-primary tx-13">Pilih</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="content content-fixed content-auth-alt">
     <div class="container ht-100p tx-center">
         <div class="row justify-content-center row-xs mg-b-250">
@@ -88,10 +113,19 @@
                         </div><!-- col -->
                     </div>
                     <div class="form-group mg-b-5">
+
                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Koordinat
                             Anda</label>
-                        <input readonly="" id="koordinat_pemesan" type="text" class="form-control">
-                    </div><!-- col -->
+                        <div class="input-group">
+                            <input readonly id="koordinat_pemesan" type="text"
+                                   class="form-control">
+                            <div class="input-group-append">
+                                <button onclick="mapModal()" class="btn btn-info" type="button"
+                                        id="button-addon2"><i class="fa fa-map"></i> Map
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group mg-b-5">
                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nomor HP</label>
                         <input value="{{ $dataProfil->no_hp }}" id="nohp_pemesan" type="text" class="form-control" placeholder="Masukkan nomor HP">
@@ -114,7 +148,129 @@
 
 @include('panel.footerPanel')
 @include('panel.scriptPanel')
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAa0UwQAFnGd9eGwP2UDY4mWWVXXMrTb0Q"></script>
 <script>
+    var infowindow = new google.maps.InfoWindow();
+    var markers = [];
+
+    $(document).ready(function () {
+        $('#inputAlamat').on('change', function () {
+            var val = $(this).val();
+
+            $.ajax({
+                type: "get",
+                url: "{{ route('getInfoOfOrigins') }}",
+                async: false,
+                dataType: 'json',
+                data: {'origins': val},
+
+                success: function (data) {
+                    var json = $.parseJSON(JSON.stringify(data));
+                    if (typeof (json) != "undefined" && json !== null) {
+                        var geometry = json.results[0].geometry.location;
+                        var lat = geometry.lat;
+                        var lng = geometry.lng;
+                        $('#inputAlamat').val(lat + ", " + lng);
+                        createMarker(lat + ", " + lng);
+                    } else {
+                        //gagal
+                    }
+                }
+            }).done(function () {
+                console.log("Done Maps");
+            });
+        });
+    });
+
+    function mapModal() {
+        $('#mapModal').modal('show')
+    }
+
+    function init_map() {
+        var setting = {
+            zoom: 16,
+            center: new google.maps.LatLng(43.270441, 6.640888),
+            mapTypeControl: true,
+            draggable: true,
+            panControl: false,
+            scaleControl: false,
+            streetViewControl: false,
+            navigationControl: false,
+            disableDoubleClickZoom: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            styles: [
+                {
+                    "featureType": "landscape.natural.landcover",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                }
+            ]
+        };
+        map = new google.maps.Map(document.getElementById('map_canvas'), setting);
+        createMarker("-3.7983408, 102.2662306");
+        google.maps.event.addListener(map, 'click', function (event) {
+            console.log(event.latLng.lat());
+            console.log(event.latLng.lng());
+        });
+
+        // Update lat/long value of div when you move the mouse over the map
+
+        // Create new marker on double click event on the map
+        google.maps.event.addListener(map, 'dblclick', function (event) {
+            $('#koordinat_pemesan').val(event.latLng.lat() + ', ' + event.latLng.lng());
+            createMarkerClick(event.latLng.lat() + ', ' + event.latLng.lng());
+        });
+    }
+
+    function createMarker(coordsStr) {
+        coords = coordsStr.split(", ");
+        map.setCenter(new google.maps.LatLng(coords[0], coords[1]));
+        var point = new google.maps.LatLng(coords[0], coords[1]);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: point
+        });
+        DeleteMarkers();
+        var content = '<strong>Alamat Rumah</strong><br>';
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.setContent(content);
+            infowindow.open(map, marker);
+        });
+        markers.push(marker);
+    }
+
+    function createMarkerClick(coordsStr) {
+        coords = coordsStr.split(", ");
+        var point = new google.maps.LatLng(coords[0], coords[1]);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: point
+        });
+        DeleteMarkers();
+        var content = '<strong>Alamat Anda</strong><br>';
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.setContent(content);
+            infowindow.open(map, marker);
+        });
+        markers.push(marker);
+    }
+
+    function DeleteMarkers() {
+        //Loop through all the markers and remove
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+        markers = [];
+    }
+
+    $(document).ready(function () {
+        google.maps.event.addDomListener(window, 'load', init_map());
+    });
     var hargaPakir =
         {
             @foreach($tempat_parkir_list[0] as $t)

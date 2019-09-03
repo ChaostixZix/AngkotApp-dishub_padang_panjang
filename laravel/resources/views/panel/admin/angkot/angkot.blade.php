@@ -17,21 +17,39 @@
 
 <div class="content content-fixed">
     <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <h4 class="mg-b-5">Angkot</h4>
+                <p class="mg-b-0 tx-color-03">Lihat profil angkot dan edit profil angkot.</p>
+            </div>
+            <div class="mg-t-20 mg-sm-t-0">
+                <button class="btn btn-primary" type="button">
+                    <i class="fa fa-plus"></i> Tambah
+                </button>
+            </div>
+        </div>
+    </div>
+    <hr class="mg-t-60 mg-b-30">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
         <!-- row -->
         <div class="row">
-            <div class="col-sm-6 col-lg-3">
-                <div class="card card-help">
-                    <div class="card-body tx-13">
-                        <div class="tx-60 lh-0 mg-b-25"><i class="fa fa-shuttle-van"></i></div>
-                        <h5><a href="" class="link-01">Angkot 1</a></h5>
-                        <p class="tx-color-03 mg-b-0">Jurusan 1</p>
-                    </div><!-- card-body -->
-                    <div class="card-footer tx-13">
-                        <span>18 Rute</span>
-                        <a href="" class="tx-18 lh-0"><i class="icon ion-md-arrow-forward"></i></a>
-                    </div><!-- card-footer -->
-                </div><!-- card -->
-            </div><!-- col -->
+            @foreach($listAngkot as $l)
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card card-help">
+                        <div class="card-body tx-13">
+                            <div class="tx-60 lh-0 mg-b-25"><i class="fa fa-shuttle-van"></i></div>
+                            <h5><a href="" class="link-01">{{ $l->nama_angkot }}</a></h5>
+                            <p class="tx-color-03 mg-b-0">{{ $l->jurusan }}</p>
+                        </div><!-- card-body -->
+                        <div class="card-footer tx-13">
+                            {{--                        <span>{{ count(json_decode($l->rute)) }} Rute</span>--}}
+                            <a href="" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                            <a href="{{ route('angkotUpdatePageAdmin') }}/{{ $l->id }}"
+                               class="btn btn-outline-secondary"><i class="fa fa-edit"></i></a>
+                        </div><!-- card-footer -->
+                    </div><!-- card -->
+                </div><!-- col -->
+            @endforeach
         </div><!-- row -->
     </div>
 </div>

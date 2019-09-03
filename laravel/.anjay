@@ -2,16 +2,16 @@ APP_NAME=Laravel
 APP_ENV=local
 APP_KEY=base64:X4FQhc8DQwFowqQDPJiVb0D4bBymDSTsjGPNFB6J2is=
     APP_DEBUG=true
-APP_URL=http://54.254.150.140/bintang/
+APP_URL=https://appdishubpadangpanjang.com
 
 LOG_CHANNEL=stack
 
 DB_CONNECTION=mysql
 DB_HOST=localhost
 DB_PORT=3306
-DB_DATABASE=web-dishub
-DB_USERNAME=root
-DB_PASSWORD=dMzqv02jIpSg
+DB_DATABASE=skvolemd_web_dishub
+DB_USERNAME=skvolemd_dishub
+DB_PASSWORD=FsNt,3(_*2Y1
 
     BROADCAST_DRIVER=log
 CACHE_DRIVER=file

@@ -30,7 +30,7 @@ Route::get('logout', 'panelAuth@logout')->name('logout');
 
 Route::group(['prefix' => 'publik'], function () {
     Route::get('aduan', 'publik@aduan')->name('publikAduan');
-    Route::get('a', function (){ return view('panel.public.angkot');})->name('publikAduan');
+    Route::get('angkot', function (){ return view('panel.public.angkot');})->name('publikAngkot');
 });
 
 Route::group([
@@ -72,6 +72,8 @@ Route::group([
         Route::get('parkirFinish/{id?}', 'Feature\Parkir@finishParkir')->name('parkirSelesai');
         Route::get('parkirAjaxSearch/{plat_nomor?}', 'Feature\Parkir@ajaxSearchPage')->name('parkirAjaxSearch');
 
+        Route::post('angkotsubmit', 'Feature\Angkot@update')->name('submitAngkot');
+        Route::get('angkotcreate', 'Feature\Angkot@create')->name('createAngkot');
     });
 
     Route::group([
@@ -105,7 +107,7 @@ Route::group([
             Route::get('pesananderek', 'Admin\Admin@derekPesananPage')->name('derekPesananPageAdmin');
 
             Route::get('angkot', 'Admin\Admin@angkotPage')->name('angkotPageAdmin');
-            Route::get('angkotupdate', 'Admin\Admin@angkotUpdatePage')->name('angkotUpdatePageAdmin');
+            Route::get('angkotupdate/{id?}', 'Admin\Admin@angkotUpdatePage')->name('angkotUpdatePageAdmin');
         });
 
         Route::get('pesananparkir', 'Admin\Admin@parkirPesananPage')->name('parkirPesananPageAdmin');

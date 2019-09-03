@@ -15,8 +15,9 @@ class DataAngkot extends Migration
     {
         Schema::create('data_angkot', function (Blueprint $table)
         {
-            $table->bigInteger('id')->unique();
-            $table->integer('nama_angkot');
+            $table->bigInteger('id')->autoIncrement()->unique();
+            $table->text('nama_angkot');
+            $table->text('jurusan');
 
             //dataMobil
             $table->integer('nomor_registrasi')->nullable();
