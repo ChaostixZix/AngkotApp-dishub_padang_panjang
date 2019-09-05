@@ -19,6 +19,15 @@ class Parkir extends Controller
         return new saldoModel();
     }
 
+    public function getJarak(Request $request)
+    {
+        $koordinat_jemput = $request->input('koordinat_jemput');
+        $koordinat_antar = $request->input('koordinat_antar');
+        $jarak = $this->parkirModel()->getJarak($koordinat_jemput, $koordinat_antar);
+
+        return $jarak;
+    }
+
     public function ajaxSearchPage($plat_nomor)
     {
         date_default_timezone_set("Asia/Bangkok");

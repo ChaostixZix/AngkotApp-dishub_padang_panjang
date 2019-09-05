@@ -26,6 +26,20 @@ class authModel extends Model
         return false;
     }
 
+    public function isVerified($username)
+    {
+        if($this->cekUser($username))
+        {
+            $get = $this->db()->where('username', $username)->get()->pluck('verify')[0];
+            if($get == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
     public function cekUser($username)
     {
         $get = $this->db()->where('username', $username)->get();
@@ -59,6 +73,25 @@ class authModel extends Model
             {
                 return true;
             }
+        }
+        return false;
+    }
+
+    public function getUser($id = null)
+    {
+        if($id !== null)
+        {
+            return $this->db()->where('id', $id)->get();
+        }
+        return $this->db()->get();
+    }
+
+    public function verify($id, $verifyStatus)
+    {
+        $do = $this->db()->where('id', $id)->update(['verify' => $verifyStatus]);
+        if($do)
+        {
+            return true;
         }
         return false;
     }

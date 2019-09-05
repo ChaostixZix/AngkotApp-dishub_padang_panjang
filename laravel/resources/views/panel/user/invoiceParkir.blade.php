@@ -9,7 +9,7 @@
             <div id="invoice" class="row">
                 <div class="col-sm-6">
                     <label class="tx-sans tx-uppercase tx-10 tx-medium tx-spacing-1 tx-color-03">Billed From</label>
-                    <h6 class="tx-15 mg-b-10">DinasPerhubungan.</h6>
+                    <h6 class="tx-15 tx-bolder mg-b-10">PEMERINTAH KOTA PADANG PANJANG .</h6>
                     {{--                    <p class="mg-b-0">201 Something St., Something Town, YT 242, Country 6546</p>--}}
                     {{--                    <p class="mg-b-0">Tel No: 324 445-4544</p>--}}
                     {{--                    <p class="mg-b-0">Email: youremail@companyname.com</p>--}}
@@ -50,7 +50,7 @@
                     </ul>
                 </div><!-- col -->
             </div><!-- row -->
-
+            <h6 class="tx-15 tx-bolder">RETRIBUSI PELAYANAN PARKIR DITEPI JALAN UMUM .</h6>
             <div class="table-responsive mg-t-40">
                 <table class="table table-invoice bd-b">
                     <thead>
@@ -85,6 +85,13 @@
                 <div class="col-sm-6 col-lg-6 order-2 order-sm-0 mg-t-40 mg-sm-t-0">
                     <label class="tx-sans tx-uppercase tx-10 tx-medium tx-spacing-1 tx-color-03">Notes</label>
                     <p>Berikan ini pada tukang parkir.</p>
+                    <h6 class="tx-15 tx-bolder mg-b-10">
+                        Perwarko NO. 5 Tahun 2017, Tanggal 13 November 2017<br>
+                        Tentang Retribusi Jalan Umum
+                    </h6>
+                    <h6 class="tx-15 tx-bolder mg-b-10">
+                        KENDARAAN HARUS DIKUNCI/TIDAK MENGGANTI KERUGIAN KENDARAAN DAN BARANG-BARANG YANG RUSAK/HILANG
+                    </h6>
                 </div><!-- col -->
                 <div class="col-sm-6 col-lg-4 order-1 order-sm-0">
                     <ul class="list-unstyled lh-7 pd-r-10">

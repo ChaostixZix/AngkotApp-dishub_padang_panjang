@@ -20,6 +20,7 @@ class TempatParkir extends Migration
             $table->text('harga_mobil');
             $table->text('harga_motor');
             $table->bigInteger('kapasitas');
+            $table->text('koordinat');
         });
     }
 

@@ -34,4 +34,14 @@ class Auth extends Controller
         }
         return json_encode($return);
     }
+
+    public function verify($id, $status)
+    {
+        $do = $this->authModel()->verify($id, $status);
+        if($do)
+        {
+            return 'true';
+        }
+        return 'false';
+    }
 }

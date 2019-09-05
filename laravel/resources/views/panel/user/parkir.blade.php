@@ -44,13 +44,20 @@
                 <div class="col-lg-12">
                     <div class="search-form mg-b-5">
                         <input id="inputAlamat" type="search" class="form-control" placeholder="Cari alamat">
-                        <button class="btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+                        <button class="btn" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-search">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
                     </div>
                     <div id="map_canvas" style="height: 500px;"></div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button"  data-dismiss="modal" class="btn btn-primary tx-13">Pilih</button>
+                <button type="button" data-dismiss="modal" class="btn btn-primary tx-13">Pilih</button>
             </div>
         </div>
     </div>
@@ -109,7 +116,8 @@
                         <div class="col-sm-5">
                             <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Plat Nomor
                             </label>
-                            <input value="{{ $dataProfil->plat_nomor }}" id="plat_nomor" type="text" class="form-control">
+                            <input value="{{ $dataProfil->plat_nomor }}" id="plat_nomor" type="text"
+                                   class="form-control">
                         </div><!-- col -->
                     </div>
                     <div class="form-group mg-b-5">
@@ -120,7 +128,7 @@
                             <input readonly id="koordinat_pemesan" type="text"
                                    class="form-control">
                             <div class="input-group-append">
-                                <button onclick="mapModal()" class="btn btn-info" type="button"
+                                <button value="btnMap" onclick="mapModal()" class="btn btn-info" type="button"
                                         id="button-addon2"><i class="fa fa-map"></i> Map
                                 </button>
                             </div>
@@ -128,17 +136,21 @@
                     </div>
                     <div class="form-group mg-b-5">
                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nomor HP</label>
-                        <input value="{{ $dataProfil->no_hp }}" id="nohp_pemesan" type="text" class="form-control" placeholder="Masukkan nomor HP">
+                        <input value="{{ $dataProfil->no_hp }}" id="nohp_pemesan" type="text" class="form-control"
+                               placeholder="Masukkan nomor HP">
                     </div>
                     <div class="form-group mg-b-5">
                         <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama</label>
-                        <input value="{{ $dataProfil->nama_lengkap }}" id="nama_pemesan" type="text" class="form-control" placeholder="Masukkan nama">
+                        <input value="{{ $dataProfil->nama_lengkap }}" id="nama_pemesan" type="text"
+                               class="form-control" placeholder="Masukkan nama">
                     </div>
                     <div class="form-group tx-12">
                         silahkan cek sms pesan masuk untuk proses selesai
-{{--                        Setelah mengklik <strong>Pesan Sekarang</strong> silahkan cek sms pesan masuk untuk proses selesai--}}
+                        {{--                        Setelah mengklik <strong>Pesan Sekarang</strong> silahkan cek sms pesan masuk untuk proses selesai--}}
                     </div><!-- form-group -->
-                    <button id="btnPesan" value="btn" onclick="promptPesan()" class="btn btn-brand-02 btn-block">Pesan Sekarang</button>
+                    <button id="btnPesan" value="btn" onclick="promptPesan()" class="btn btn-brand-02 btn-block">Pesan
+                        Sekarang
+                    </button>
                 </div>
             </div><!-- col -->
         </div><!-- row -->
@@ -153,7 +165,6 @@
 <script>
     var infowindow = new google.maps.InfoWindow();
     var markers = [];
-
     $(document).ready(function () {
         $('#inputAlamat').on('change', function () {
             var val = $(this).val();
@@ -212,8 +223,9 @@
             ]
         };
         map = new google.maps.Map(document.getElementById('map_canvas'), setting);
-        createMarker("-3.7983408, 102.2662306");
+        createMarker("0, 0");
         google.maps.event.addListener(map, 'click', function (event) {
+
             console.log(event.latLng.lat());
             console.log(event.latLng.lng());
         });
@@ -223,6 +235,7 @@
         // Create new marker on double click event on the map
         google.maps.event.addListener(map, 'dblclick', function (event) {
             $('#koordinat_pemesan').val(event.latLng.lat() + ', ' + event.latLng.lng());
+            $('#inputAlamat').val(event.latLng.lat() + ', ' + event.latLng.lng());
             createMarkerClick(event.latLng.lat() + ', ' + event.latLng.lng());
         });
     }
@@ -271,7 +284,8 @@
     $(document).ready(function () {
         google.maps.event.addDomListener(window, 'load', init_map());
     });
-    var hargaPakir =
+
+    var hargaParkir =
         {
             @foreach($tempat_parkir_list[0] as $t)
             '{{ $t->id }}': {
@@ -279,6 +293,12 @@
                 'Mobil': '{{ $t->harga_mobil }}',
                 'Motor': '{{ $t->harga_motor }}'
             },
+            @endforeach
+        };
+    var koordinatParkir =
+        {
+            @foreach($tempat_parkir_list[0] as $t)
+            '{{ $t->id }}': '{{ $t->koordinat }}',
             @endforeach
         };
     $(document).ready(function () {
@@ -312,8 +332,7 @@
 
                 if (json['status'] !== "false") {
                     window.location.replace("{{ route('parkirInvoicePage') }}/" + json.invoiceId)
-                }
-                else {
+                } else {
                     Swal.fire({title: 'Gagal', text: 'Reason : ' + json['reason'], type: 'error'})
                 }
             }
@@ -328,9 +347,7 @@
         var lenght = $("#formPesanParkir :input").length;
         var a = 1;
         $("#formPesanParkir :input").each(function () {
-            console.log($('#btnPesan').attr('func') !== true && a === 1);
-            console.log(a)
-            console.log($('#btnPesan').attr('func'));
+            console.log($(this));
             console.log($(this).val());
             a++;
             if ($('#btnPesan').attr('func') !== true && a === lenght) {
@@ -352,24 +369,37 @@
     }
 
 
-
     function promptPesanS() {
-        $('#placeholderPesan').show();
-        $('#detailPesan').hide();
-        var id_tempat_parkir = $('#tempat_parkir').val();
-        var jenis_kendaraan = $('#jenis_kendaraan').val();
-        var plat_nomor = $('#plat_nomor').val();
+        $.ajax({
+            type: "get",
+            url: "{{ route('getJarakParkir') }}",
+            data: {koordinat_jemput: koordinatParkir[$('#tempat_parkir').val()], koordinat_antar: $('#koordinat_pemesan').val()},
 
-            var harga = hargaPakir[id_tempat_parkir][jenis_kendaraan];
-            $('#tempatParkir').text(hargaPakir[id_tempat_parkir]['Nama']);
-            $('#jenisKendaraan').text(jenis_kendaraan);
-            $('#harga').text(harga);
-            $('#platNomor').text(plat_nomor);
-            $('#pesanModal').modal('show');
-
-            $('#placeholderPesan').hide();
-            $('#detailPesan').show();
-
+            success: function (data) {
+                if(data > 10)
+                {
+                    Swal.fire(
+                        'Maaf',
+                        'Jarak anda diatas 10KM dari lokasi Parkir.',
+                        'error'
+                    );
+                }else{
+                    $('#placeholderPesan').show();
+                    $('#detailPesan').hide();
+                    var id_tempat_parkir = $('#tempat_parkir').val();
+                    var jenis_kendaraan = $('#jenis_kendaraan').val();
+                    var plat_nomor = $('#plat_nomor').val();
+                    var harga = hargaParkir[id_tempat_parkir][jenis_kendaraan];
+                    $('#tempatParkir').text(hargaParkir[id_tempat_parkir]['Nama']);
+                    $('#jenisKendaraan').text(jenis_kendaraan);
+                    $('#harga').text(harga);
+                    $('#platNomor').text(plat_nomor);
+                    $('#pesanModal').modal('show');
+                    $('#placeholderPesan').hide();
+                    $('#detailPesan').show();
+                }
+            }
+        });
     }
 
     @if($tempat_parkir_list['jumlah_kapasitas_all'] > 0)
@@ -380,6 +410,7 @@
         }, 2000);
         getLocation()
     }
+
     function getLocation() {
         if (navigator.geolocation) {
             Swal.fire(
@@ -406,7 +437,9 @@
     function showPosition(position) {
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
+        createMarker(latitude + ', ' + longitude);
         $('#koordinat_pemesan').val(latitude + ', ' + longitude);
+        $('#inputAlamat').val(latitude + ', ' + longitude);
     }
 
     @else

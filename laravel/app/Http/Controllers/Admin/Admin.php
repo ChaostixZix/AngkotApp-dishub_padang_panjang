@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\authModel;
 use App\Http\Controllers\Controller;
 use App\web\aduanModel;
 use App\web\angkotModel;
@@ -37,6 +38,11 @@ class Admin extends Controller
     private function angkotModel()
     {
         return new angkotModel();
+    }
+
+    private function authModel()
+    {
+        return new authModel();
     }
 
     public function postPage()
@@ -92,6 +98,7 @@ class Admin extends Controller
         ];
         return view('panel.admin.angkot.angkot')->with($data);
     }
+
     public function angkotUpdatePage($id)
     {
         Carbon::setLocale('id');
@@ -100,5 +107,14 @@ class Admin extends Controller
             'body' => 'app-contact contact-content-show',
         ];
         return view('panel.admin.angkot.angkotUpdate')->with($data);
+    }
+
+    public function userListPage()
+    {
+        $data = [
+            'userList' => $this->authModel()->getUser(),
+            'body' => 'app-contact contact-content-show',
+        ];
+        return view('panel.admin.userList')->with($data);
     }
 }

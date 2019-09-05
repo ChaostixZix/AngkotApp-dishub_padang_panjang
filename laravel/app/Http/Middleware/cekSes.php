@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\authModel;
 use Closure;
 use Illuminate\Support\Facades\Session;
 
@@ -14,8 +15,14 @@ class cekSes
      * @param \Closure $next
      * @return mixed
      */
+
+    private function authModel()
+    {
+        return new authModel();
+    }
     public function handle($request, Closure $next, $guard = null)
     {
+        $levelVerifyFirst = ['tukang_parkir', 'supir'];
         $routeName = $request->route()->getName();
 
         $se = Session::get('username');
@@ -24,6 +31,9 @@ class cekSes
             Session::pull('loginVisit');
             Session::push('lastRoute', $routeName);
             return redirect(route('loginPage'));
+        }elseif($se !== false && in_array(Session::get('level'), $levelVerifyFirst) && !$this->authModel()->isVerified($se))
+        {
+            return redirect(route('verifyFirst'));
         }
 
 

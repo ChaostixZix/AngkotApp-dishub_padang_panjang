@@ -31,6 +31,7 @@ Route::get('logout', 'panelAuth@logout')->name('logout');
 Route::group(['prefix' => 'publik'], function () {
     Route::get('aduan', 'publik@aduan')->name('publikAduan');
     Route::get('angkot', function (){ return view('panel.public.angkot');})->name('publikAngkot');
+    Route::get('verifyFirst', function (){ return view('panel.auth.verifyFirst');})->name('verifyFirst');
 });
 
 Route::group([
@@ -71,6 +72,8 @@ Route::group([
         Route::post('parkirNew', 'Feature\Parkir@pesan')->name('parkirNew');
         Route::get('parkirFinish/{id?}', 'Feature\Parkir@finishParkir')->name('parkirSelesai');
         Route::get('parkirAjaxSearch/{plat_nomor?}', 'Feature\Parkir@ajaxSearchPage')->name('parkirAjaxSearch');
+        Route::get('getjarakparkir', 'Feature\Parkir@getJarak')->name('getJarakParkir');
+
 
         Route::post('angkotsubmit', 'Feature\Angkot@update')->name('submitAngkot');
         Route::get('angkotcreate', 'Feature\Angkot@create')->name('createAngkot');
@@ -102,7 +105,10 @@ Route::group([
             'middleware' => ['fiturAdmin']
         ], function () {
             Route::get('post', 'Admin\Admin@postPage')->name('postAdmin');
+            Route::get('userlist', 'Admin\Admin@userListPage')->name('userAdmin');
             Route::get('aduan', 'Admin\Admin@aduanPage')->name('aduanPageAdmin');
+
+            Route::get('verifyakun/{id?}/{status?}', 'Feature\Auth@verify')->name('verifyAdmin');
 
             Route::get('pesananderek', 'Admin\Admin@derekPesananPage')->name('derekPesananPageAdmin');
 
