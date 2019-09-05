@@ -142,6 +142,7 @@
     var markers = [];
     $(document).ready(function () {
         $('#inputAlamat').on('change', function () {
+            $('#koordinat_pemesan').val($(this).val());
             var val = $(this).val();
 
             $.ajax({
