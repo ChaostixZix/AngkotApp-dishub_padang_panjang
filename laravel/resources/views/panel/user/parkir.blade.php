@@ -184,6 +184,7 @@
                         var lat = geometry.lat;
                         var lng = geometry.lng;
                         $('#inputAlamat').val(lat + ", " + lng);
+                        $('#koordinat_pemesan').val(lat + ", " + lng);
                         createMarker(lat + ", " + lng);
                     } else {
                         //gagal
