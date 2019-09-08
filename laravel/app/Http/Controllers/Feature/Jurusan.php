@@ -6,7 +6,7 @@ use App\web\angkotModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class Angkot extends Controller
+class Jurusan extends Controller
 {
     private function angkotModel()
     {
@@ -15,8 +15,12 @@ class Angkot extends Controller
 
     public function create(Request $request)
     {
-        $name = $request->input('nama_angkot');
-        $do = $this->angkotModel()->createAngkot($name);
+        $awal_jurusan = $request->input('awal_jurusan');
+        $tujuan_jurusan = $request->input('tujuan_jurusan');
+        $rute = $request->input('rute');
+
+
+        $do = $this->angkotModel()->createJurusan($awal_jurusan, $tujuan_jurusan, $rute);
         if ($do) {
             return 'true';
         }
@@ -25,13 +29,13 @@ class Angkot extends Controller
 
     public function update(Request $request)
     {
-        $data_insert = [];
-        $input = ['nama_angkot', 'id_jurusan', 'nomor_registrasi', 'nama_pemilik', 'merk', 'jenis', 'tahun_pembuatan', 'isi_silinder', 'warna_kb', 'no_rangka', 'no_mesin', 'no_bpkb', 'bahan_bakar', 'warna_tnkb', 'no_pol_lama', 'berat_kb', 'jumlah_sumbu', 'jumlah_penumpang', 'supir'];
-        foreach ($input as $a) {
-            $data_insert[$a] = $request->input($a);
-        }
+        $awal_jurusan = $request->input('awal_jurusan');
+        $tujuan_jurusan = $request->input('tujuan_jurusan');
+        $rute = $request->input('rute');
+
+//        $rute = json_encode($rute);
         $id = $request->input('id');
-        $do = $this->angkotModel()->updateAngkotRaw($id, $data_insert);
+        $do = $this->angkotModel()->updateJurusan($id, $awal_jurusan, $tujuan_jurusan, $rute);
         if ($do) {
             return 'true';
         }
@@ -40,7 +44,7 @@ class Angkot extends Controller
 
     public function delete($id)
     {
-        $do = $this->angkotModel()->deleteAngkot($id);
+        $do = $this->angkotModel()->deleteJurusan($id);
         if($do)
         {
             return 'true';
@@ -50,7 +54,7 @@ class Angkot extends Controller
 
     public function getData($id)
     {
-        $get = $this->angkotModel()->getAngkot($id);
+        $get = $this->angkotModel()->getJurusan($id);
         if($get !== null && count($get) > 0)
         {
             return json_encode($get->toArray());

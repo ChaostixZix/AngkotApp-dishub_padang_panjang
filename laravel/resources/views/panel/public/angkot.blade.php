@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="{{ url('/') }}/dashforge/assets/css/dashforge.css">
 <link rel="stylesheet" href="{{ url('/') }}/dashforge/assets/css/dashforge.calendar.css">
 @include('panel.navbarPanel')
-
+@foreach($listAngkot as $a)
 <div class="content content-fixed">
     <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
         <!-- row -->
@@ -35,6 +35,7 @@
         </div><!-- row -->
     </div>
 </div>
+@endforeach
 
 
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>

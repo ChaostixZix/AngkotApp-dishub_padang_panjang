@@ -14,7 +14,7 @@
                                 <div class="card-body tx-13">
                                     <div class="tx-60 lh-0 mg-b-25"><i class="fa fa-shuttle-van"></i></div>
                                     <h5><a href="" class="link-01">{{ $d->nama_angkot }}</a></h5>
-                                    <p class="tx-color-03 mg-b-0">{{ $d->jurusan }}</p>
+{{--                                    <p class="tx-color-03 mg-b-0">{{ $d->jurusan }}</p>--}}
                                 </div><!-- card-body -->
                                 {{--                            <div class="card-footer tx-13">--}}
                                 {{--                                <span>18 Rute</span>--}}
@@ -42,16 +42,21 @@
                                 <fieldset class="form-fieldset mg-b-20">
                                     <legend class="tx-center">Informasi Angkot</legend>
                                     <div class="form-group">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama Angkot</label>
+                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama
+                                            Angkot</label>
                                         <input value="{{ $d->nama_angkot }}" id="nama_angkot" type="text"
                                                class="form-control"
                                                placeholder="Nama Angkot">
                                     </div><!-- col -->
                                     <div class="form-group">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Jurusan Angkot</label>
-                                        <input value="{{ $d->jurusan }}" id="jurusan" type="text"
-                                               class="form-control"
-                                               placeholder="Nomor Registrasi">
+                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Jurusan
+                                            Angkot</label>
+                                        <select id="id_jurusan" class="custom-select">
+                                            <option value=""></option>
+                                        @foreach($dataJurusan as $c)
+                                                <option @if($d->id_jurusan == $c->id) selected @endif value="{{ $c->id }}">{{ $c->awal_jurusan }} -> {{ $c->tujuan_jurusan }}</option>
+                                            @endforeach
+                                        </select>
                                     </div><!-- col -->
                                 </fieldset>
                                 <fieldset class="form-fieldset mg-b-20">
@@ -67,7 +72,8 @@
                                         <label
                                             class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama
                                             Pemilik</label>
-                                        <input value="{{ $d->nama_pemilik }}" id="nama_pemilik" type="text" class="form-control"
+                                        <input value="{{ $d->nama_pemilik }}" id="nama_pemilik" type="text"
+                                               class="form-control"
                                                placeholder="Nama Pemilik">
                                     </div><!-- col -->
                                     <div class="form-group">
@@ -92,21 +98,24 @@
                                                placeholder="Tahun Pembuatan">
                                     </div>
                                     <div class="form-group">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Isi Silinder</label>
+                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Isi
+                                            Silinder</label>
                                         <input value="{{ $d->isi_silinder }}" id="isi_silinder"
                                                type="text"
                                                class="form-control"
                                                placeholder="Isi Silinder">
                                     </div>
                                     <div class="form-group">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Warna KB</label>
+                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Warna
+                                            KB</label>
                                         <input value="{{ $d->warna_kb }}" id="warna_kb"
                                                type="text"
                                                class="form-control"
                                                placeholder="Warna KB">
                                     </div>
                                     <div class="form-group">
-                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">NO Rangka</label>
+                                        <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">NO
+                                            Rangka</label>
                                         <input value="{{ $d->no_rangka }}" id="no_rangka"
                                                type="text"
                                                class="form-control"
@@ -181,33 +190,50 @@
                                 </fieldset>
                                 <fieldset class="form-fieldset mg-b-20">
                                     <legend class="tx-center">Rute</legend>
-                                    <div id="inputListRute" class="mg-b-5">
+                                    <div class="mg-b-5">
                                         <div class="form-group">
-                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 tx-color-03">Rute
-                                                1</label>
-                                            <input value="{{ json_decode($d->rute)[0]}}" id="rute[]" type="text"
-                                                   class="form-control"
-                                                   placeholder="Rute 1">
+                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 tx-color-03">Pengemudi</label>
+                                            <select class="custom-select" id="supir">
+                                                <option value=""></option>
+                                                @foreach($supirList as $s)
+                                                    <option value="{{ $s->username }}">{{ $s->nama_lengkap }}</option>
+                                                @endforeach
+                                            </select>
                                         </div><!-- col -->
-                                        @foreach(json_decode($d->rute) as $key => $r)
-                                            @if($key !== 0)
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        <input value="{{ $r }}" id="rute[]" type="text"
-                                                               class="form-control">
-                                                        <div class="input-group-append">
-                                                            <button class="btn btn-danger remove_field" type="button"
-                                                                    id="button-addon2">Remove
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                        @endforeach
                                     </div>
-                                    <button id="btnAddRute" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah
-                                    </button>
                                 </fieldset>
+{{--                                <fieldset class="form-fieldset mg-b-20">--}}
+{{--                                    <legend class="tx-center">Rute</legend>--}}
+{{--                                    <div id="inputListRute" class="mg-b-5">--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 tx-color-03">Rute--}}
+{{--                                                1</label>--}}
+{{--                                            <input value="{{ json_decode($d->rute)[0]}}" id="rute[]" type="text"--}}
+{{--                                                   class="form-control"--}}
+{{--                                                   placeholder="Rute 1">--}}
+{{--                                        </div><!-- col -->--}}
+{{--                                        @if($d->rute !== null)--}}
+{{--                                            @foreach(json_decode($d->rute) as $key => $r)--}}
+{{--                                                @if($key !== 0)--}}
+{{--                                                    <div class="form-group">--}}
+{{--                                                        <div class="input-group">--}}
+{{--                                                            <input value="{{ $r }}" id="rute[]" type="text"--}}
+{{--                                                                   class="form-control">--}}
+{{--                                                            <div class="input-group-append">--}}
+{{--                                                                <button class="btn btn-danger remove_field"--}}
+{{--                                                                        type="button"--}}
+{{--                                                                        id="button-addon2">Remove--}}
+{{--                                                                </button>--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                @endif--}}
+{{--                                            @endforeach--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
+{{--                                    <button id="btnAddRute" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah--}}
+{{--                                    </button>--}}
+{{--                                </fieldset>--}}
                             </div>
                         </div>
                         <div class="card-footer bg-transparent pd-y-10 pd-sm-y-15 pd-x-10 pd-sm-x-20">
@@ -228,6 +254,13 @@
 @include('panel.scriptPanel')
 <script>
     $(document).ready(function () {
+
+        @foreach($dataAngkot as $d)
+            @if ($d->supir !== null)
+        $('#supir').val('{{ $d->supir }}');
+            @endif
+        @endforeach
+
         var max_fields = 10; //maximum input boxes allowed
         var wrapper = $("#inputListRute"); //Fields wrapper
         var add_button = $("#btnAddRute"); //Add button ID
@@ -264,6 +297,7 @@
 
     function submit() {
         var formData = new FormData;
+        formData.append('id', {{ $dataAngkot[0]->id }})
         formData.append('_token', '{{ csrf_token() }}');
         $('#formAngkot :input').each(function () {
             // if ($(this).attr('id') !== 'rute') {
@@ -294,5 +328,6 @@
             }
         })
     }
+
 </script>
 @include('panel.footerPanel')

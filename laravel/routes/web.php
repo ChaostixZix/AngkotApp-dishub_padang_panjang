@@ -30,7 +30,7 @@ Route::get('logout', 'panelAuth@logout')->name('logout');
 
 Route::group(['prefix' => 'publik'], function () {
     Route::get('aduan', 'publik@aduan')->name('publikAduan');
-    Route::get('angkot', function (){ return view('panel.public.angkot');})->name('publikAngkot');
+    Route::get('angkot', 'publik@angkot')->name('publikAngkot');
     Route::get('verifyFirst', function (){ return view('panel.auth.verifyFirst');})->name('verifyFirst');
 });
 
@@ -74,9 +74,18 @@ Route::group([
         Route::get('parkirAjaxSearch/{plat_nomor?}', 'Feature\Parkir@ajaxSearchPage')->name('parkirAjaxSearch');
         Route::get('getjarakparkir', 'Feature\Parkir@getJarak')->name('getJarakParkir');
 
-
+        //Angkot
         Route::post('angkotsubmit', 'Feature\Angkot@update')->name('submitAngkot');
-        Route::get('angkotcreate', 'Feature\Angkot@create')->name('createAngkot');
+        Route::post('angkotcreate', 'Feature\Angkot@create')->name('createAngkot');
+        Route::get('getdataangkot/{id?}', 'Feature\Angkot@getData')->name('getAngkot');
+        Route::get('angkotdelete/{id?}', 'Feature\Angkot@delete')->name('deleteAngkot');
+
+        //Jurusan
+        Route::post('jurusansubmit', 'Feature\Jurusan@update')->name('submitJurusan');
+        Route::post('jurusancreate', 'Feature\Jurusan@create')->name('createJurusan');
+        Route::get('getdatajurusan/{id?}', 'Feature\Jurusan@getData')->name('getJurusan');
+        Route::get('jurusandelete/{id?}', 'Feature\Jurusan@delete')->name('deleteJurusan');
+
     });
 
     Route::group([
@@ -114,6 +123,9 @@ Route::group([
 
             Route::get('angkot', 'Admin\Admin@angkotPage')->name('angkotPageAdmin');
             Route::get('angkotupdate/{id?}', 'Admin\Admin@angkotUpdatePage')->name('angkotUpdatePageAdmin');
+
+            Route::get('jurusan', 'Admin\Admin@jurusanPage')->name('jurusanPageAdmin');
+            Route::get('jurusanupdate/{id?}', 'Admin\Admin@jurusanUpdatePage')->name('jurusanUpdatePageAdmin');
         });
 
         Route::get('pesananparkir', 'Admin\Admin@parkirPesananPage')->name('parkirPesananPageAdmin');

@@ -104,9 +104,31 @@ class Admin extends Controller
         Carbon::setLocale('id');
         $data = [
             'dataAngkot' => $this->angkotModel()->getAngkot($id),
+            'dataJurusan' => $this->angkotModel()->getJurusan(),
             'body' => 'app-contact contact-content-show',
+            'supirList' => $this->derekModel()->getSupirList(),
         ];
         return view('panel.admin.angkot.angkotUpdate')->with($data);
+    }
+
+    public function jurusanPage()
+    {
+        Carbon::setLocale('id');
+        $data = [
+            'listJurusan' => $this->angkotModel()->getJurusan(),
+            'body' => 'app-contact contact-content-show',
+        ];
+        return view('panel.admin.angkot.jurusan')->with($data);
+    }
+
+    public function jurusanUpdatePage($id)
+    {
+        Carbon::setLocale('id');
+        $data = [
+            'dataJurusan' => $this->angkotModel()->getJurusan($id),
+            'body' => 'app-contact contact-content-show',
+        ];
+        return view('panel.admin.angkot.jurusanUpdate')->with($data);
     }
 
     public function userListPage()

@@ -93,6 +93,10 @@
                             <li class="nav-sub-item"><a href="{{ route('parkirPesananPageAdmin') }}"
                                                         class="nav-sub-link"><i class="fa fa-parking mg-r-15"></i>Pesanan
                                     Parkir</a></li>
+                            <li class="nav-sub-item"><a href="{{ route('angkotPageAdmin') }}"
+                                                        class="nav-sub-link"><i class="fa fa-shuttle-van mg-r-15"></i>Data Angkot</a></li>
+                            <li class="nav-sub-item"><a href="{{ route('angkotPageAdmin') }}"
+                                                        class="nav-sub-link"><i class="fa fa-route mg-r-15"></i>Data Jurusan</a></li>
                             <li class="nav-sub-item"><a href="{{ route('parkirPesananSearchPageAdmin') }}"
                                                         class="nav-sub-link"><i class="fa fa-search mg-r-15"></i>SearchPesanan
                                     Parkir</a></li>

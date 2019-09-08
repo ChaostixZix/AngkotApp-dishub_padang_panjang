@@ -17,7 +17,6 @@ class DataAngkot extends Migration
         {
             $table->bigInteger('id')->autoIncrement()->unique();
             $table->text('nama_angkot');
-            $table->text('jurusan');
 
             //dataMobil
             $table->integer('nomor_registrasi')->nullable();
@@ -36,7 +35,10 @@ class DataAngkot extends Migration
             $table->text('berat_kb')->nullable();
             $table->text('jumlah_sumbu')->nullable();
             $table->text('jumlah_penumpang')->nullable();
-            $table->json('rute')->nullable();
+
+            $table->integer('id_jurusan')->nullable();
+
+            $table->json('supir')->nullable();
         });
     }
 
