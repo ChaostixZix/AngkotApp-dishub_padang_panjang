@@ -6,6 +6,7 @@ use App\web\aduanModel;
 use App\web\angkotModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class publik extends Controller
 {
@@ -35,8 +36,9 @@ class publik extends Controller
     {
         Carbon::setLocale('id');
         $data = [
-            'listAngkot' => $this->angkotModel()->getAngkot()
-        ];
+            'listAngkot' => $this->angkotModel()->getAngkotOfSupir(Session::get('username')),
+            'dataJurusan' => $this->angkotModel()->getJurusan(),
+            ];
         return view('panel.public.angkot')->with($data);
     }
 

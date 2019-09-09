@@ -16,7 +16,7 @@ class fiturRestricted
      */
     public function handle($request, Closure $next)
     {
-        $whitelist = ["tukang_parkir", 'admin'];
+        $whitelist = ["tukang_parkir", 'admin', 'supir'];
         if(!in_array(Session::get('level'), $whitelist))
         {
             return redirect(route('depanPanel'));

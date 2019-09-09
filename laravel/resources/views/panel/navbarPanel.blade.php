@@ -83,7 +83,7 @@
                         <a href="" class="nav-link"><i data-feather="package"></i> Admin</a>
                         <ul class="navbar-menu-sub">
                             <li class="nav-sub-item"><a href="{{ route('depanPanel') }}" class="nav-sub-link"><i
-                                        class="fa fa-home mg-r-15"></i>Dashboard</a></li>
+                                class="fa fa-home mg-r-15"></i>Dashboard</a></li>
                             {{--                            <li class="nav-sub-item"><a href="app-calendar.html" class="nav-sub-link"><i data-feather="alert-circle"></i>List Permohonan</a></li>--}}
                             <li class="nav-sub-item"><a href="{{ route('aduanPageAdmin') }}" class="nav-sub-link"><i
                                         class="fa fa-mail-bulk mg-r-15"></i>List Aduan</a></li>
@@ -95,7 +95,7 @@
                                     Parkir</a></li>
                             <li class="nav-sub-item"><a href="{{ route('angkotPageAdmin') }}"
                                                         class="nav-sub-link"><i class="fa fa-shuttle-van mg-r-15"></i>Data Angkot</a></li>
-                            <li class="nav-sub-item"><a href="{{ route('angkotPageAdmin') }}"
+                            <li class="nav-sub-item"><a href="{{ route('jurusanPageAdmin') }}"
                                                         class="nav-sub-link"><i class="fa fa-route mg-r-15"></i>Data Jurusan</a></li>
                             <li class="nav-sub-item"><a href="{{ route('parkirPesananSearchPageAdmin') }}"
                                                         class="nav-sub-link"><i class="fa fa-search mg-r-15"></i>SearchPesanan

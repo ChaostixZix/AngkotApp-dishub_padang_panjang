@@ -50,6 +50,11 @@ class DataProfil extends Migration
 
             $table->string('jenis_kendaraan')->nullable();
             $table->string('plat_nomor')->nullable();
+
+            $table->string('tinggi_badan')->nullable();
+            $table->string('gol_darah')->nullable();
+            $table->string('no_sim')->nullable();
+            $table->string('berlaku_sim')->nullable();
         });
     }
 

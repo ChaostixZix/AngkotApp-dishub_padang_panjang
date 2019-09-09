@@ -56,15 +56,18 @@ class Profil extends Controller
             'twitter' => 'inputTwitter',
 
             'jenis_kendaraan' => 'jenis_kendaraan',
-            'plat_nomor' => 'plat_nomor'
+            'plat_nomor' => 'plat_nomor',
+
+            'tinggi_badan' => 'inputTinggiBadan',
+            'gol_darah' => 'inputGolonganDarah',
+            'no_sim' => 'inputNoSim',
+            'berlaku_sim' => 'inputBerlakuSim',
         ];
         $dataInsert = [];
-        foreach ($data as $i  => $val)
-        {
+        foreach ($data as $i => $val) {
             $dataInsert[$i] = $request->input($val);
         }
-        if($request->hasFile('inputFoto'))
-        {
+        if ($request->hasFile('inputFoto')) {
             $file = $request->file('inputFoto');
             $nama_folder = $username;
             $nama_file = $file->getClientOriginalName();
@@ -74,10 +77,12 @@ class Profil extends Controller
         }
 
         $do = $this->model()->updateProfil($username, $dataInsert);
-        $do2 = $this->authModel()->updateRaw($username, [
-            'nama_lengkap' => $dataInsert['nama_lengkap']
-        ]);
-        if($do && $do2)
+        if ($dataInsert['nama_lengkap'] !== null) {
+            $do2 = $this->authModel()->updateRaw($username, [
+                'nama_lengkap' => $dataInsert['nama_lengkap']
+            ]);
+        }
+        if($do)
         {
             return 'true';
         }

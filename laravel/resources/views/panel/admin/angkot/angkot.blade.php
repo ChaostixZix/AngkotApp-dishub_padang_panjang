@@ -16,11 +16,33 @@
 @include('panel.navbarPanel')
 
 <div class="content content-fixed">
+    <div class="modal fade" id="profilModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+         style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content tx-14">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel2">Informasi Supir</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="detailProfil" class="mg-b-0">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary tx-13" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="newAngkot" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered wd-sm-650" role="document">
             <div class="modal-content">
                 <div class="modal-header pd-y-20 pd-x-20 pd-sm-x-30">
-                    <a href="" role="button" class="close pos-absolute t-15 r-15" data-dismiss="modal" aria-label="Close">
+                    <a href="" role="button" class="close pos-absolute t-15 r-15" data-dismiss="modal"
+                       aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </a>
                     <div class="media align-items-center">
@@ -73,13 +95,17 @@
                         <div class="card-body tx-13">
                             <div class="tx-60 lh-0 mg-b-25"><i class="fa fa-shuttle-van"></i></div>
                             <h5><a href="" class="link-01">{{ $l->nama_angkot }}</a></h5>
-{{--                            <p class="tx-color-03 mg-b-0">{{ $l->jurusan }}</p>--}}
+                            {{--                            <p class="tx-color-03 mg-b-0">{{ $l->jurusan }}</p>--}}
                         </div><!-- card-body -->
                         <div class="card-footer tx-13">
                             {{--                        <span>{{ count(json_decode($l->rute)) }} Rute</span>--}}
                             <a href="" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                            <a onclick="deleteAngkot({{ $l->id }})" class="btn btn-danger"><i class="tx-white fa fa-trash"></i></a>
-                            <a href="" class="btn btn-outline-secondary"><i class="fa fa-user"></i></a>
+                            <a onclick="deleteAngkot({{ $l->id }})" class="btn btn-danger"><i
+                                    class="tx-white fa fa-trash"></i></a>
+                            @if($l->supir !== null)
+                                <a onclick="profilsupir('{{$l->id}}')" class="btn btn-secondary"><i
+                                        class="tx-white fa fa-user"></i></a>
+                            @endif
                             <a href="{{ route('angkotUpdatePageAdmin') }}/{{ $l->id }}"
                                class="btn btn-outline-secondary"><i class="fa fa-edit"></i></a>
                         </div><!-- card-footer -->
@@ -132,26 +158,43 @@
         })
     }
 
+    function profilsupir(id) {
+        $.ajax({
+            url: '{{ route('getSupirDataAngkot') }}/' + id,
+            type: 'get',
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data !== 'false') {
+                    $('#detailProfil').html(data);
+                    $('#profilModal').modal('show');
+                } else {
+                    Swal.fire('Gagal', 'Gagal menghapus angkot', 'error');
+                }
+
+            }
+        })
+    }
+
     function deleteAngkot(id) {
         $.ajax({
-            url: '{{ route('deleteAngkot') }}/'+ id,
+            url: '{{ route('deleteAngkot') }}/' + id,
             type: 'get',
             processData: false,
             contentType: false,
             success: function (data) {
                 if (data === 'true') {
-                    if (data === 'true') {
-                        Swal.fire({
-                            title: 'Berhasil',
-                            text: 'Berhasil menghapus angkot',
-                            type: 'success'
-                        }).then(function () {
-                            $('#angkot'+id).hide();
-                        });
-                    } else {
-                        Swal.fire('Gagal', 'Gagal menghapus angkot', 'error');
-                    }
+                    Swal.fire({
+                        title: 'Berhasil',
+                        text: 'Berhasil menghapus angkot',
+                        type: 'success'
+                    }).then(function () {
+                        $('#angkot' + id).hide();
+                    });
+                } else {
+                    Swal.fire('Gagal', 'Gagal menghapus angkot', 'error');
                 }
+
             }
         })
     }

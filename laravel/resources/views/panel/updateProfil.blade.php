@@ -9,12 +9,15 @@
             <div class="profile-sidebar pd-lg-r-25">
                 <div class="row">
                     <div class="col-sm-3 col-md-2 col-lg">
-                        <div class="avatar avatar-xxl avatar-online"><img src="https://via.placeholder.com/500"
-                                                                          class="rounded-circle" alt=""></div>
+                        <div class="avatar avatar-xxl"><img src="https://via.placeholder.com/500"
+                                                            class="rounded-circle" alt=""></div>
                     </div><!-- col -->
                     <div class="col-sm-8 col-md-7 col-lg mg-t-20 mg-sm-t-0 mg-lg-t-25">
-                        <h5 class="mg-b-2 tx-spacing--1">{{ strtoupper(Session::get('username')) }}</h5>
-                        <p class="tx-color-03 mg-b-25">@fenchiumao</p>
+                        <h5 class="mg-b-2 tx-spacing--1">
+                            @if($statusProfil == true)
+                                {{ $dataProfil[0]->nama_lengkap }}
+                            @endif</h5>
+                        <p class="tx-color-03 mg-b-25">@ {{ strtoupper(Session::get('username')) }}</p>
 
                         <p class="tx-13 tx-color-02 mg-b-25">Redhead, Innovator, Saviour of Mankind, Hopeless Romantic,
                             Attractive 20-something Yogurt Enthusiast... <a href="">Read more</a></p>
@@ -65,7 +68,8 @@
                                         <div class="form-group">
                                             <label
                                                 class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">NIK</label>
-                                            <input value="{{ $d->nik }}" id="inputNik" type="number" class="form-control"
+                                            <input value="{{ $d->nik }}" id="inputNik" type="number"
+                                                   class="form-control"
                                                    placeholder="Nomor Induk Keluarga">
                                         </div><!-- col -->
                                         <div class="form-group">
@@ -128,7 +132,52 @@
                                             </select>
                                         </div>
                                     </fieldset>
-                                    <fieldset class="form-fieldset">
+                                    @if(Session::get('level') == 'supir')
+                                        <fieldset class="form-fieldset mg-b-20">
+                                            <legend>Informasi Supir</legend>
+                                            <div class="row row-sm mg-b-20">
+                                                <div class="col-sm-12 mg-b-20">
+                                                    <label
+                                                        class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Tinggi
+                                                        Badan</label>
+                                                    <input value="{{ $d->tinggi_badan }}" id="inputTinggiBadan"
+                                                           type="number"
+                                                           class="form-control"
+                                                           placeholder="Tinggi Badan">
+                                                </div><!-- col -->
+                                                <div class="col-sm-12">
+                                                    <label
+                                                        class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Golongan
+                                                        Darah</label>
+                                                    <input value="{{ $d->gol_darah }}" id="inputGolonganDarah"
+                                                           type="email"
+                                                           class="form-control"
+                                                           placeholder="Golongan Darah">
+                                                </div><!-- col -->
+                                            </div>
+                                            <div class="row row-sm mg-b-20">
+                                                <div class="col-sm-6 mg-b-20">
+                                                    <label
+                                                        class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">No
+                                                        Sim</label>
+                                                    <input value="{{ $d->no_sim }}" id="inputNoSim" type="text"
+
+                                                           class="form-control"
+                                                           placeholder="No Sim">
+                                                </div><!-- col -->
+                                                <div class="col-sm-6">
+                                                    <label
+                                                        class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Berlaku
+                                                        Sampai</label>
+                                                    <input value="{{ $d->berlaku_sim }}" id="inputBerlakuSim"
+                                                           type="email"
+                                                           class="form-control"
+                                                           placeholder="Berlaku Sampai">
+                                                </div><!-- col -->
+                                            </div>
+                                        </fieldset>
+                                    @endif
+                                    <fieldset class="form-fieldset mg-b-20">
                                         <legend class="tx-center">Informasi Keluarga</legend>
                                         <div class="row">
                                             <div class="col-sm-6">
@@ -296,7 +345,8 @@
                                         <legend>Informasi Tambahan</legend>
                                         <div class="row row-sm mg-b-5">
                                             <div class="col-sm">
-                                                <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Jenis
+                                                <label
+                                                    class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Jenis
                                                     Kendaraan</label>
                                                 <select id="jenis_kendaraan" class="custom-select">
                                                     <option value="">Pilih</option>
@@ -314,9 +364,12 @@
                                                 </select>
                                             </div><!-- col -->
                                             <div class="col-sm-5">
-                                                <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Plat Nomor
+                                                <label
+                                                    class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Plat
+                                                    Nomor
                                                 </label>
-                                                <input value="{{ $d->plat_nomor }}" id="plat_nomor" type="text" class="form-control">
+                                                <input value="{{ $d->plat_nomor }}" id="plat_nomor" type="text"
+                                                       class="form-control">
                                             </div><!-- col -->
                                         </div>
                                     </fieldset>
@@ -382,6 +435,7 @@
     function updateProfile() {
         $('#formProfil').hide();
         $('#loadingLogo').show();
+        var formData = new FormData();
         var data = {
             'inputNik': 'inputNik',
             'inputNamaLengkap': 'inputNamaLengkap',
@@ -416,7 +470,17 @@
             'jenis_kendaraan': 'jenis_kendaraan',
             'plat_nomor': 'plat_nomor'
         };
-        var formData = new FormData();
+            @if(Session::get('level') == 'supir')
+        var dataProfil = {
+                'inputTinggiBadan': 'inputTinggiBadan',
+                'inputGolonganDarah': 'inputGolonganDarah',
+                'inputNoSim': 'inputNoSim',
+                'inputBerlakuSim': 'inputBerlakuSim'
+            };
+        Object.keys(dataProfil).forEach(function (value, index) {
+            formData.append(value, $('#' + value).val());
+        });
+            @endif
         formData.append('_token', '{{ csrf_token() }}');
         Object.keys(data).forEach(function (value, index) {
             formData.append(value, $('#' + value).val());
@@ -428,7 +492,7 @@
             contentType: false,
             data: formData,
             success: function (data) {
-                window.location.href = "{{ route('depanPanel') }}";
+                window.location.reload();
             }
         });
     }

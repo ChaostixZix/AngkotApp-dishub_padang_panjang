@@ -75,6 +75,8 @@ Route::group([
         Route::get('getjarakparkir', 'Feature\Parkir@getJarak')->name('getJarakParkir');
 
         //Angkot
+        Route::get('getsupirprofil/{id?}', 'Feature\Angkot@getSupirData')->name('getSupirDataAngkot');
+        Route::get('getjurusandetail/{id?}', 'Feature\Angkot@getJurusanData')->name('getJurusanDataAngkot');
         Route::post('angkotsubmit', 'Feature\Angkot@update')->name('submitAngkot');
         Route::post('angkotcreate', 'Feature\Angkot@create')->name('createAngkot');
         Route::get('getdataangkot/{id?}', 'Feature\Angkot@getData')->name('getAngkot');
@@ -128,6 +130,7 @@ Route::group([
             Route::get('jurusanupdate/{id?}', 'Admin\Admin@jurusanUpdatePage')->name('jurusanUpdatePageAdmin');
         });
 
+        Route::get('angkotgantijurusan/{id_angkot?}/{id_jurusan?}', 'Feature\Angkot@gantiJurusan')->name('gantiJurusan');
         Route::get('pesananparkir', 'Admin\Admin@parkirPesananPage')->name('parkirPesananPageAdmin');
         Route::get('pesananparkirsearch', 'Admin\Admin@parkirPesananSearchPage')->name('parkirPesananSearchPageAdmin');
 

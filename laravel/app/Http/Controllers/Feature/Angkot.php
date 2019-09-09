@@ -48,6 +48,42 @@ class Angkot extends Controller
         return 'false';
     }
 
+    public function getSupirData($id)
+    {
+        $get = $this->angkotModel()->getSupirProfil($id);
+        if($get !== null && count($get) > 0)
+        {
+            $data = [
+                'detail' => $this->angkotModel()->getSupirProfil($id)
+            ];
+            return view('panel.admin.angkot.ajaxProfilSupir')->with($data);
+        }
+        return 'false';
+    }
+
+    public function getJurusanData($id)
+    {
+        $get = $this->angkotModel()->getSupirProfil($id);
+        if($get !== null && count($get) > 0)
+        {
+            $data = [
+                'dataJurusan' => $this->angkotModel()->getJurusanData($id)
+            ];
+            return view('panel.public.ajaxDataJurusan')->with($data);
+        }
+        return 'false';
+    }
+
+    public function gantiJurusan($id_angkot, $id_jurusan)
+    {
+        $do = $this->angkotModel()->updateAngkotRaw($id_angkot, ['id_jurusan' => $id_jurusan]);
+        if($do)
+        {
+            return 'true';
+        }
+        return 'false';
+    }
+
     public function getData($id)
     {
         $get = $this->angkotModel()->getAngkot($id);
