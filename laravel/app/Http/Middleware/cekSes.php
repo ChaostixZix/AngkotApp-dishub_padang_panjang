@@ -22,7 +22,7 @@ class cekSes
     }
     public function handle($request, Closure $next, $guard = null)
     {
-        $levelVerifyFirst = ['tukang_parkir', 'supir'];
+        $levelVerifyFirst = ['petugas_parkir', 'supir'];
         $routeName = $request->route()->getName();
 
         $se = Session::get('username');

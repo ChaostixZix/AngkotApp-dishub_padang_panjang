@@ -110,9 +110,9 @@
                         </ul>
                     </li>
                 @endif
-                @if(Session::get('level') == 'tukang_parkir')
+                @if(Session::get('level') == 'petugas_parkir')
                     <li class="nav-item with-sub">
-                        <a href="" class="nav-link"><i data-feather="package"></i> Tukang Pakir</a>
+                        <a href="" class="nav-link"><i data-feather="package"></i> petugas Pakir</a>
                         <ul class="navbar-menu-sub">
                             <li class="nav-sub-item"><a href="{{ route('depanPanel') }}" class="nav-sub-link"><i
                                         class="fa fa-home mg-r-15"></i>Dashboard</a></li>

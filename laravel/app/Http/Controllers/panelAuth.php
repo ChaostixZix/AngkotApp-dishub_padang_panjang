@@ -23,7 +23,7 @@ class panelAuth extends Controller
     public function registerPage()
     {
         $data = [
-            'level' => ['user', 'supir', 'tukang_parkir']
+            'level' => ['user', 'supir', 'petugas_parkir']
         ];
         return view('panel.auth.register')->with($data);
     }

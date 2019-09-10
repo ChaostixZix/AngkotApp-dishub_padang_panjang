@@ -84,7 +84,7 @@
             <div class="row justify-content-between">
                 <div class="col-sm-6 col-lg-6 order-2 order-sm-0 mg-t-40 mg-sm-t-0">
                     <label class="tx-sans tx-uppercase tx-10 tx-medium tx-spacing-1 tx-color-03">Notes</label>
-                    <p>Berikan ini pada tukang parkir.</p>
+                    <p>Berikan ini pada petugas parkir.</p>
                     <h6 class="tx-15 tx-bolder mg-b-10">
                         Perwarko NO. 5 Tahun 2017, Tanggal 13 November 2017<br>
                         Tentang Retribusi Jalan Umum
