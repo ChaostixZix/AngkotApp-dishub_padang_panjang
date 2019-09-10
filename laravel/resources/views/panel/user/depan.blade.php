@@ -12,37 +12,39 @@
         </div>
 
         <div class="row row-xs">
-            @foreach($listAngkot as $l)
-                <div class="col-md-6 col-xl-4 mg-t-10">
-                    <div class="card card-help ht-100p">
-                        <div class="card-header d-flex align-items-center justify-content-between">
-                            <h6 class="mg-b-0">Angkot</h6>
-                        </div>
-                        <div class="card-body tx-13">
-                            <div class="tx-60 lh-0 mg-b-25"><i class="fa fa-shuttle-van"></i></div>
-                            <h5><a href="" class="link-01">{{ $l->nama_angkot }}</a></h5>
-                            @foreach($dataJurusan as $c)
-                                @if($c->id == $l->id_jurusan)
-                                    <p class="tx-color-03 mg-b-0">{{ $c->awal_jurusan }}
-                                        -> {{ $c->tujuan_jurusan }}</p>
-                                @endif
-                            @endforeach
-                        </div>
-                        <div class="card-footer text-center tx-13">
-                            <select id="id_jurusan" class="custom-select mg-r-5">
-                                <option value=""></option>
+            @if(Session::get('level') == 'supir')
+                @foreach($listAngkot as $l)
+                    <div class="col-md-6 col-xl-4 mg-t-10">
+                        <div class="card card-help ht-100p">
+                            <div class="card-header d-flex align-items-center justify-content-between">
+                                <h6 class="mg-b-0">Angkot</h6>
+                            </div>
+                            <div class="card-body tx-13">
+                                <div class="tx-60 lh-0 mg-b-25"><i class="fa fa-shuttle-van"></i></div>
+                                <h5><a href="" class="link-01">{{ $l->nama_angkot }}</a></h5>
                                 @foreach($dataJurusan as $c)
-                                    @if($c->id !== $l->id_jurusan)
-                                        <option value="{{ $c->id }}">{{ $c->awal_jurusan }}
-                                            -> {{ $c->tujuan_jurusan }}</option>
+                                    @if($c->id == $l->id_jurusan)
+                                        <p class="tx-color-03 mg-b-0">{{ $c->awal_jurusan }}
+                                            -> {{ $c->tujuan_jurusan }}</p>
                                     @endif
                                 @endforeach
-                            </select>
-                            <button onclick="gantiJurusan('{{ $l->id }}')" class="btn btn-primary">Set</button>
-                        </div><!-- card-footer -->
-                    </div><!-- card -->
-                </div>
-            @endforeach
+                            </div>
+                            <div class="card-footer text-center tx-13">
+                                <select id="id_jurusan" class="custom-select mg-r-5">
+                                    <option value=""></option>
+                                    @foreach($dataJurusan as $c)
+                                        @if($c->id !== $l->id_jurusan)
+                                            <option value="{{ $c->id }}">{{ $c->awal_jurusan }}
+                                                -> {{ $c->tujuan_jurusan }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                <button onclick="gantiJurusan('{{ $l->id }}')" class="btn btn-primary">Set</button>
+                            </div><!-- card-footer -->
+                        </div><!-- card -->
+                    </div>
+                @endforeach
+            @endif
         </div><!-- row -->
     </div><!-- container -->
 </div><!-- content -->

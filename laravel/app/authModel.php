@@ -77,6 +77,19 @@ class authModel extends Model
         return false;
     }
 
+    public function getUserOfLevels(array $levels)
+    {
+        $get = [];
+        foreach ($levels as $l)
+        {
+            foreach ($this->db()->where('level', $l)->get() as $g)
+            {
+                $get[] = $g;
+            }
+        }
+        return $get;
+    }
+
     public function getUser($id = null)
     {
         if($id !== null)

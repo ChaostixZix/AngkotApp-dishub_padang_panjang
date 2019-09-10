@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Feature;
 
+use App\Jobs\sendPesananEmail;
 use App\web\derekModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -89,6 +90,14 @@ class Derek extends Controller
                     'invoiceId' => $createPesan,
                     'reason' => ''
                 ];
+
+                $details = [
+                    'idPesanan' => $return['invoiceId'],
+                    'pemesan' => $data_pesanan['pemesan'],
+                    'harga' => $data_pesanan['harga'],
+                    'jenis_pesanan' => 'derek'
+                ];
+                dispatch(new sendPesananEmail($details));
             } else {
                 $return = [
                     'status' => 'false',

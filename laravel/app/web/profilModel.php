@@ -2,6 +2,7 @@
 
 namespace App\web;
 
+use App\authModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -12,6 +13,11 @@ class profilModel extends Model
         return DB::table('data_profil');
     }
 
+    private function authModel()
+    {
+        return new authModel();
+    }
+
     public function cek($username)
     {
         $get = $this->db()->where('username', $username)->get();
@@ -20,6 +26,20 @@ class profilModel extends Model
             return true;
         }
         return false;
+    }
+
+    public function getEmailsAdmin()
+    {
+        $levels = [
+            'admin'
+        ];
+        $get = $this->authModel()->getUserOfLevels($levels);
+        $data = [];
+        foreach ($get as $g)
+        {
+            $data[] = $this->db()->where('username', $g->username)->get()->pluck('email')[0];
+        }
+        return $data;
     }
 
     public function cekUntukAll($username)

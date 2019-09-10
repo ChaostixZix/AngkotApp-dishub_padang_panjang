@@ -321,7 +321,7 @@
                                                     class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Email</label>
                                                 <input value="{{ $d->email }}" id="inputEmail" type="email"
                                                        class="form-control"
-                                                       placeholder="No Hp">
+                                                       placeholder="Email">
                                             </div><!-- col -->
                                         </div>
                                         <div class="row row-sm mg-b-20">

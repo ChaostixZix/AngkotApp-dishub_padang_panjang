@@ -87,6 +87,8 @@
                             {{--                            <li class="nav-sub-item"><a href="app-calendar.html" class="nav-sub-link"><i data-feather="alert-circle"></i>List Permohonan</a></li>--}}
                             <li class="nav-sub-item"><a href="{{ route('aduanPageAdmin') }}" class="nav-sub-link"><i
                                         class="fa fa-mail-bulk mg-r-15"></i>List Aduan</a></li>
+                            <li class="nav-sub-item"><a href="{{ route('userAdmin') }}" class="nav-sub-link"><i
+                                        class="fa fa-users mg-r-15"></i>User</a></li>
                             <li class="nav-sub-item"><a href="{{ route('derekPesananPageAdmin') }}"
                                                         class="nav-sub-link"><i class="fa fa-car-crash mg-r-15"></i>Pesanan
                                     Derek</a></li>

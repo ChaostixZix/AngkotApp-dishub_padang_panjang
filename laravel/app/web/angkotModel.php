@@ -79,8 +79,9 @@ class angkotModel extends Model
             'nama_angkot' => $nama
         ];
         $do = $this->db()->insert($insert);
+        $id = $this->db()->where('nama_angkot', $nama)->get()->pluck('id')[0];
         if ($do) {
-            return true;
+            return $id;
         }
         return false;
     }

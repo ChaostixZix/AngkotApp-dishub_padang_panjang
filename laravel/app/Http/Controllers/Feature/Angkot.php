@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Feature;
 
+use App\Jobs\sendPesananEmail;
 use App\web\angkotModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,7 @@ class Angkot extends Controller
     {
         $name = $request->input('nama_angkot');
         $do = $this->angkotModel()->createAngkot($name);
-        if ($do) {
+        if ($do !== false) {
             return 'true';
         }
         return 'false';

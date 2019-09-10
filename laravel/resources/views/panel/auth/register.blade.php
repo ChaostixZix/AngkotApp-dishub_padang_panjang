@@ -55,7 +55,7 @@
                     </div>
                     <div class="form-group">
                         <div class="d-flex justify-content-between mg-b-5">
-                            <label class="mg-b-0-f">Password</label>
+                            <label class="mg-b-0-f">Nama Lengkap</label>
                         </div>
                         <input id="nama_lengkap" type="text" class="form-control" placeholder="Nama Lengkap" required>
                     </div>

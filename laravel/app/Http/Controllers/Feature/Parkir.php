@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Feature;
 
+use App\Jobs\sendPesananEmail;
 use App\web\manage\saldoModel;
 use App\web\parkirModel;
 use Illuminate\Http\Request;
@@ -89,6 +90,13 @@ class Parkir extends Controller
                     'invoiceId' => $do,
                     'reason' => ''
                 ];
+                $details = [
+                    'idPesanan' => $return['invoiceId'],
+                    'pemesan' => $data_insert['pemesan'],
+                    'harga' => $data_insert['harga'],
+                    'jenis_pesanan' => 'derek'
+                ];
+                dispatch(new sendPesananEmail($details));
             } else {
                 $return = [
                     'status' => 'false',
