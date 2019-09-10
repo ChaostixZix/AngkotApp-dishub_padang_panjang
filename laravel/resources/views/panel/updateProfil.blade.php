@@ -60,7 +60,7 @@
 
                                         <div class="form-group">
                                             <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Nama
-                                                Lengkap</label>
+                                                Lengkap <font class="tx-danger">*</font> </label>
                                             <input value="{{ $d->nama_lengkap }}" id="inputNamaLengkap" type="text"
                                                    class="form-control"
                                                    placeholder="Nama Lengkap">
@@ -139,7 +139,7 @@
                                                 <div class="col-sm-12 mg-b-20">
                                                     <label
                                                         class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Tinggi
-                                                        Badan</label>
+                                                        Badan <font class="tx-danger">*</font></label>
                                                     <input value="{{ $d->tinggi_badan }}" id="inputTinggiBadan"
                                                            type="number"
                                                            class="form-control"
@@ -148,7 +148,7 @@
                                                 <div class="col-sm-12">
                                                     <label
                                                         class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Golongan
-                                                        Darah</label>
+                                                        <font class="tx-danger">*</font></label>
                                                     <input value="{{ $d->gol_darah }}" id="inputGolonganDarah"
                                                            type="email"
                                                            class="form-control"
@@ -159,7 +159,7 @@
                                                 <div class="col-sm-6 mg-b-20">
                                                     <label
                                                         class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">No
-                                                        Sim</label>
+                                                        Sim <font class="tx-danger">*</font></label>
                                                     <input value="{{ $d->no_sim }}" id="inputNoSim" type="text"
 
                                                            class="form-control"
@@ -168,7 +168,7 @@
                                                 <div class="col-sm-6">
                                                     <label
                                                         class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Berlaku
-                                                        Sampai</label>
+                                                        Sampai <font class="tx-danger">*</font></label>
                                                     <input value="{{ $d->berlaku_sim }}" id="inputBerlakuSim"
                                                            type="email"
                                                            class="form-control"
@@ -311,7 +311,7 @@
                                             <div class="col-sm-6">
                                                 <label
                                                     class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">No
-                                                    HP</label>
+                                                    HP <font class="tx-danger">*</font></label>
                                                 <input value="{{ $d->no_hp }}" id="inputNoHp" type="number"
                                                        class="form-control"
                                                        placeholder="No Hp">
@@ -347,7 +347,7 @@
                                             <div class="col-sm">
                                                 <label
                                                     class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Jenis
-                                                    Kendaraan</label>
+                                                    Kendaraan <font class="tx-danger">*</font></label>
                                                 <select id="jenis_kendaraan" class="custom-select">
                                                     <option value="">Pilih</option>
                                                     <option value=""></option>
@@ -366,7 +366,7 @@
                                             <div class="col-sm-5">
                                                 <label
                                                     class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Plat
-                                                    Nomor
+                                                    Nomor <font class="tx-danger">*</font>
                                                 </label>
                                                 <input value="{{ $d->plat_nomor }}" id="plat_nomor" type="text"
                                                        class="form-control">
