@@ -17,6 +17,19 @@ class parkirModel extends Model
         return DB::table('tempat_parkir');
     }
 
+    public function deleteTiket()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $minuts = date('h:i', time() - 10 * 60);
+        var_dump($minuts);
+        $find = $this->db()->where('waktu', $minuts)->delete();
+        if($find)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public function getHarga($id_tempat_parkir, $jenis_kendaraan)
     {
         if ($jenis_kendaraan == 'Mobil') {
@@ -94,7 +107,7 @@ class parkirModel extends Model
         }else{
             $nomor = count($get) + 1;
         }
-        $insert['nomor'] = $nomor;
+//        $insert['nomor'] = $nomor;
         $do = $this->db()->insert($insert);
         if ($do) {
             return $this->db()->where($insert)->get()->pluck('id')[0];

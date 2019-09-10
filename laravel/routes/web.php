@@ -42,9 +42,7 @@ Route::group([
     Route::get('', 'panel@depan')->name('depanPanel');
     Route::get('updateprofil', 'panel@updateProfil')->name('updateProfil');
 
-    Route::get('test', function (){
-        return view('mail.invoice');
-    });
+    Route::get('test', 'Feature\Parkir@test');
 
 
     Route::group([

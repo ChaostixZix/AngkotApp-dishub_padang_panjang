@@ -27,10 +27,10 @@
                     <label class="tx-sans tx-uppercase tx-10 tx-medium tx-spacing-1 tx-color-03">Invoice
                         Information</label>
                     <ul class="list-unstyled lh-7">
-                        <li class="d-flex justify-content-between">
-                            <span>Nomor Spot</span>
-                            <span>{{$d->nomor}}</span>
-                        </li>
+{{--                        <li class="d-flex justify-content-between">--}}
+{{--                            <span>Nomor Spot</span>--}}
+{{--                            <span>{{$d->nomor}}</span>--}}
+{{--                        </li>--}}
                         <li class="d-flex justify-content-between">
                             <span>Jenis Pesan</span>
                             <span>Parkir</span>
@@ -59,7 +59,7 @@
                         <th class="wd-30p d-none d-sm-table-cell">Tanggal</th>
                         <th class="wd-30p d-none d-sm-table-cell">Jenis Kendaraan</th>
                         <th class="wd-30p d-none d-sm-table-cell">Plat Nomor</th>
-                        <th class="wd-30p d-none d-sm-table-cell">Nomor Spot</th>
+{{--                        <th class="wd-30p d-none d-sm-table-cell">Nomor Spot</th>--}}
                         <th class="tx-right">Amount</th>
                     </tr>
                     </thead>
@@ -72,8 +72,8 @@
                         </td>
                         <td class="d-none d-sm-table-cell tx-color-03">{{ strtoupper($d->plat_nomor) }}
                         </td>
-                        <td class="d-none d-sm-table-cell tx-color-03">{{ strtoupper($d->nomor) }}
-                        </td>
+{{--                        <td class="d-none d-sm-table-cell tx-color-03">{{ strtoupper($d->nomor) }}--}}
+{{--                        </td>--}}
                         <td class="tx-right">{{ "Rp " . number_format($d->harga,2,',','.') }}</td>
 
                     </tr>

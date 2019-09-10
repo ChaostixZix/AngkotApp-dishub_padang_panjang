@@ -22,6 +22,7 @@ class DataPesananParkir extends Migration
             $table->text('plat_nomor');
             $table->text('harga');
             $table->date('tanggal');
+            $table->text('waktu');
             $table->text('nama_pemesan');
             $table->text('nohp_pemesan');
             $table->integer('status');

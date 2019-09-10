@@ -20,6 +20,15 @@ class Parkir extends Controller
         return new saldoModel();
     }
 
+    public function test()
+    {
+        if($this->parkirModel()->deleteTiket())
+        {
+            return 'true';
+        }
+        return 'false';
+    }
+
     public function getJarak(Request $request)
     {
         $koordinat_jemput = $request->input('koordinat_jemput');
@@ -76,6 +85,8 @@ class Parkir extends Controller
             $data_insert[$d] = $request->input($d);
         }
         $data_insert['tanggal'] = date('Y-m-d');
+        $data_insert['waktu'] = date('h:1');
+        $data_insert['status'] = 0;
         $data_insert['harga'] = $this->parkirModel()->getHarga($data_insert['tempat_parkir'], $data_insert['jenis_kendaraan']);
 
 //        $cek_saldo_user = $this->saldoModel()->cekAvailibility($data_insert['pemesan'], $data_insert['harga']);

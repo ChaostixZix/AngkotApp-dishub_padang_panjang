@@ -36,7 +36,7 @@ class publik extends Controller
     {
         Carbon::setLocale('id');
         $data = [
-            'listAngkot' => $this->angkotModel()->getAngkotOfSupir(Session::get('username')),
+            'listAngkot' => $this->angkotModel()->getAngkot(),
             'dataJurusan' => $this->angkotModel()->getJurusan(),
             ];
         return view('panel.public.angkot')->with($data);

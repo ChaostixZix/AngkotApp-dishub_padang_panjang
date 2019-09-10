@@ -4,10 +4,10 @@
             <span>Invoice Number</span>
             <span id="id">{{ $d->id }}</span>
         </li>
-        <li class="d-flex justify-content-between">
-            <span>Nomor Spot</span>
-            <span id="nomor_spot">{{ $d->nomor }}</span>
-        </li>
+{{--        <li class="d-flex justify-content-between">--}}
+{{--            <span>Nomor Spot</span>--}}
+{{--            <span id="nomor_spot">{{ $d->nomor }}</span>--}}
+{{--        </li>--}}
         <li class="d-flex justify-content-between">
             <span>Plat Nomor</span>
             <span class="tx-bolder" id="plat_nomor">{{ $d->plat_nomor }}</span>

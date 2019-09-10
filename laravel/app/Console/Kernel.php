@@ -2,8 +2,10 @@
 
 namespace App\Console;
 
+use App\web\parkirModel;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -15,6 +17,10 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         //
     ];
+    private function parkirModel()
+    {
+        return new parkirModel();
+    }
 
     /**
      * Define the application's command schedule.
@@ -22,10 +28,15 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
+
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        $schedule->call(function () {
+            $this->parkirModel()->deleteTiket();
+        })->everyMinute();
     }
 
     /**
