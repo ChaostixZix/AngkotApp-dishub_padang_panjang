@@ -169,7 +169,7 @@
                     $('#detailProfil').html(data);
                     $('#profilModal').modal('show');
                 } else {
-                    Swal.fire('Gagal', 'Gagal menghapus angkot', 'error');
+                    Swal.fire('Gagal', 'Gagal mengambil data', 'error');
                 }
 
             }

@@ -64,7 +64,7 @@ class Angkot extends Controller
 
     public function getJurusanData($id)
     {
-        $get = $this->angkotModel()->getSupirProfil($id);
+        $get = $this->angkotModel()->getJurusanData($id);
         if($get !== null && count($get) > 0)
         {
             $data = [

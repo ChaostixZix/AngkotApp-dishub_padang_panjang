@@ -22,7 +22,7 @@ class parkirModel extends Model
         date_default_timezone_set('Asia/Jakarta');
         $minuts = date('h:i', time() - 10 * 60);
         var_dump($minuts);
-        $find = $this->db()->where('waktu', $minuts)->delete();
+        $find = $this->db()->where('waktu', $minuts)->update(['status' => 3]);
         if($find)
         {
             return true;
