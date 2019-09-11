@@ -120,6 +120,7 @@
 <script>
     $(document).ready(function () {
         $('#dataPesanan').DataTable({
+            "order": [[ 0, "desc" ]],
             language: {
                 searchPlaceholder: 'Cari...',
                 sSearch: '',

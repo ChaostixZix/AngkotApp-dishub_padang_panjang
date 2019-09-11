@@ -11,104 +11,68 @@
         </div>
 
         <div class="row row-xs">
-            {{--            <div class="col-md-6 col-xl-4 mg-t-10">--}}
-            {{--                <div class="card ht-100p">--}}
-            {{--                    <div class="card-header d-flex align-items-center justify-content-between">--}}
-            {{--                        <h6 class="mg-b-0">Notifikasi</h6>--}}
-            {{--                        <div class="d-flex tx-18">--}}
-            {{--                            <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>--}}
-            {{--                            <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a>--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                    <ul class="list-group list-group-flush tx-13">--}}
-            {{--                        <li class="list-group-item d-flex pd-sm-x-20">--}}
-            {{--                            <div class="avatar d-none d-sm-block"><span class="avatar-initial rounded-circle bg-teal"><i class="icon ion-md-checkmark"></i></span></div>--}}
-            {{--                            <div class="pd-sm-l-10">--}}
-            {{--                                <p class="tx-medium mg-b-0">Payment from #10322</p>--}}
-            {{--                                <small class="tx-12 tx-color-03 mg-b-0">Mar 21, 2019, 3:30pm</small>--}}
-            {{--                            </div>--}}
-            {{--                            <div class="mg-l-auto text-right">--}}
-            {{--                                <p class="tx-medium mg-b-0">+ $250.00</p>--}}
-            {{--                                <small class="tx-12 tx-success mg-b-0">Completed</small>--}}
-            {{--                            </div>--}}
-            {{--                        </li>--}}
-            {{--                        <li class="list-group-item d-flex pd-sm-x-20">--}}
-            {{--                            <div class="avatar d-none d-sm-block"><span class="avatar-initial rounded-circle bg-indigo op-5"><i class="icon ion-md-return-left"></i></span></div>--}}
-            {{--                            <div class="pd-sm-l-10">--}}
-            {{--                                <p class="tx-medium mg-b-2">Process refund to #00910</p>--}}
-            {{--                                <small class="tx-12 tx-color-03 mg-b-0">Mar 21, 2019, 1:00pm</small>--}}
-            {{--                            </div>--}}
-            {{--                            <div class="mg-l-auto text-right">--}}
-            {{--                                <p class="tx-medium mg-b-2">-$16.50</p>--}}
-            {{--                                <small class="tx-12 tx-success mg-b-0">Completed</small>--}}
-            {{--                            </div>--}}
-            {{--                        </li>--}}
-            {{--                        <li class="list-group-item d-flex pd-sm-x-20">--}}
-            {{--                            <div class="avatar d-none d-sm-block"><span class="avatar-initial rounded-circle bg-orange op-5"><i class="icon ion-md-bus"></i></span></div>--}}
-            {{--                            <div class="pd-sm-l-10">--}}
-            {{--                                <p class="tx-medium mg-b-2">Process delivery to #44333</p>--}}
-            {{--                                <small class="tx-12 tx-color-03 mg-b-0">Mar 20, 2019, 11:40am</small>--}}
-            {{--                            </div>--}}
-            {{--                            <div class="mg-l-auto text-right">--}}
-            {{--                                <p class="tx-medium mg-b-2">3 Items</p>--}}
-            {{--                                <small class="tx-12 tx-info mg-b-0">For pickup</small>--}}
-            {{--                            </div>--}}
-            {{--                        </li>--}}
-            {{--                        <li class="list-group-item d-flex pd-sm-x-20">--}}
-            {{--                            <div class="avatar d-none d-sm-block"><span class="avatar-initial rounded-circle bg-teal"><i class="icon ion-md-checkmark"></i></span></div>--}}
-            {{--                            <div class="pd-sm-l-10">--}}
-            {{--                                <p class="tx-medium mg-b-0">Payment from #023328</p>--}}
-            {{--                                <small class="tx-12 tx-color-03 mg-b-0">Mar 20, 2019, 10:30pm</small>--}}
-            {{--                            </div>--}}
-            {{--                            <div class="mg-l-auto text-right">--}}
-            {{--                                <p class="tx-medium mg-b-0">+ $129.50</p>--}}
-            {{--                                <small class="tx-12 tx-success mg-b-0">Completed</small>--}}
-            {{--                            </div>--}}
-            {{--                        </li>--}}
-            {{--                        <li class="list-group-item d-flex pd-sm-x-20">--}}
-            {{--                            <div class="avatar d-none d-sm-block"><span class="avatar-initial rounded-circle bg-gray-400"><i class="icon ion-md-close"></i></span></div>--}}
-            {{--                            <div class="pd-sm-l-10">--}}
-            {{--                                <p class="tx-medium mg-b-0">Payment failed from #087651</p>--}}
-            {{--                                <small class="tx-12 tx-color-03 mg-b-0">Mar 19, 2019, 12:54pm</small>--}}
-            {{--                            </div>--}}
-            {{--                            <div class="mg-l-auto text-right">--}}
-            {{--                                <p class="tx-medium mg-b-0">$150.00</p>--}}
-            {{--                                <small class="tx-12 tx-danger mg-b-0">Declined</small>--}}
-            {{--                            </div>--}}
-            {{--                        </li>--}}
-            {{--                    </ul>--}}
-            {{--                    <div class="card-footer text-center tx-13">--}}
-            {{--                        <a href="" class="link-03">View All Transactions <i class="icon ion-md-arrow-down mg-l-5"></i></a>--}}
-            {{--                    </div><!-- card-footer -->--}}
-            {{--                </div><!-- card -->--}}
-            {{--            </div>--}}
-            {{--            <div class="col-md-6 col-xl-4 mg-t-10">--}}
-            {{--                <div class="card ht-100p">--}}
-            {{--                    <div class="card-header d-flex align-items-center justify-content-between">--}}
-            {{--                        <h6 class="mg-b-0">Pengaduan</h6>--}}
-            {{--                    </div>--}}
-            {{--                    <ul class="list-group list-group-flush tx-13">--}}
-            {{--                        <li class="list-group-item d-flex pd-sm-x-20">--}}
-            {{--                            <div class="avatar"><span class="avatar-initial rounded-circle bg-gray-600">s</span></div>--}}
-            {{--                            <div class="pd-l-10">--}}
-            {{--                                <p class="tx-medium mg-b-0">Socrates Itumay</p>--}}
-            {{--                                <small class="tx-12 tx-color-03 mg-b-0">Tiket ID#00222</small>--}}
-            {{--                            </div>--}}
-            {{--                            <div class="mg-l-auto d-flex align-self-center">--}}
-            {{--                                <nav class="nav nav-icon-only">--}}
-            {{--                                    <a href="" class="nav-link d-none d-sm-block"><i data-feather="mail"></i></a>--}}
-            {{--                                    <a href="" class="nav-link d-none d-sm-block"><i data-feather="slash"></i></a>--}}
+           <div class="d-md-flex mg-b-10">
+               <div class="card text-center">
+                   <div class="card-body">
+                       <h4>Menu</h4>
 
-            {{--                                    <a href="" class="nav-link d-sm-none"><i data-feather="more-vertical"></i></a>--}}
-            {{--                                </nav>--}}
-            {{--                            </div>--}}
-            {{--                        </li>--}}
-            {{--                    </ul>--}}
-            {{--                    <div class="card-footer text-center tx-13">--}}
-            {{--                        <a href="" class="link-03">View More Tikets <i class="icon ion-md-arrow-down mg-l-5"></i></a>--}}
-            {{--                    </div><!-- card-footer -->--}}
-            {{--                </div><!-- card -->--}}
-            {{--            </div>--}}
+
+                               <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('depanPublik') }}"><i class="fa  fa-home"></i><br> Home</a>
+                               <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('publikAngkot') }}"><i class="fa fa-shuttle-van"></i><br> Angkot</a>
+
+                               <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('publikAduan') }}"><i class="fa  fa-mail-bulk"></i><br> Aduan</a>
+                               <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('updateProfil') }}"><i class="fa fa-user"></i><br> Edit Profil</a>
+                               <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('derekPage') }}"><i class="fa  fa-car-crash"></i><br> Pesan Derek</a>
+                               <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('parkirPage') }}"><i class="fa  fa-parking"></i><br> Pesan Parkir</a>
+
+
+
+                   </div>
+               </div>
+           </div>
+            <div class="d-md-flex mg-b-10">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h4>Parkir</h4>
+                            <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('angkotPageAdmin') }}"><i class="fa  fa-shuttle-van"></i><br> Data Angkot</a>
+                            <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('jurusanPageAdmin') }}"><i class="fa  fa-route"></i><br> Data Jurusan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-md-flex mg-b-10">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h4>Parkir</h4>
+                        <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('parkirPesananPageAdmin') }}"><i class="fa  fa-parking"></i><br> Pesanan Parkir</a>
+                        <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('parkirPesananSearchPageAdmin') }}"><i class="fa  fa-search"></i><br> Cari Pesanan Parkir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-md-flex mg-b-10">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h4>Derek</h4>
+                        <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('derekPesananPageAdmin') }}"><i class="fa  fa-car-crash"></i><br> Pesanan Derek</a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-md-flex mg-b-10">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h4>Aduan</h4>
+                        <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('aduanPageAdmin') }}"><i class="fa  fa-mail-bulk"></i><br> List Aduan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-md-flex mg-b-10">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h4>User</h4>
+                        <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('userAdmin') }}"><i class="fa  fa-users"></i><br> User</a>
+                    </div>
+                </div>
+            </div>
+
         </div><!-- row -->
     </div><!-- container -->
 </div><!-- content -->

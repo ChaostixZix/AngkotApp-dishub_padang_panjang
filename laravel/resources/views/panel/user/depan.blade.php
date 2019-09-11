@@ -10,6 +10,27 @@
                     Datang, {{ \Illuminate\Support\Facades\Session::get('username') }}</h4>
             </div>
         </div>
+        <div class="row row-xs">
+            <div class="d-md-flex mg-b-10">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h4>Menu</h4>
+
+
+                        <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('depanPublik') }}"><i class="fa  fa-home"></i><br> Home</a>
+                        <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('publikAngkot') }}"><i class="fa fa-shuttle-van"></i><br> Angkot</a>
+
+                        <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('publikAduan') }}"><i class="fa  fa-mail-bulk"></i><br> Aduan</a>
+                        <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('updateProfil') }}"><i class="fa fa-user"></i><br> Edit Profil</a>
+                        <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('derekPage') }}"><i class="fa  fa-car-crash"></i><br> Pesan Derek</a>
+                        <a class="btn btn-outline-secondary mg-r-5 mg-b-5"  href="{{ route('parkirPage') }}"><i class="fa  fa-parking"></i><br> Pesan Parkir</a>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="row row-xs">
             @if(Session::get('level') == 'supir')
@@ -39,7 +60,7 @@
                                         @endif
                                     @endforeach
                                 </select>
-                                <button onclick="gantiJurusan('{{ $l->id }}')" class="btn btn-primary">Set</button>
+                                <a onclick="gantiJurusan('{{ $l->id }}')" class="btn btn-primary">Set</a>
                             </div><!-- card-footer -->
                         </div><!-- card -->
                     </div>
