@@ -10,7 +10,7 @@
                     <h4>Menu</h4>
                         <ul class="tx-center nav nav-pills ">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa  fa-home"></i><br> Home</a>
+                                <a class="nav-link" href="{{ route('depanPublik') }}"><i class="fa  fa-home"></i><br> Home</a>
                             </li>
 {{--                            <li class="nav-item">--}}
 {{--                                <a class="nav-link" href="#"><i class="fa  fa-book"></i><br> News</a>--}}

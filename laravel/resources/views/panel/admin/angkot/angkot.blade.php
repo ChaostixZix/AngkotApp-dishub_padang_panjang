@@ -90,7 +90,7 @@
         <!-- row -->
         <div class="row">
             @foreach($listAngkot as $l)
-                <div id="angkot{{ $l->id }}" class="col-sm-6 col-lg-3">
+                <div id="angkot{{ $l->id }}" class="col-sm-6 col-lg-3 mg-b-10">
                     <div class="card card-help">
                         <div class="card-body tx-13">
                             <div class="tx-60 lh-0 mg-b-25"><i class="fa fa-shuttle-van"></i></div>

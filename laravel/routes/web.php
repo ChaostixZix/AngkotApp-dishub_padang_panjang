@@ -14,7 +14,7 @@
 Route::group(['prefix' => '/'], function () {
 //    Route::get('', 'publik@depan')->name('depanPublik');
     Route::get('', function () {
-        return redirect(route('loginPage'));
+        return view('panel.public.landing');
     })->name('depanPublik');
 });
 
@@ -33,6 +33,8 @@ Route::group(['prefix' => 'publik'], function () {
     Route::get('angkot', 'publik@angkot')->name('publikAngkot');
     Route::get('verifyFirst', function (){ return view('panel.auth.verifyFirst');})->name('verifyFirst');
 });
+Route::get('getsupirprofil/{id?}', 'Feature\Angkot@getSupirData')->name('getSupirDataAngkot');
+Route::get('getjurusandetail/{id?}', 'Feature\Angkot@getJurusanData')->name('getJurusanDataAngkot');
 
 Route::group([
     'prefix' => 'panel',
@@ -75,8 +77,6 @@ Route::group([
         Route::get('getjarakparkir', 'Feature\Parkir@getJarak')->name('getJarakParkir');
 
         //Angkot
-        Route::get('getsupirprofil/{id?}', 'Feature\Angkot@getSupirData')->name('getSupirDataAngkot');
-        Route::get('getjurusandetail/{id?}', 'Feature\Angkot@getJurusanData')->name('getJurusanDataAngkot');
         Route::post('angkotsubmit', 'Feature\Angkot@update')->name('submitAngkot');
         Route::post('angkotcreate', 'Feature\Angkot@create')->name('createAngkot');
         Route::get('getdataangkot/{id?}', 'Feature\Angkot@getData')->name('getAngkot');
