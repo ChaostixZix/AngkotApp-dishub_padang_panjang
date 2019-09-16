@@ -64,13 +64,21 @@
                 <h4 class="mg-b-5">Angkot</h4>
                 <p class="mg-b-0 tx-color-03">Lihat profil angkot dan edit profil angkot.</p>
             </div>
+            <div class="search-form mg-t-20 mg-sm-t-0">
+                <select id="id_jurusan" class="custom-select">
+                    <option value=""></option>
+                    @foreach($dataJurusan as $c)
+                        <option @if(isset($_GET['jurusan']) && $_GET['jurusan'] == $c->id) selected @endif  value="{{ $c->id }}">{{ $c->awal_jurusan }} -> {{ $c->tujuan_jurusan }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
     </div>
     <hr class="mg-t-60 mg-b-30">
     <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
         <!-- row -->
         <div class="row">
-            @foreach($listAngkot as $l)
+            @foreach($listAngkotPage as $l)
                 <div id="angkot{{ $l->id }}" class="col-sm-6 col-lg-3 mg-b-10">
                     <div class="card card-help">
                         <div class="card-header tx-semibold">
@@ -98,6 +106,7 @@
                 </div><!-- col -->
             @endforeach
         </div><!-- row -->
+        {{ $listAngkotPage->links() }}
     </div>
 </div>
 
@@ -106,6 +115,12 @@
 
 @include('panel.scriptPanel')
 <script>
+    $(document).ready(function () {
+        $('#id_jurusan').on('change', function () {
+            id = $(this).val();
+            window.location.href = '{{ url()->current() }}?&jurusan=' + id;
+        })
+    });
     function tambahAngkot() {
         $('#newAngkot').modal('show');
     }

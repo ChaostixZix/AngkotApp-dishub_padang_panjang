@@ -23,8 +23,8 @@
         <h6 class="home-headline">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel viverra mauris, id sagittis sapien. Vestibulum non risus leo. Nam quis volutpat elit.</h6>
 
         <div class="d-flex wd-lg-350">
-            <a href="{{route('loginPage')}}" class="btn btn-brand-01 btn-uppercase flex-fill">Sign UP</a>
-            <a href="{{route('registerPage')}}" class="btn btn-white btn-uppercase flex-fill mg-l-10">Sign IN</a>
+            <a href="{{route('registerPage')}}" class="btn btn-brand-01 btn-uppercase flex-fill">Sign UP</a>
+            <a href="{{route('loginPage')}}" class="btn btn-white btn-uppercase flex-fill mg-l-10">Sign IN</a>
         </div>
 
         <div class="d-flex tx-20 mg-t-40">

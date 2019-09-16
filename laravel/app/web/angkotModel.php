@@ -151,4 +151,14 @@ class angkotModel extends Model
         }
         return false;
     }
+
+    public function getAngkotPaged($jumlah = 8)
+    {
+        return $this->db()->paginate($jumlah);
+    }
+
+    public function getAngkotPagedJurusan($jurusan, $jumlah = 8)
+    {
+        return $this->db()->where('id_jurusan', $jurusan)->paginate($jumlah);
+    }
 }

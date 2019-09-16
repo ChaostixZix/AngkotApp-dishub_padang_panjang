@@ -32,13 +32,19 @@ class publik extends Controller
         return view('panel.public.aduan_public')->with($data);
     }
 
-    public function angkot()
+    public function angkot(Request $request)
     {
-        Carbon::setLocale('id');
         $data = [
             'listAngkot' => $this->angkotModel()->getAngkot(),
             'dataJurusan' => $this->angkotModel()->getJurusan(),
-            ];
+        ];
+        if($request->input('jurusan') !== null)
+        {
+            $data['listAngkotPage'] = $this->angkotModel()->getAngkotPagedJurusan($request->input('jurusan'));
+        }else{
+            $data['listAngkotPage'] = $this->angkotModel()->getAngkotPaged();
+        }
+        Carbon::setLocale('id');
         return view('panel.public.angkot')->with($data);
     }
 
