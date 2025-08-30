@@ -17,7 +17,7 @@
     "@ibm/plex": "^1.2.3",
     "amazeui-datetimepicker": "git+https://git@github.com/amazeui/datetimepicker.git",
     "animate.css": "^3.7.0",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^5.0.0",
     "bootstrap-tagsinput": "^0.7.1",
     "chart.js": "^2.7.3",
     "cleave.js": "^1.4.7",
